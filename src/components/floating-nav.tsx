@@ -1,42 +1,42 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import Link from "next/link"
-import { useScroll } from "framer-motion"
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { useScroll } from "framer-motion";
 
 export default function FloatingNav() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [activeSection, setActiveSection] = useState("home")
-  const { scrollY } = useScroll()
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const { scrollY } = useScroll();
 
   useEffect(() => {
     const handleScroll = () => {
       // Show nav after scrolling down a bit
       if (scrollY.get() > 100) {
-        setIsVisible(true)
+        setIsVisible(true);
       } else {
-        setIsVisible(false)
+        setIsVisible(false);
       }
 
       // Determine active section
-      const sections = ["home", "about", "skills", "projects", "testimonials", "contact"]
+      const sections = ["home", "about", "skills", "projects", "testimonials", "contact"];
 
       for (const section of [...sections].reverse()) {
-        const element = document.getElementById(section)
+        const element = document.getElementById(section);
         if (element) {
-          const rect = element.getBoundingClientRect()
+          const rect = element.getBoundingClientRect();
           if (rect.top <= 200) {
-            setActiveSection(section)
-            break
+            setActiveSection(section);
+            break;
           }
         }
       }
-    }
+    };
 
-    const unsubscribe = scrollY.onChange(handleScroll)
-    return () => unsubscribe()
-  }, [scrollY])
+    const unsubscribe = scrollY.onChange(handleScroll);
+    return () => unsubscribe();
+  }, [scrollY]);
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -45,7 +45,7 @@ export default function FloatingNav() {
     { name: "Projects", href: "#projects" },
     { name: "Testimonials", href: "#testimonials" },
     { name: "Contact", href: "#contact" },
-  ]
+  ];
 
   return (
     <AnimatePresence>
@@ -85,5 +85,5 @@ export default function FloatingNav() {
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }
