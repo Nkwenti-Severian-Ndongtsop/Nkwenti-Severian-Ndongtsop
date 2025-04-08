@@ -286,7 +286,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-medium mb-1">Phone</h3>
-                    <p className="text-foreground/80">Available upon request</p>
+                    <p className="text-foreground/80">+237672399102</p>
                   </div>
                 </div>
               </div>
@@ -320,12 +320,12 @@ const Contact = () => {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 className="mt-12 p-6 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-lg"
               >
-                <h3 className="font-medium mb-2">Looking for a developer?</h3>
+                <h3 className="font-medium mb-2">Looking for a Junior developer?</h3>
                 <p className="text-foreground/80 mb-4">
-                  I'm currently available for freelance work and full-time positions.
+                  I'm currently available for any part time work to grow my skills and experience.
                 </p>
                 <motion.a
-                  href="#"
+                  href="https://github.com/Nkwenti-Severian-Ndongtsop"
                   whileHover={{ x: 5 }}
                   className="inline-flex items-center text-primary hover:text-secondary transition-colors"
                 >
