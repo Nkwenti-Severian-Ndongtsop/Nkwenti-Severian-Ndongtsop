@@ -60,6 +60,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
@@ -70,15 +71,15 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-accent;
+  @apply bg-background;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary/50 rounded-full;
+  @apply bg-primary/30 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary/70;
+  @apply bg-primary/50;
 }
 
 /* Smooth scrolling */
@@ -108,6 +109,15 @@ html {
 
   .animate-shimmer {
     animation: shimmer 2s infinite;
+    background-size: 200% 100%;
+  }
+
+  .animate-gradient {
+    animation: gradient 8s linear infinite;
+  }
+
+  .bg-size-200 {
+    background-size: 200% 200%;
   }
 }
 
@@ -142,9 +152,16 @@ html {
   }
 }
 
-/* Gradient text */
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70;
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Glass effect */
@@ -163,29 +180,44 @@ html {
 
 /* Button styles */
 .btn-primary {
-  @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-primary/20;
+  @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-lg hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20;
 }
 
 .btn-secondary {
-  @apply border border-border px-6 py-3 rounded-lg hover:bg-accent transition-all duration-300 hover:scale-105;
+  @apply border border-primary/30 px-6 py-3 rounded-lg hover:bg-primary/5 transition-all duration-300;
 }
 
-.bg-size-200 {
-  background-size: 200% auto;
+/* Text gradient */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
 }
 
-.animate-gradient {
-  animation: gradient 8s linear infinite;
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/10;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% center;
-  }
-  50% {
-    background-position: 100% center;
-  }
-  100% {
-    background-position: 0% center;
-  }
+/* Image hover effects */
+.img-hover {
+  @apply transition-transform duration-500 hover:scale-110;
+}
+
+/* Link hover effects */
+.link-hover {
+  @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all after:duration-300;
+}
+
+/* Animated background gradient */
+.animated-gradient {
+  @apply bg-gradient-to-r from-primary/5 to-secondary/5 animate-gradient bg-size-200;
+}
+
+/* Glow effect */
+.glow {
+  @apply relative after:absolute after:inset-0 after:bg-gradient-to-r after:from-primary/20 after:to-secondary/20 after:blur-xl after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300 after:-z-10;
+}
+
+/* Animated border */
+.animated-border {
+  @apply relative before:absolute before:inset-0 before:p-[2px] before:bg-gradient-to-r before:from-primary before:to-secondary before:rounded-lg before:-z-10 before:animate-gradient before:bg-size-200;
 }
