@@ -1,10 +1,21 @@
-import { useState } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { path: "/", label: "Home" },
@@ -18,12 +29,19 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed w-full bg-background/80 backdrop-blur-sm z-50 border-b border-border/40"
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-background/90 backdrop-blur-md shadow-lg py-2"
+          : "bg-background/50 backdrop-blur-sm py-4"
+      }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-xl font-bold hover:text-primary transition-colors">
-            Portfolio
+        <div className="flex items-center justify-between">
+          <Link to="/" className="text-xl font-bold relative group">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+              Portfolio
+            </span>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300"></span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -32,18 +50,16 @@ const Navbar = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`relative text-foreground/80 hover:text-foreground transition-colors ${
+                className={`relative text-foreground/80 hover:text-foreground transition-colors group ${
                   location.pathname === item.path ? "text-primary" : ""
                 }`}
               >
                 {item.label}
-                {location.pathname === item.path && (
-                  <motion.div
-                    layoutId="activeNavItem"
-                    className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 ${
+                    location.pathname === item.path ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                ></span>
               </Link>
             ))}
           </div>
@@ -78,24 +94,28 @@ const Navbar = () => {
         {/* Mobile Navigation Menu */}
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden py-4"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden py-4 overflow-hidden"
           >
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`block py-2 text-foreground/80 hover:text-foreground transition-colors ${
-                  location.pathname === item.path ? "text-primary" : ""
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            <div className="flex flex-col space-y-4 bg-background/90 backdrop-blur-md p-4 rounded-lg">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`block py-2 px-4 rounded-md transition-all duration-300 ${
+                    location.pathname === item.path
+                      ? "bg-gradient-to-r from-primary/20 to-secondary/20 text-primary"
+                      : "hover:bg-accent/50"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
           </motion.div>
         )}
       </div>
