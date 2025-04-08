@@ -16,7 +16,7 @@ const Home = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const skills = ["React", "TypeScript", "Tailwind CSS", "Node.js", "Rust", "UI/UX Design"];
+  const skills = ["React", "TypeScript", "Tailwind CSS", "Node.js", "Rust", "UI/UX Design", "Linux", "docker", "PostgresSql", "Github"];
 
   return (
     <div className="space-y-20">
@@ -51,11 +51,7 @@ const Home = () => {
               className="relative"
             >
               <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-background relative z-10 shadow-xl">
-                <img
-                  src="/placeholder.svg?height=300&width=300"
-                  alt="Profile"
-                  className="w-full h-full object-cover"
-                />
+                <img src="/profile1.png" alt="Profile" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-60" />
               </div>
               <div className="absolute -inset-1 bg-gradient-to-br from-primary to-secondary rounded-full blur-md -z-10 opacity-70 animate-pulse-slow" />
@@ -80,7 +76,7 @@ const Home = () => {
               className="flex-1"
             >
               <div className="inline-block px-4 py-1 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full mb-4">
-                <span className="text-primary font-medium">Full Stack Developer</span>
+                <span className="text-primary font-medium">Full Stack Software Engineer</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary animate-gradient bg-size-200">
                 @Nkwenti @Severian @Ndongtsop
@@ -178,7 +174,7 @@ const Home = () => {
               viewport={{ once: true }}
               className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
             >
-              Growing up with these skills
+              Growing up in these skills
             </motion.h2>
           </div>
 
@@ -262,7 +258,7 @@ const Home = () => {
                       <Github className="w-5 h-5" />
                     </a>
                     <a
-                      href="#"
+                      href="https://crates.io/crates/qr-image"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-white/20 hover:bg-white/30 p-2 rounded-full transition-colors"
@@ -274,7 +270,7 @@ const Home = () => {
               </div>
               <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl overflow-hidden">
                 <img
-                  src="/placeholder.svg?height=300&width=600"
+                  src="/project1.png"
                   alt="Project"
                   className="w-full h-64 object-cover object-center"
                 />
@@ -285,6 +281,52 @@ const Home = () => {
                   <p className="text-foreground/80 mb-4">
                     A command-line tool that generates QR codes from a given URL. Designed with Rust
                     and Axum.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="bg-primary/10 px-3 py-1 rounded-full text-sm">Rust</span>
+                    <span className="bg-primary/10 px-3 py-1 rounded-full text-sm">Axum</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3 }}
+              className="group relative overflow-hidden rounded-xl"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-secondary/80 opacity-0 group-hover:opacity-90 transition-opacity duration-500 z-10 flex items-center justify-center">
+                <div className="text-white p-6 transform translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 text-center">
+                  <h3 className="text-xl font-bold mb-2">Weather application</h3>
+                  <p className="mb-4">A command-line tool that generates weather information.</p>
+                  <div className="flex justify-center space-x-4">
+                    <a
+                      href="https://github.com/Nkwenti-Severian-Ndongtsop/rust-server-projects/tree/main/weather-app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-white/20 hover:bg-white/30 p-2 rounded-full transition-colors"
+                    >
+                      <Github className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://crates.io/crates/weather-app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-white/20 hover:bg-white/30 p-2 rounded-full transition-colors"
+                    >
+                      <ExternalLink className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl overflow-hidden">
+                <img src="" alt="Project" className="w-full h-64 object-cover object-center" />
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                    Weather application
+                  </h3>
+                  <p className="text-foreground/80 mb-4">
+                    A command-line tool that generates weather information using APIs.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     <span className="bg-primary/10 px-3 py-1 rounded-full text-sm">Rust</span>
