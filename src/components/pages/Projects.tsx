@@ -1,73 +1,74 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Github, ExternalLink, Search, Code, Server } from "lucide-react";
+import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
+import { Github, ExternalLink, Search, Code, Server } from "lucide-react"
+import project1Image from "./project1.png"
 
 interface Project {
-  id: number;
-  title: string;
-  description: string;
-  technologies: string[];
-  imageUrl: string;
-  githubUrl: string;
-  liveUrl?: string;
-  category: "frontend" | "backend" | "fullstack";
+  id: number
+  title: string
+  description: string
+  technologies: string[]
+  imageUrl: string
+  githubUrl: string
+  liveUrl?: string
+  category: "frontend" | "backend" | "fullstack"
 }
 
 const Projects = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [activeFilter, setActiveFilter] = useState<string>("all")
   const [projects] = useState<Project[]>([
     {
       id: 1,
       title: "Qr Image Generator",
       description: "A command-line tool that generates QR codes from a given URL.",
       technologies: ["Rust", "Axum"],
-      imageUrl: "/placeholder.svg?height=400&width=600",
+      imageUrl: project1Image,
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Rust-QR-Code-Generator.git",
       category: "backend",
     },
-  ]);
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
-  const [searchQuery, setSearchQuery] = useState("");
+  ])
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects)
+  const [searchQuery, setSearchQuery] = useState("")
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [])
 
   useEffect(() => {
-    let result = projects;
+    let result = projects
 
     // Filter by category
     if (activeFilter !== "all") {
-      result = result.filter((project) => project.category === activeFilter);
+      result = result.filter((project) => project.category === activeFilter)
     }
 
     // Filter by search query
     if (searchQuery) {
-      const query = searchQuery.toLowerCase();
+      const query = searchQuery.toLowerCase()
       result = result.filter(
         (project) =>
           project.title.toLowerCase().includes(query) ||
           project.description.toLowerCase().includes(query) ||
-          project.technologies.some((tech) => tech.toLowerCase().includes(query))
-      );
+          project.technologies.some((tech) => tech.toLowerCase().includes(query)),
+      )
     }
 
-    setFilteredProjects(result);
-  }, [activeFilter, searchQuery, projects]);
+    setFilteredProjects(result)
+  }, [activeFilter, searchQuery, projects])
 
   const categories = [
     { id: "all", label: "All Projects", icon: <Code className="w-4 h-4" /> },
     { id: "frontend", label: "Frontend", icon: <Code className="w-4 h-4" /> },
     { id: "backend", label: "Backend", icon: <Server className="w-4 h-4" /> },
     { id: "fullstack", label: "Full Stack", icon: <Server className="w-4 h-4" /> },
-  ];
+  ]
 
   return (
     <motion.div
@@ -135,7 +136,7 @@ const Projects = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-wrap gap-2 justify-center"
             >
-              {categories.map((category,) => (
+              {categories.map((category) => (
                 <motion.button
                   key={category.id}
                   whileHover={{ y: -2 }}
@@ -205,9 +206,7 @@ const Projects = () => {
                     <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                       {project.title}
                     </h3>
-                    <span className="text-xs px-2 py-1 bg-primary/10 rounded-full">
-                      {project.category}
-                    </span>
+                    <span className="text-xs px-2 py-1 bg-primary/10 rounded-full">{project.category}</span>
                   </div>
                   <p className="text-foreground/80 mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
@@ -226,11 +225,7 @@ const Projects = () => {
             ))}
           </div>
         ) : (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-20"
-          >
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
             <div className="inline-block p-6 rounded-full bg-primary/10 mb-6">
               <Search className="w-10 h-10 text-primary" />
             </div>
@@ -240,7 +235,7 @@ const Projects = () => {
         )}
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects
