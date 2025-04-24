@@ -1,29 +1,39 @@
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Send } from "lucide-react";
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Send } from "lucide-react"
 
 export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
+    setFormData((prev) => ({ ...prev, [id]: value }))
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+    e.preventDefault()
+    setIsSubmitting(true)
 
     // Simulate form submission
     setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1500);
-  };
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+    }, 1500)
+  }
 
   if (isSubmitted) {
     return (
@@ -36,7 +46,7 @@ export default function ContactForm() {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 200, damping: 10 }}
-          className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mb-4 text-white animate-gradient bg-size-200"
+          className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mb-4 text-white animate-gradient bg-size-200 shadow-lg shadow-primary/20"
         >
           <svg
             className="w-8 h-8 animate-pulse-slow"
@@ -56,12 +66,12 @@ export default function ContactForm() {
         </p>
         <Button
           onClick={() => setIsSubmitted(false)}
-          className="rounded-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 animate-pulse-slow"
+          className="rounded-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 animate-pulse-slow shadow-lg shadow-primary/20"
         >
           Send another message
         </Button>
       </motion.div>
-    );
+    )
   }
 
   return (
@@ -74,6 +84,8 @@ export default function ContactForm() {
           id="name"
           placeholder="Your name"
           required
+          value={formData.name}
+          onChange={handleChange}
           className="bg-background/50 border-primary/10 focus-visible:ring-primary rounded-lg animate-pulse-slow"
         />
       </div>
@@ -86,6 +98,8 @@ export default function ContactForm() {
           type="email"
           placeholder="Your email address"
           required
+          value={formData.email}
+          onChange={handleChange}
           className="bg-background/50 border-primary/10 focus-visible:ring-primary rounded-lg animate-pulse-slow"
         />
       </div>
@@ -97,12 +111,14 @@ export default function ContactForm() {
           id="message"
           placeholder="Your message"
           required
+          value={formData.message}
+          onChange={handleChange}
           className="min-h-[120px] bg-background/50 border-primary/10 focus-visible:ring-primary rounded-lg animate-pulse-slow"
         />
       </div>
       <Button
         type="submit"
-        className="w-full rounded-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 animate-shimmer"
+        className="w-full rounded-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 animate-shimmer shadow-lg shadow-primary/20 transition-all duration-300"
         disabled={isSubmitting}
       >
         {isSubmitting ? (
@@ -112,14 +128,7 @@ export default function ContactForm() {
             className="mr-2"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24">
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path
                 className="opacity-75"
                 fill="currentColor"
@@ -134,5 +143,5 @@ export default function ContactForm() {
         )}
       </Button>
     </form>
-  );
+  )
 }
