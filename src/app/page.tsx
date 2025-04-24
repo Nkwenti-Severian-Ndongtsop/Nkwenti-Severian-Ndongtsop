@@ -1,33 +1,33 @@
-"use client";
+"use client"
 
-import { useRef, useState, useEffect } from "react";
-import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ArrowDown, Code, ExternalLink, Github, Mail, User, Menu, X, Link } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import ProjectCard from "@/components/project-card";
-import SkillBadge from "@/components/skill-badge";
-import ContactForm from "@/components/contact-form";
-import FloatingNav from "@/components/floating-nav";
+import { useRef, useState, useEffect } from "react"
+import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { ArrowDown, Code, ExternalLink, Github, Mail, User, Menu, X, Link } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import ProjectCard from "@/components/project-card"
+import SkillBadge from "@/components/skill-badge"
+import ContactForm from "@/components/contact-form"
+import FloatingNav from "@/components/floating-nav"
 
 export default function Home() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9]);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  const { scrollYProgress } = useScroll()
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9])
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove)
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [])
 
   const skills = [
     { name: "React", icon: <Code className="w-4 h-4" /> },
@@ -37,7 +37,7 @@ export default function Home() {
     { name: "PostgresSql", icon: <Code className="w-4 h-4" /> },
     { name: "UI/UX Design", icon: <User className="w-4 h-4" /> },
     { name: "Responsive Design", icon: <User className="w-4 h-4" /> },
-  ];
+  ]
 
   const projects = [
     {
@@ -48,7 +48,7 @@ export default function Home() {
       github: "https://github.com/Nkwenti-Severian-Ndongtsop/Rust-QR-Code-Generator.git",
       demo: "#",
     },
-  ];
+  ]
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-background via-background/95 to-background/90 overflow-hidden">
@@ -82,39 +82,19 @@ export default function Home() {
             exit={{ opacity: 0, x: 300 }}
             className="fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center space-y-8 p-4"
           >
-            <a
-              href="#about"
-              className="text-2xl font-bold"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a href="#about" className="text-2xl font-bold" onClick={() => setIsMobileMenuOpen(false)}>
               About Me
             </a>
-            <a
-              href="#skills"
-              className="text-2xl font-bold"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a href="#skills" className="text-2xl font-bold" onClick={() => setIsMobileMenuOpen(false)}>
               Skills
             </a>
-            <a
-              href="#projects"
-              className="text-2xl font-bold"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a href="#projects" className="text-2xl font-bold" onClick={() => setIsMobileMenuOpen(false)}>
               Projects
             </a>
-            <a
-              href="#testimonials"
-              className="text-2xl font-bold"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a href="#testimonials" className="text-2xl font-bold" onClick={() => setIsMobileMenuOpen(false)}>
               Testimonials
             </a>
-            <a
-              href="#contact"
-              className="text-2xl font-bold"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a href="#contact" className="text-2xl font-bold" onClick={() => setIsMobileMenuOpen(false)}>
               Contact Me
             </a>
           </motion.div>
@@ -166,8 +146,7 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.4 }}
             className="text-xl md:text-2xl mb-8 text-foreground/80 font-light"
           >
-            <span className="font-semibold text-primary">Full Stack Software Developer</span> &
-            UI/UX Designer
+            <span className="font-semibold text-primary">Full Stack Software Developer</span> & UI/UX Designer
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -182,12 +161,7 @@ export default function Home() {
             >
               <Link href="#contact">Get in touch with Me</Link>
             </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="rounded-full border-primary/20 hover:bg-primary/5"
-            >
+            <Button asChild variant="outline" size="lg" className="rounded-full border-primary/20 hover:bg-primary/5">
               <Link href="#projects">View my work</Link>
             </Button>
           </motion.div>
@@ -255,11 +229,7 @@ export default function Home() {
               className="relative z-10 rounded-2xl overflow-hidden shadow-xl"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 mix-blend-overlay" />
-              <img
-                src="/placeholder.svg?height=600&width=600"
-                alt="John Doe"
-                className="w-full h-auto"
-              />
+              <img src="/placeholder.svg?height=600&width=600" alt="John Doe" className="w-full h-auto" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -280,19 +250,15 @@ export default function Home() {
               My Journey
             </h2>
             <p className="text-foreground/80 mb-6 leading-relaxed">
-              👋 I'm a junior software engineer still on intensive training will alot of passion and
-              enthusiast. - 🐧 Linux is my daily driver; I enjoy tweaking and optimizing my shell on
-              linux. - 🎨 Frontend enthusiast with a keen eye for web Development.
+              👋 I'm a junior software engineer still on intensive training will alot of passion and enthusiast. - 🐧
+              Linux is my daily driver; I enjoy tweaking and optimizing my shell on linux. - 🎨 Frontend enthusiast with
+              a keen eye for web Development.
             </p>
             <p className="text-foreground/80 mb-8 leading-relaxed">
-              When I'm not coding, you can find me exploring new technologies😎, contributing to
-              open-source projects on GitHub 💻. - Love Watching Movies too 😜.
+              When I'm not coding, you can find me exploring new technologies😎, contributing to open-source projects on
+              GitHub 💻. - Love Watching Movies too 😜.
             </p>
-            <Button
-              asChild
-              variant="outline"
-              className="rounded-full border-primary/20 hover:bg-primary/5"
-            >
+            <Button asChild variant="outline" className="rounded-full border-primary/20 hover:bg-primary/5">
               <Link href="#contact">Let's Connect</Link>
             </Button>
           </motion.div>
@@ -300,10 +266,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section
-        id="skills"
-        className="py-20 px-4 md:px-8 bg-gradient-to-b from-background/50 to-background relative"
-      >
+      <section id="skills" className="py-20 px-4 md:px-8 bg-gradient-to-b from-background/50 to-background relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
 
         <div className="max-w-6xl mx-auto">
@@ -321,8 +284,8 @@ export default function Home() {
               Technical Expertise
             </h2>
             <p className="text-foreground/80 max-w-2xl mx-auto">
-              I've played around with a variety of technologies and frameworks to assimilate and
-              outstand myself from the crowd 💪.
+              I've played around with a variety of technologies and frameworks to assimilate and outstand myself from
+              the crowd 💪.
             </p>
           </motion.div>
 
@@ -354,8 +317,8 @@ export default function Home() {
               Featured Projects
             </h2>
             <p className="text-foreground/80 max-w-2xl mx-auto">
-              Here are some of my recent projects. Each one presented unique challenges and
-              opportunities to learn and grow as a developer.
+              Here are some of my recent projects. Each one presented unique challenges and opportunities to learn and
+              grow as a developer.
             </p>
           </motion.div>
 
@@ -372,16 +335,8 @@ export default function Home() {
             viewport={{ once: true }}
             className="mt-12 text-center"
           >
-            <Button
-              asChild
-              variant="outline"
-              className="rounded-full border-primary/20 hover:bg-primary/5"
-            >
-              <a
-                href="https://github.com/Nkwenti-Severian-Ndongtsop"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <Button asChild variant="outline" className="rounded-full border-primary/20 hover:bg-primary/5">
+              <a href="https://github.com/Nkwenti-Severian-Ndongtsop" target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-4 w-4" />
                 View more on GitHub
               </a>
@@ -515,9 +470,7 @@ export default function Home() {
             <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
               @Nkwenti @Severian @Ndongtsop
             </div>
-            <p className="text-muted-foreground text-sm">
-              © {new Date().getFullYear()} All rights reserved.
-            </p>
+            <p className="text-muted-foreground text-sm">© {new Date().getFullYear()} All rights reserved.</p>
           </div>
           <div className="flex space-x-6">
             <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
@@ -530,5 +483,5 @@ export default function Home() {
         </div>
       </footer>
     </main>
-  );
+  )
 }
