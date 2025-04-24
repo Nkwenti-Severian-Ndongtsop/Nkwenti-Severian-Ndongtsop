@@ -1,47 +1,33 @@
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { FaGithub, FaFacebook, FaDiscord } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
-import { Mail, Send, MapPin, Phone, ArrowRight, Loader2 } from "lucide-react";
+import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
+import { FaGithub, FaFacebook, FaDiscord } from "react-icons/fa"
+import { SiLeetcode } from "react-icons/si"
+import { Mail, Send, MapPin, Phone, ArrowRight, Loader2 } from "lucide-react"
 
 const Contact = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  })
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
-    }, 1500);
-  };
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
 
   const socialLinks = [
     {
@@ -74,7 +60,7 @@ const Contact = () => {
       label: "Discord",
       color: "hover:text-[#5865F2]",
     },
-  ];
+  ]
 
   return (
     <motion.div
@@ -123,123 +109,73 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl p-8 shadow-lg hover:shadow-primary/5 transition-all duration-300 h-full">
-              {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="h-full flex flex-col items-center justify-center text-center py-8"
+              <form
+                action="https://formspree.io/f/myzwyold"
+                method="POST"
+                className="space-y-6"
+              >
+                <h2 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                  Send Me a Message
+                </h2>
+
+                <div className="space-y-2">
+                  <label htmlFor="name" className="block text-sm font-medium">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-background/50 border border-primary/10 rounded-lg focus:border-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="email" className="block text-sm font-medium">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-background/50 border border-primary/10 rounded-lg focus:border-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                    placeholder="Your email address"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="message" className="block text-sm font-medium">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 bg-background/50 border border-primary/10 rounded-lg focus:border-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+                    placeholder="Your message"
+                  />
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  className="w-full px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg shadow-lg hover:shadow-primary/20 transition-all duration-300 flex items-center justify-center"
                 >
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                    className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mb-6 text-white"
-                  >
-                    <svg
-                      className="w-10 h-10"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </motion.div>
-                  <h3 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-                    Message Sent Successfully!
-                  </h3>
-                  <p className="text-foreground/80 mb-8">
-                    Thank you for reaching out. I'll get back to you as soon as possible.
-                  </p>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setIsSubmitted(false)}
-                    className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg shadow-lg hover:shadow-primary/20 transition-all duration-300"
-                  >
-                    Send Another Message
-                  </motion.button>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-                    Send Me a Message
-                  </h2>
-
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="block text-sm font-medium">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-background/50 border border-primary/10 rounded-lg focus:border-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                      placeholder="Your name"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="block text-sm font-medium">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-background/50 border border-primary/10 rounded-lg focus:border-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                      placeholder="Your email address"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="block text-sm font-medium">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="w-full px-4 py-3 bg-background/50 border border-primary/10 rounded-lg focus:border-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"
-                      placeholder="Your message"
-                    />
-                  </div>
-
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg shadow-lg hover:shadow-primary/20 transition-all duration-300 flex items-center justify-center"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5 mr-2" />
-                        Send Message
-                      </>
-                    )}
-                  </motion.button>
-                </form>
-              )}
+                  <Send className="w-5 h-5 mr-2" />
+                  Send Message
+                </motion.button>
+              </form>
             </div>
           </motion.div>
 
@@ -337,7 +273,7 @@ const Contact = () => {
         </div>
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
