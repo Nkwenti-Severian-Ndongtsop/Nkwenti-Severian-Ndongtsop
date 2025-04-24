@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { FaGithub, FaFacebook, FaEnvelope, FaDiscord } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
-import { ArrowUp } from "lucide-react";
+import { motion } from "framer-motion"
+import { FaGithub, FaFacebook, FaEnvelope, FaDiscord } from "react-icons/fa"
+import { SiLeetcode } from "react-icons/si"
+import { ArrowUp } from "lucide-react"
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
 
   const socialLinks = [
     {
@@ -39,14 +39,14 @@ const Footer = () => {
       label: "Discord",
       hoverColor: "hover:text-[#5865F2]",
     },
-  ];
+  ]
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-    });
-  };
+    })
+  }
 
   return (
     <footer className="relative bg-background border-t border-primary/10">
@@ -54,7 +54,7 @@ const Footer = () => {
       <div className="absolute -top-5 left-1/2 -translate-x-1/2">
         <motion.button
           onClick={scrollToTop}
-          whileHover={{ y: -5 }}
+          whileHover={{ y: -5, scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           className="bg-gradient-to-r from-primary to-secondary text-white p-3 rounded-full shadow-lg hover:shadow-primary/20 transition-all duration-300"
         >
@@ -94,16 +94,10 @@ const Footer = () => {
               <a href="/about" className="text-foreground/60 hover:text-primary transition-colors">
                 About
               </a>
-              <a
-                href="/projects"
-                className="text-foreground/60 hover:text-primary transition-colors"
-              >
+              <a href="/projects" className="text-foreground/60 hover:text-primary transition-colors">
                 Projects
               </a>
-              <a
-                href="/contact"
-                className="text-foreground/60 hover:text-primary transition-colors"
-              >
+              <a href="/contact" className="text-foreground/60 hover:text-primary transition-colors">
                 Contact
               </a>
             </div>
@@ -145,7 +139,7 @@ const Footer = () => {
         </motion.div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
