@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { FaGithub, FaFacebook, FaDiscord } from "react-icons/fa"
 import { SiLeetcode } from "react-icons/si"
-import { Mail, Send, MapPin, Phone, ArrowRight, Loader2 } from "lucide-react"
+import { Mail, Send, MapPin, Phone, ArrowRight } from "lucide-react"
 
 const Contact = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
