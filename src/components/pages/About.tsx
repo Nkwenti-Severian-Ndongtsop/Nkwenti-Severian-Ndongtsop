@@ -5,12 +5,6 @@ import { ArrowRight, Code, Server, Layout, Database, Terminal, Cpu } from "lucid
 import profileImage from "./me.jpg"
 
 const About = () => {
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-  }
-
   const skills = [
     {
       name: "Frontend Development",
