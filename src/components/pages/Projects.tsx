@@ -28,6 +28,7 @@ const Projects = () => {
       technologies: ["Rust", "Axum"],
       imageUrl: project1Image,
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Rust-QR-Code-Generator.git",
+      liveUrl: "https://crates.io/crates/qr-image",
       category: "backend",
     },
     {
@@ -180,11 +181,13 @@ const Projects = () => {
                 className="group relative bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl overflow-hidden hover:border-primary/30 transition-all duration-500 shadow-lg hover:shadow-primary/10"
               >
                 <div className="relative overflow-hidden h-48">
-                  <img
-                    src={project.imageUrl || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                  <a href={project.imageUrl || "#"} target="_blank" rel="noopener noreferrer" className={!project.imageUrl ? "pointer-events-none" : ""}>
+                    <img
+                      src={project.imageUrl || "/placeholder.svg"}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 hover:opacity-90 cursor-pointer"
+                    />
+                  </a>
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
                     <div className="flex space-x-4 translate-y-10 group-hover:translate-y-0 transition-transform duration-300">
                       <motion.a
