@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { ArrowRight, Github, Mail, ExternalLink } from "lucide-react"
 import profileImage from "./me.jpg";
+import project2Image from "./project2.png";
 
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -311,7 +312,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl overflow-hidden">
-                <img src="" alt="Project" className="w-full h-64 object-cover object-center" />
+                <img src={project2Image} alt="Weather App Project" className="w-full h-64 object-cover object-center" />
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                     Weather application
