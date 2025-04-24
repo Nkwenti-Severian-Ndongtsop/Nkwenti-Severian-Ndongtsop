@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Github, ExternalLink, Search, Code, Server } from "lucide-react"
 import project1Image from "./project1.png"
+import project2Image from "./project2.png"
 
 interface Project {
   id: number
@@ -27,6 +28,16 @@ const Projects = () => {
       technologies: ["Rust", "Axum"],
       imageUrl: project1Image,
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Rust-QR-Code-Generator.git",
+      category: "backend",
+    },
+    {
+      id: 2,
+      title: "Weather application",
+      description: "A command-line tool that generates weather information using APIs.",
+      technologies: ["Rust", "Axum"],
+      imageUrl: project2Image,
+      githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/rust-server-projects/tree/main/weather-app",
+      liveUrl: "https://crates.io/crates/weather-app",
       category: "backend",
     },
   ])
