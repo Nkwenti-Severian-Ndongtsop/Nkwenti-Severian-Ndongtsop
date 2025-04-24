@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { ArrowRight, Github, Mail, ExternalLink } from "lucide-react"
 import profileImage from "./me.jpg";
+import project1Image from "./project1.png";
 import project2Image from "./project2.png";
 
 const Home = () => {
@@ -63,10 +64,12 @@ const Home = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative"
             >
-              <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-background relative z-10 shadow-xl">
-                <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-60" />
-              </div>
+              <a href={profileImage} target="_blank" rel="noopener noreferrer">
+                <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-background relative z-10 shadow-xl hover:opacity-90 transition-opacity duration-300 cursor-pointer">
+                  <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-60" />
+                </div>
+              </a>
               <div className="absolute -inset-1 bg-gradient-to-br from-primary to-secondary rounded-full blur-md -z-10 opacity-70 animate-pulse-slow" />
               <motion.div
                 animate={{
@@ -266,7 +269,9 @@ const Home = () => {
                 </div>
               </div>
               <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl overflow-hidden">
-                <img src="/project1.png" alt="Project" className="w-full h-64 object-cover object-center" />
+                <a href={project1Image} target="_blank" rel="noopener noreferrer">
+                  <img src={project1Image} alt="QR Code Generator Project" className="w-full h-64 object-cover object-center hover:opacity-90 transition-opacity duration-300 cursor-pointer" />
+                </a>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                     Qr Image Generator
@@ -312,7 +317,9 @@ const Home = () => {
                 </div>
               </div>
               <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl overflow-hidden">
-                <img src={project2Image} alt="Weather App Project" className="w-full h-64 object-cover object-center" />
+                <a href={project2Image} target="_blank" rel="noopener noreferrer">
+                  <img src={project2Image} alt="Weather App Project" className="w-full h-64 object-cover object-center hover:opacity-90 transition-opacity duration-300 cursor-pointer" />
+                </a>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                     Weather application
