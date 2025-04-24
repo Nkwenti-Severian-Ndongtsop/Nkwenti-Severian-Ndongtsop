@@ -1,9 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import Link from "next/link"
-import { useScroll } from "framer-motion"
+import { motion, AnimatePresence, useScroll } from "framer-motion"
+import { Link } from "react-router-dom"
 
 export default function FloatingNav() {
   const [isVisible, setIsVisible] = useState(false)
@@ -62,7 +61,7 @@ export default function FloatingNav() {
               {navItems.map((item) => (
                 <li key={item.name}>
                   <Link
-                    href={item.href}
+                    to={item.href}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-colors relative ${
                       activeSection === item.href.substring(1)
                         ? "text-white"
