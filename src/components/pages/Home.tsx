@@ -1,22 +1,34 @@
-"use client";
+"use client"
 
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import { ArrowRight, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom"
+import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { ArrowRight, Github, Mail, ExternalLink } from "lucide-react"
+import profileImage from "./me.jpg";
 
 const Home = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [])
 
-  const skills = ["React", "TypeScript", "Tailwind CSS", "Node.js", "Rust", "UI/UX Design", "Linux", "docker", "PostgresSql", "Github"];
+  const skills = [
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Node.js",
+    "Rust",
+    "UI/UX Design",
+    "Linux",
+    "docker",
+    "PostgresSql",
+    "Github",
+  ]
 
   return (
     <div className="space-y-20">
@@ -51,7 +63,7 @@ const Home = () => {
               className="relative"
             >
               <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-background relative z-10 shadow-xl">
-                <img src="/profile1.png" alt="Profile" className="w-full h-full object-cover" />
+                <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-60" />
               </div>
               <div className="absolute -inset-1 bg-gradient-to-br from-primary to-secondary rounded-full blur-md -z-10 opacity-70 animate-pulse-slow" />
@@ -82,8 +94,8 @@ const Home = () => {
                 @Nkwenti @Severian @Ndongtsop
               </h1>
               <p className="text-xl text-foreground/80 mb-8 max-w-2xl">
-                I'm a passionate developer specializing in building exceptional Web Applications
-                with modern technologies and creative designs.
+                I'm a passionate developer specializing in building exceptional Web Applications with modern
+                technologies and creative designs.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
@@ -92,11 +104,7 @@ const Home = () => {
                 >
                   <span className="relative z-10 flex items-center">
                     View My Work
-                    <motion.span
-                      initial={{ x: 0 }}
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <motion.span initial={{ x: 0 }} whileHover={{ x: 5 }} transition={{ duration: 0.3 }}>
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </motion.span>
                   </span>
@@ -122,16 +130,6 @@ const Home = () => {
                   className="bg-background/80 border border-border p-2 rounded-full hover:border-primary/50 transition-colors"
                 >
                   <Github className="w-5 h-5" />
-                </motion.a>
-                <motion.a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-background/80 border border-border p-2 rounded-full hover:border-primary/50 transition-colors"
-                >
-                  <Linkedin className="w-5 h-5" />
                 </motion.a>
                 <motion.a
                   href="mailto:halamadrid651643565@gmail.com"
@@ -245,9 +243,7 @@ const Home = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-secondary/80 opacity-0 group-hover:opacity-90 transition-opacity duration-500 z-10 flex items-center justify-center">
                 <div className="text-white p-6 transform translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 text-center">
                   <h3 className="text-xl font-bold mb-2">Qr Image Generator</h3>
-                  <p className="mb-4">
-                    A command-line tool that generates QR codes from a given URL.
-                  </p>
+                  <p className="mb-4">A command-line tool that generates QR codes from a given URL.</p>
                   <div className="flex justify-center space-x-4">
                     <a
                       href="https://github.com/Nkwenti-Severian-Ndongtsop/Rust-QR-Code-Generator.git"
@@ -269,18 +265,13 @@ const Home = () => {
                 </div>
               </div>
               <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-xl overflow-hidden">
-                <img
-                  src="/project1.png"
-                  alt="Project"
-                  className="w-full h-64 object-cover object-center"
-                />
+                <img src="/project1.png" alt="Project" className="w-full h-64 object-cover object-center" />
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                     Qr Image Generator
                   </h3>
                   <p className="text-foreground/80 mb-4">
-                    A command-line tool that generates QR codes from a given URL. Designed with Rust
-                    and Axum.
+                    A command-line tool that generates QR codes from a given URL. Designed with Rust and Axum.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     <span className="bg-primary/10 px-3 py-1 rounded-full text-sm">Rust</span>
@@ -378,8 +369,7 @@ const Home = () => {
               viewport={{ once: true }}
               className="text-xl text-foreground/80 mb-8"
             >
-              I'm always open to discussing new projects, creative ideas or opportunities to be part
-              of your vision.
+              I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -407,7 +397,7 @@ const Home = () => {
         </div>
       </motion.section>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
