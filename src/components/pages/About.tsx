@@ -1,14 +1,15 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { ArrowRight, Code, Server, Layout, Database, Terminal, Cpu } from "lucide-react";
+import { motion } from "framer-motion"
+import { ArrowRight, Code, Server, Layout, Database, Terminal, Cpu } from "lucide-react"
+import profileImage from "./me.jpg"
 
 const About = () => {
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 },
-  };
+  }
 
   const skills = [
     {
@@ -41,7 +42,7 @@ const About = () => {
       icon: <Cpu className="w-6 h-6" />,
       description: "Designing scalable and maintainable system architectures",
     },
-  ];
+  ]
 
   return (
     <motion.div
@@ -83,11 +84,7 @@ const About = () => {
               className="relative"
             >
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl">
-                <img
-                  src="/placeholder.svg?height=600&width=600"
-                  alt="Profile"
-                  className="w-full h-auto"
-                />
+                <img src={profileImage} alt="Profile" className="w-full h-auto" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent" />
               </div>
               <motion.div
@@ -110,26 +107,19 @@ const About = () => {
               viewport={{ once: true }}
             >
               <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
-                👋 I'm a junior software engineer still on intensive training with a lot of passion
-                and enthusiasm. I'm constantly learning and growing in this field, eager to apply my
-                skills to real-world projects.
+                👋 I'm a junior software engineer still on intensive training with a lot of passion and enthusiasm. I'm
+                constantly learning and growing in this field, eager to apply my skills to real-world projects.
               </p>
               <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
-                🐧 Linux is my daily driver; I enjoy tweaking and optimizing my shell on Linux. I
-                find the open-source ecosystem fascinating and love contributing to it whenever
-                possible.
+                🐧 Linux is my daily driver; I enjoy tweaking and optimizing my shell on Linux. I find the open-source
+                ecosystem fascinating and love contributing to it whenever possible.
               </p>
               <p className="text-lg text-foreground/80 mb-8 leading-relaxed">
-                🎨 I'm a frontend enthusiast with a keen eye for web development. When I'm not
-                coding, you can find me exploring new technologies 😎, contributing to open-source
-                projects on GitHub 💻, or watching movies 😜.
+                🎨 I'm a frontend enthusiast with a keen eye for web development. When I'm not coding, you can find me
+                exploring new technologies 😎, contributing to open-source projects on GitHub 💻, or watching movies 😜.
               </p>
 
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-block"
-              >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
                 <a
                   href="https://github.com/Nkwenti-Severian-Ndongtsop"
                   target="_blank"
@@ -165,8 +155,7 @@ const About = () => {
               Skills & Capabilities
             </h2>
             <p className="text-foreground/80 max-w-2xl mx-auto">
-              I've developed a diverse set of skills that allow me to tackle various aspects of
-              software development.
+              I've developed a diverse set of skills that allow me to tackle various aspects of software development.
             </p>
           </motion.div>
 
@@ -237,13 +226,11 @@ const About = () => {
                       <h4 className="text-xl font-bold">Software Development Training</h4>
                       <p className="text-foreground/80">@GIS</p>
                     </div>
-                    <span className="text-foreground/60 bg-primary/10 px-3 py-1 rounded-full text-sm">
-                      2024 - 2025
-                    </span>
+                    <span className="text-foreground/60 bg-primary/10 px-3 py-1 rounded-full text-sm">2024 - 2025</span>
                   </div>
                   <p className="text-foreground/80">
-                    Currently undergoing an intensive 18-month training program in full-stack
-                    software development, focusing on modern web technologies and best practices.
+                    Currently undergoing an intensive 18-month training program in full-stack software development,
+                    focusing on modern web technologies and best practices.
                   </p>
                 </motion.div>
               </div>
@@ -304,7 +291,7 @@ const About = () => {
         </div>
       </section>
     </motion.div>
-  );
-};
+  )
+}
 
-export default About;
+export default About
