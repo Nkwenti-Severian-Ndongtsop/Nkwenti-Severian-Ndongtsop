@@ -25,11 +25,12 @@ const Home = () => {
     "Tailwind CSS",
     "Node.js",
     "Rust",
-    "UI/UX Design",
     "Linux",
-    "docker",
+    "Docker",
     "PostgresSql",
     "Github",
+    "Java",
+    "Spring Boot",
   ]
 
   return (
