@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { FaGithub, FaFacebook, FaEnvelope, FaDiscord } from "react-icons/fa"
 import { SiLeetcode } from "react-icons/si"
 import { ArrowUp } from "lucide-react"
+import { Link } from "react-router-dom"
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -88,18 +89,18 @@ const Footer = () => {
             className="text-center"
           >
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="/" className="text-foreground/60 hover:text-primary transition-colors">
+              <Link to="/" className="text-foreground/60 hover:text-primary transition-colors">
                 Home
-              </a>
-              <a href="/about" className="text-foreground/60 hover:text-primary transition-colors">
+              </Link>
+              <Link to="/about" className="text-foreground/60 hover:text-primary transition-colors">
                 About
-              </a>
-              <a href="/projects" className="text-foreground/60 hover:text-primary transition-colors">
+              </Link>
+              <Link to="/projects" className="text-foreground/60 hover:text-primary transition-colors">
                 Projects
-              </a>
-              <a href="/contact" className="text-foreground/60 hover:text-primary transition-colors">
+              </Link>
+              <Link to="/contact" className="text-foreground/60 hover:text-primary transition-colors">
                 Contact
-              </a>
+              </Link>
             </div>
           </motion.div>
 
