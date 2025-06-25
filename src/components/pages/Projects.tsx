@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { Github, ExternalLink, Search, Code, Server } from "lucide-react"
 import project1Image from "./project1.png"
 import project2Image from "./project2.png"
+import project3Image from "./project3.png"
 
 interface Project {
   id: number
@@ -40,6 +41,16 @@ const Projects = () => {
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/rust-server-projects/tree/main/weather-app",
       liveUrl: "https://crates.io/crates/weather-app",
       category: "backend",
+    },
+    {
+      id: 3,
+      title: "Linksphere Application",
+      description: "Your Personal Link Management Platform.",
+      technologies: ["React", "Rust", "TypeScript", "Render", "PostgreSQL", "TailwindCSS", "Axum"],
+      imageUrl: project3Image,
+      githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/LinkSphere",
+      liveUrl: "https://linksphere-frontend.onrender.com",
+      category: "fullstack",
     },
   ])
   const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects)
