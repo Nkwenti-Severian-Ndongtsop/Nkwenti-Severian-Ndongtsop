@@ -6,7 +6,8 @@ on:
       - master
 
 env:
-  IMAGE_NAME: nkwent-portfolio # You can change this to any name you want
+  IMAGE_NAME: nkwent-portfolio 
+  IMAGE_PATH: nkwenti-severian-ndongtsop
 
 jobs:
   build:
@@ -31,5 +32,4 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
+            ghcr.io/${{ env.IMAGE_PATH }}/${{ env.IMAGE_NAME }}:latest
