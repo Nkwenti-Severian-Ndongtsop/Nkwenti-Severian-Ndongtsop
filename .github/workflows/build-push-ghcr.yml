@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  IMAGE_NAME: nkwent-portfolio 
+  IMAGE_NAME: nkwenti-portfolio 
   IMAGE_PATH: nkwenti-severian-ndongtsop
 
 jobs:
