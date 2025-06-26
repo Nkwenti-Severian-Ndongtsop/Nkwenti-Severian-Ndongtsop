@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+env:
+  IMAGE_NAME: nkwent-portfolio # You can change this to any name you want
+
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -28,5 +31,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.run_number }}
+            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
