@@ -1,0 +1,36 @@
+name: Update LeetCode Card
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.3'
+      - name: Install Python dependencies
+        run: pip install -r leetcard-custom/requirements.txt
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.17.0'
+      - name: Install Node.js dependencies
+        run: npm install
+      - name: Fetch LeetCode stats
+        run: python leetcard-custom/card/fetch.py
+      - name: Generate card image
+        run: npm run generate
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add leetcard-custom/card/output_node.png leetcard-custom/card/stats.json
+          git commit -m 'chore: update LeetCode stats card' || echo 'No changes to commit'
+          git push 
