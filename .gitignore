@@ -25,6 +25,4 @@ dist-ssr
 
 venv/
 .venv/
-*.png
-stats.json
 *-lock.json
