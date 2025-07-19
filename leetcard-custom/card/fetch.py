@@ -42,9 +42,8 @@ def fetch_leetcode_stats(username):
         raise Exception(f"LeetCode API error: {data['errors']}")
     return data["data"]
 
-# There is no public LeetCode API for total users, so we use a placeholder
-# If you want to update this, you can scrape the leaderboard or set a new value
-TOTAL_USERS_PLACEHOLDER = 1000000
+
+TOTAL_USERS_PLACEHOLDER = 5000000
 
 def main():
     stats = fetch_leetcode_stats(LEETCODE_USERNAME)
