@@ -22,11 +22,11 @@ jobs:
         with:
           node-version: '22.17.0'
       - name: Install Node.js dependencies
-        run: npm install
+        run: cd leetcard-custom && npm install
       - name: Fetch LeetCode stats
-        run: python leetcard-custom/card/fetch.py
+        run: cd leetcard-custom && python card/fetch.py
       - name: Generate card image
-        run: npm run generate
+        run: cd leetcard-custom && npm run generate
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
