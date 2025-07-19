@@ -27,7 +27,7 @@
 
 ## :chart_with_upwards_trend:	 Stats 👨‍💻 LeetCode
 
-[![LeetCode Stats](https://leetcard.jacoblin.cool/Nkwenti_Severian_Ndongtsop?theme=dark&font=Inter&ext=stats,activity&border_radius=20&shadow=true&cache=43200&bar_height=20&bar_gap=12)](https://leetcode.com/u/Nkwenti_Severian_Ndongtsop/)
+![LeetCode Stats](leetcard-custom/card/output_node.png)
 
 
 <br/>
