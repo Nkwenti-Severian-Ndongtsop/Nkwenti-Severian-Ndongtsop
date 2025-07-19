@@ -43,15 +43,6 @@ function loadStats() {
   }
 }
 
-function getBadgeDataUrl() {
-  try {
-    const badge = fs.readFileSync(BADGE_PATH);
-    return `data:image/png;base64,${badge.toString('base64')}`;
-  } catch {
-    return undefined;
-  }
-}
-
 function CircularProgress({ percent, size = 120, stroke = 10, color = '#FFB400' }) {
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
@@ -87,46 +78,46 @@ const MEDIUM_LABEL_EXTRA_GAP = 32;
 
 const Card = (
   <div style={{
-    width: 700, height: 420, background: '#fff', fontFamily: 'sans-serif', borderRadius: 18, border: '2px solid #eee', display: 'flex', flexDirection: 'column', padding: 32, boxSizing: 'border-box', alignItems: 'center', justifyContent: 'flex-start'
+    width: 700, height: 360, background: '#fff', fontFamily: 'sans-serif', borderRadius: 18, border: '2px solid #eee', display: 'flex', flexDirection: 'column', padding: 24, boxSizing: 'border-box', alignItems: 'center', justifyContent: 'flex-start'
   }}>
     {/* Name at the top, prefixed with rank string */}
-    <div style={{ width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: 24, justifyContent: 'center' }}>
-      <img src="https://leetcode.com/static/images/LeetCode_logo_rvs.png" width={36} height={36} style={{ marginRight: 12 }} />
-      <span style={{ fontSize: 32, fontWeight: 700 }}>{realName}</span>
+    <div style={{ width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: 16, justifyContent: 'center' }}>
+      <img src="https://leetcode.com/static/images/LeetCode_logo_rvs.png" width={32} height={32} style={{ marginRight: 10 }} />
+      <span style={{ fontSize: 28, fontWeight: 700 }}>{realName}</span>
     </div>
     {/* Centered circular progress */}
-    <div style={{ width: 120, height: 120, position: 'relative', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <CircularProgress percent={solved.All/total.All} size={120} stroke={10} color="#FFB400" />
+    <div style={{ width: 100, height: 100, position: 'relative', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <CircularProgress percent={solved.All/total.All} size={100} stroke={8} color="#FFB400" />
       <span style={{
         position: 'absolute',
-        left: 0, top: 0, width: 120, height: 120,
+        left: 0, top: 0, width: 100, height: 100,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: 36, fontWeight: 700, color: '#222'
+        fontSize: 30, fontWeight: 700, color: '#222'
       }}>{solved.All}</span>
     </div>
     {/* Labels below the circle, x/y on a straight line */}
-    <div style={{ width: '100%', marginTop: 36, display: 'flex', flexDirection: 'column', gap: 22, alignItems: 'center' }}>
+    <div style={{ width: '100%', marginTop: 24, display: 'flex', flexDirection: 'column', gap: 14, alignItems: 'center' }}>
       {['Easy','Medium','Hard'].map((diff, i) => (
-        <div key={diff} style={{ display: 'flex', alignItems: 'center', gap: 8, width: 420, justifyContent: 'center' }}>
-          <span style={{ color: [ '#4caf50', '#ffc107', '#f44336' ][i], fontWeight: 600, fontSize: 22, width: 90, textAlign: 'right', marginRight: diff === 'Medium' ? LABEL_BAR_GAP + MEDIUM_LABEL_EXTRA_GAP : LABEL_BAR_GAP }}>{diff}</span>
-          <div style={{ background: '#eee', borderRadius: 8, height: 14, width: 220, marginRight: 10, overflow: 'hidden', display: 'flex' }}>
-            <div style={{ background: [ '#4caf50', '#ffc107', '#f44336' ][i], width: `${100*(solved[diff]/total[diff]||0)}%`, height: 14, borderRadius: 8 }} />
+        <div key={diff} style={{ display: 'flex', alignItems: 'center', gap: 8, width: 340, justifyContent: 'center' }}>
+          <span style={{ color: [ '#4caf50', '#ffc107', '#f44336' ][i], fontWeight: 600, fontSize: 18, width: 70, textAlign: 'right', marginRight: diff === 'Medium' ? LABEL_BAR_GAP + MEDIUM_LABEL_EXTRA_GAP : LABEL_BAR_GAP }}>{diff}</span>
+          <div style={{ background: '#eee', borderRadius: 8, height: 10, width: 160, marginRight: 8, overflow: 'hidden', display: 'flex' }}>
+            <div style={{ background: [ '#4caf50', '#ffc107', '#f44336' ][i], width: `${100*(solved[diff]/total[diff]||0)}%`, height: 10, borderRadius: 8 }} />
           </div>
-          <span style={{ fontWeight: 700, fontSize: 20, color: '#222', minWidth: 70, textAlign: 'right' }}>{solved[diff]}/{total[diff]}</span>
+          <span style={{ fontWeight: 700, fontSize: 16, color: '#222', minWidth: 60, textAlign: 'right' }}>{solved[diff]}/{total[diff]}</span>
         </div>
       ))}
     </div>
     {/* Rank at the bottom right as x/totalUsers */}
-    <div style={{ width: '100%', marginTop: 32, display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
-      <span style={{ fontSize: 16, color: '#888', marginRight: 8 }}>Rank</span>
-      <span style={{ fontSize: 22, fontWeight: 700 }}>{rank}/{totalUsers}</span>
+    <div style={{ width: '100%', marginTop: 18, display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
+      <span style={{ fontSize: 14, color: '#888', marginRight: 6 }}>Rank</span>
+      <span style={{ fontSize: 18, fontWeight: 700 }}>{rank}/{totalUsers}</span>
     </div>
   </div>
 );
 
 const svg = await satori(Card, {
   width: 700,
-  height: 420,
+  height: 360,
   fonts: [
     {
       name: 'DejaVuSans',
