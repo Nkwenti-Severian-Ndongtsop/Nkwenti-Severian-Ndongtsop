@@ -2,7 +2,7 @@
   "allQuestionsCount": [
     {
       "difficulty": "All",
-      "count": 3625
+      "count": 3626
     },
     {
       "difficulty": "Easy",
@@ -10,7 +10,7 @@
     },
     {
       "difficulty": "Medium",
-      "count": 1884
+      "count": 1885
     },
     {
       "difficulty": "Hard",
@@ -21,7 +21,7 @@
     "username": "Nkwenti_Severian_Ndongtsop",
     "profile": {
       "realName": "Nkwenti_Severian",
-      "ranking": 2385493,
+      "ranking": 2387698,
       "userAvatar": "https://assets.leetcode.com/users/Nkwenti_Severian_Ndongtsop/avatar_1733996759.png",
       "countryName": "Cameroon",
       "reputation": 0,
