@@ -28,30 +28,14 @@ const Index = () => {
 
   const projects = [
     {
-      title: "Modern Dashboard",
-      description: "A comprehensive analytics dashboard with real-time data visualization, built with React and advanced charting libraries.",
-      image: project1Image,
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      title: "LinkSphere",
+      description: "A link management system for storing and organizing links",
+      image: "/src/assets/linksphere.png",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Axum", "Docker","GitHub"],
+      liveUrl: "https://linksphere-98u3.onrender.com/",
+      githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
       featured: true,
-    },
-    {
-      title: "3D Portfolio Site",
-      description: "An immersive 3D portfolio website featuring interactive elements and smooth animations powered by Three.js.",
-      image: project2Image,
-      technologies: ["Three.js", "React", "GLSL", "Framer Motion"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-    },
-    {
-      title: "AI Chat Assistant",
-      description: "An intelligent chatbot with natural language processing capabilities and context-aware responses.",
-      image: project3Image,
-      technologies: ["OpenAI API", "React", "Node.js", "Socket.io"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-    },
+    }
   ];
 
   return (
@@ -82,7 +66,7 @@ const Index = () => {
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
-                Full-stack developer crafting immersive digital experiences with React, AI, and cutting-edge 3D technologies.
+                Full-stack engineer crafting immersive digital experiences with React, Rust, and cutting-edge 3D technologies.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
