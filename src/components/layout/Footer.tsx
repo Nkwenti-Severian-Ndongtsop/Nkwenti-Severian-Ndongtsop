@@ -1,146 +1,96 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { FaGithub, FaFacebook, FaEnvelope, FaDiscord } from "react-icons/fa"
-import { SiLeetcode } from "react-icons/si"
-import { ArrowUp } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
-
   const socialLinks = [
-    {
-      icon: <FaGithub className="w-5 h-5" />,
-      href: "https://github.com/Nkwenti-Severian-Ndongtsop",
-      label: "GitHub",
-      hoverColor: "hover:text-[#6e5494]",
-    },
-    {
-      icon: <SiLeetcode className="w-5 h-5" />,
-      href: "https://leetcode.com/u/Nkwenti_Severian_Ndongtsop/",
-      label: "LeetCode",
-      hoverColor: "hover:text-[#f89f1b]",
-    },
-    {
-      icon: <FaFacebook className="w-5 h-5" />,
-      href: "https://www.facebook.com/profile.php?id=61564517945507",
-      label: "Facebook",
-      hoverColor: "hover:text-[#1877f2]",
-    },
-    {
-      icon: <FaEnvelope className="w-5 h-5" />,
-      href: "mailto:halamadrid651643565@gmail.com",
-      label: "Email",
-      hoverColor: "hover:text-primary",
-    },
-    {
-      icon: <FaDiscord className="w-5 h-5" />,
-      href: "https://discordapp.com/users/1282954845237809204",
-      label: "Discord",
-      hoverColor: "hover:text-[#5865F2]",
-    },
-  ]
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
-  }
+    { icon: Github, href: "https://github.com/Nkwenti-Severian-Ndongtsop", label: "GitHub" },
+    { icon: Mail, href: "mailto:nkwentiseverian@gmail.com", label: "Email" },
+  ];
 
   return (
-    <footer className="relative bg-background border-t border-primary/10">
-      {/* Scroll to top button */}
-      <div className="absolute -top-5 left-1/2 -translate-x-1/2">
-        <motion.button
-          onClick={scrollToTop}
-          whileHover={{ y: -5, scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="bg-gradient-to-r from-primary to-secondary text-white p-3 rounded-full shadow-lg hover:shadow-primary/20 transition-all duration-300"
-        >
-          <ArrowUp className="w-5 h-5" />
-        </motion.button>
-      </div>
-
-      {/* Footer content */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid md:grid-cols-3 gap-8 items-center">
-          {/* Logo and copyright */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center md:text-left"
-          >
-            <div className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2">
-              @Nkwenti @Severian @Ndongtsop
+    <footer className="bg-card/50 border-t border-border/20 mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div className="col-span-1 md:col-span-2">
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="w-8 h-8 bg-gradient-primary rounded-lg"></div>
+              <span className="text-xl font-bold gradient-text">DevPortfolio</span>
             </div>
-            <p className="text-foreground/60 text-sm">© {currentYear} All rights reserved.</p>
-          </motion.div>
-
-          {/* Quick links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/" className="text-foreground/60 hover:text-primary transition-colors">
-                Home
-              </Link>
-              <Link to="/about" className="text-foreground/60 hover:text-primary transition-colors">
-                About
-              </Link>
-              <Link to="/projects" className="text-foreground/60 hover:text-primary transition-colors">
-                Projects
-              </Link>
-              <Link to="/contact" className="text-foreground/60 hover:text-primary transition-colors">
-                Contact
-              </Link>
+            <p className="text-muted-foreground mb-6 max-w-md">
+              Building innovative digital experiences as a Full Stack, Backend & DevOps Engineer with modern technologies.
+              Passionate about React, AI, backend systems, cloud infrastructure, and automating beautiful user interfaces.
+            </p>
+            <div className="flex space-x-4">
+              {socialLinks.map((link) => (
+                <Button
+                  key={link.label}
+                  variant="ghost"
+                  size="sm"
+                  asChild
+                  className="hover-glow"
+                >
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.label}
+                  >
+                    <link.icon className="h-5 w-5" />
+                  </a>
+                </Button>
+              ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Social links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="flex justify-center md:justify-end space-x-4"
-          >
-            {socialLinks.map((link) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className={`text-foreground/60 transition-all duration-300 ${link.hoverColor}`}
-                aria-label={link.label}
-              >
-                {link.icon}
-              </motion.a>
-            ))}
-          </motion.div>
+          {/* Quick Links */}
+          <div>
+            <h3 className="font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="/" className="text-muted-foreground hover:text-primary transition-colors">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/projects" className="text-muted-foreground hover:text-primary transition-colors">
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Technologies */}
+          <div>
+            <h3 className="font-semibold mb-4">Technologies</h3>
+            <ul className="space-y-2">
+              <li className="text-muted-foreground">React & Next.js</li>
+              <li className="text-muted-foreground">TypeScript</li>
+              <li className="text-muted-foreground">Tailwind CSS</li>
+              <li className="text-muted-foreground">Three.js</li>
+              <li className="text-muted-foreground">AI Integration</li>
+            </ul>
+          </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-8 pt-6 border-t border-primary/10 text-center text-xs text-foreground/40"
-        >
-          <p>Designed and built with passion and modern web technologies</p>
-        </motion.div>
+        <div className="border-t border-border/20 mt-8 pt-8 text-center">
+          <p className="text-muted-foreground">
+            © {new Date().getFullYear()} DevPortfolio. Built with ❤️ using React and modern web technologies.
+          </p>
+        </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
