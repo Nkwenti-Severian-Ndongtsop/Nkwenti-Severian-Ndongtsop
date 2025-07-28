@@ -85,3 +85,16 @@
 ###
 
 
+## 🤝 Join an Active Open Source Community!
+
+Are you passionate about coding, learning, and collaborating with other developers? Do you want to contribute to real-world projects, grow your skills, and be part of a vibrant, supportive community?
+
+**Join [Stack-Forge-dev](https://github.com/Stack-Forge-dev)!**
+
+Stack-Forge-dev is a Cameroonian-led open source organization where junior and senior developers work together, mentor each other, and build impactful solutions. Whether you're a beginner or an experienced developer, you'll find opportunities to learn, teach, and make a difference.
+
+👉 [Click here to join or learn more!](https://github.com/Stack-Forge-dev)
+
+Let's build, grow, and forge the future of tech—together!
+
+
