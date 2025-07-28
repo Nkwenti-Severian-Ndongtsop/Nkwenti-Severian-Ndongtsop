@@ -16,28 +16,26 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "hello@devportfolio.com",
-      href: "mailto:hello@devportfolio.com",
+      value: "nkwentiseverian@gmail.com",
+      href: "mailto:nkwentiseverian@gmail.com",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+237 6 72 39 91 02",
+      href: "tel:+237672399102",
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco, CA",
+      value: "Banagangte, Cameroon",
       href: "#",
     },
   ];
 
   const socialLinks = [
-    { icon: Github, label: "GitHub", href: "https://github.com", color: "hover:text-gray-600" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", color: "hover:text-blue-600" },
-    { icon: Twitter, label: "Twitter", href: "https://twitter.com", color: "hover:text-blue-400" },
-  ];
+    { icon: Github, label: "GitHub", href: "https://github.com/Nkwenti-Severian-Ndongtsop", color: "hover:text-gray-600" },
+  ]
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -231,7 +229,7 @@ const Contact = () => {
               },
               {
                 q: "What technologies do you specialize in?",
-                a: "I specialize in React, Next.js, TypeScript, Three.js for 3D experiences, and various AI integration tools. I'm always learning new technologies to provide the best solutions."
+                a: "I specialize in React, Next.js, TypeScript, Three.js for 3D experiences, Spring Boot, Java, Rust, Axum, Docker, and various AI integration tools. I'm always learning new technologies to provide the best solutions."
               },
               {
                 q: "Do you provide ongoing maintenance?",
