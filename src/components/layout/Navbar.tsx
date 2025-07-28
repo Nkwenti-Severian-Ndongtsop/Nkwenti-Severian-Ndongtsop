@@ -34,14 +34,10 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full z-50 glass border-b border-border/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg animate-pulse-glow"></div>
-            <span className="text-xl font-bold gradient-text">DevPortfolio</span>
-          </Link>
+          {/* Removed Logo */}
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 mx-auto">
             {navItems.map((item) => (
               <Link
                 key={item.name}
