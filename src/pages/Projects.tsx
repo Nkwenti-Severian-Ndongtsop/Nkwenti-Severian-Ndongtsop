@@ -17,60 +17,15 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Modern Dashboard",
-      description: "A comprehensive analytics dashboard with real-time data visualization, built with React and advanced charting libraries. Features include custom charts, data filtering, and responsive design.",
-      image: project1Image,
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Firebase"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      title: "LinkSphere",
+      description: "A link management system for storing and organizing links",
+      image: "/src/assets/linksphere.png",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Axum", "Docker","GitHub"],
+      liveUrl: "https://linksphere-98u3.onrender.com/",
+      githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
       category: "Web App",
       featured: true,
-    },
-    {
-      title: "3D Portfolio Site",
-      description: "An immersive 3D portfolio website featuring interactive elements and smooth animations powered by Three.js. Includes particle systems, interactive meshes, and GLSL shaders.",
-      image: project2Image,
-      technologies: ["Three.js", "React", "GLSL", "Framer Motion", "WebGL"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-      category: "3D/WebGL",
-    },
-    {
-      title: "AI Chat Assistant",
-      description: "An intelligent chatbot with natural language processing capabilities and context-aware responses. Built with OpenAI API and real-time messaging.",
-      image: project3Image,
-      technologies: ["OpenAI API", "React", "Node.js", "Socket.io", "MongoDB"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-      category: "AI/ML",
-    },
-    {
-      title: "E-commerce Platform",
-      description: "A full-stack e-commerce solution with payment integration, inventory management, and modern UI design. Features include shopping cart, checkout flow, and admin dashboard.",
-      image: project1Image,
-      technologies: ["Next.js", "Stripe", "Prisma", "PostgreSQL", "Tailwind CSS"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-      category: "Web App",
-    },
-    {
-      title: "Interactive Data Visualization",
-      description: "A complex data visualization platform featuring 3D charts, interactive maps, and real-time data streaming capabilities.",
-      image: project2Image,
-      technologies: ["D3.js", "Three.js", "React", "WebSockets", "Python"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-      category: "Data Viz",
-    },
-    {
-      title: "Mobile-First PWA",
-      description: "A progressive web application optimized for mobile devices with offline capabilities, push notifications, and native-like performance.",
-      image: project3Image,
-      technologies: ["PWA", "Service Workers", "React", "IndexedDB", "Web Push"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-      category: "Mobile",
-    },
+    }
   ];
 
   const categories = ["All", "Web App", "3D/WebGL", "AI/ML", "Data Viz", "Mobile"];
@@ -95,7 +50,7 @@ const Projects = () => {
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             A collection of innovative digital solutions showcasing expertise in modern web technologies, 
-            3D visualization, AI integration, and user experience design.
+            backend development, AI integration, and user experience design.
           </p>
         </div>
       </section>
