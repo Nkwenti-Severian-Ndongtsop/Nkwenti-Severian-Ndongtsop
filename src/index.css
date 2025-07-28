@@ -2,55 +2,139 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Modern Portfolio Design System - Tech-forward with immersive gradients */
+
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 267 75% 60%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 327 73% 62%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 267 75% 60%;
+    /* Modern tech-inspired background */
+    --background: 220 20% 97%;
+    --foreground: 220 15% 15%;
+
+    /* Glass-morphism cards */
+    --card: 220 30% 98%;
+    --card-foreground: 220 15% 15%;
+
+    /* Elevated surfaces */
+    --popover: 220 25% 98%;
+    --popover-foreground: 220 15% 15%;
+
+    /* Vibrant orange primary */
+    --primary: 25 95% 55%;
+    --primary-foreground: 220 20% 98%;
+    --primary-glow: 35 90% 65%;
+
+    /* Ocean blue accent */
+    --secondary: 200 20% 92%;
+    --secondary-foreground: 220 15% 20%;
+
+    /* Modern muted tones */
+    --muted: 210 15% 94%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Deep blue accent */
+    --accent: 210 85% 60%;
+    --accent-foreground: 220 20% 98%;
+
+    /* Modern destructive */
+    --destructive: 0 75% 65%;
+    --destructive-foreground: 220 20% 98%;
+
+    /* Refined borders */
+    --border: 240 20% 88%;
+    --input: 240 25% 90%;
+    --ring: 240 95% 65%;
+
     --radius: 0.5rem;
-    --chart-1: 267 75% 60%;
-    --chart-2: 327 73% 62%;
-    --chart-3: 187 75% 53%;
-    --chart-4: 47 95% 57%;
-    --chart-5: 267 40% 40%;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Modern portfolio gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1));
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(var(--muted)));
+    --gradient-glow: radial-gradient(circle, hsl(var(--primary) / 0.3), transparent 70%);
+
+    /* Elegant shadows */
+    --shadow-glow: 0 0 50px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 10px 30px hsl(var(--primary) / 0.1);
+    --shadow-elegant: 0 20px 60px hsl(var(--foreground) / 0.1);
+
+    /* Smooth transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  .light {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 267 75% 60%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 327 73% 62%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 267 75% 60%;
+  .dark {
+    /* Cyber dark background */
+    --background: 220 25% 8%;
+    --foreground: 220 15% 92%;
+
+    /* Glass-morphism dark cards */
+    --card: 220 30% 10%;
+    --card-foreground: 220 15% 92%;
+
+    /* Dark elevated surfaces */
+    --popover: 220 25% 12%;
+    --popover-foreground: 220 15% 92%;
+
+    /* Vibrant orange glow */
+    --primary: 25 90% 60%;
+    --primary-foreground: 220 25% 8%;
+    --primary-glow: 35 95% 70%;
+
+    /* Dark secondary */
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 220 15% 85%;
+
+    /* Dark muted */
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 10% 55%;
+
+    /* Ocean blue accent */
+    --accent: 210 85% 65%;
+    --accent-foreground: 220 25% 8%;
+
+    /* Dark destructive */
+    --destructive: 0 75% 70%;
+    --destructive-foreground: 220 25% 8%;
+
+    /* Dark borders */
+    --border: 220 20% 20%;
+    --input: 220 25% 18%;
+    --ring: 240 90% 70%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary) / 0.2), hsl(var(--accent) / 0.2));
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(var(--muted)));
+    --gradient-glow: radial-gradient(circle, hsl(var(--primary) / 0.4), transparent 70%);
+
+    /* Dark shadows */
+    --shadow-glow: 0 0 50px hsl(var(--primary) / 0.3);
+    --shadow-card: 0 10px 30px hsl(var(--primary) / 0.2);
+    --shadow-elegant: 0 20px 60px hsl(var(--primary) / 0.1);
   }
 }
 
@@ -58,174 +142,111 @@
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-background text-foreground font-sans antialiased;
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)));
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, hsl(var(--primary-glow)), hsl(var(--accent)));
   }
 }
 
-/* Custom scrollbar styles */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
+@layer components {
+  /* Hero button variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold;
+    @apply hover:shadow-lg hover:scale-105 transition-all duration-300;
+    @apply before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary-glow before:to-accent before:opacity-0;
+    @apply before:hover:opacity-20 before:transition-opacity before:rounded-lg relative overflow-hidden;
+  }
 
-::-webkit-scrollbar-track {
-  @apply bg-background;
-}
+  /* Glass morphism effect */
+  .glass {
+    @apply backdrop-blur-md bg-card/80 border border-border/50;
+    box-shadow: var(--shadow-card);
+  }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-primary/30 rounded-full;
-}
+  /* Glow effect */
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary/50;
-}
+  /* Animated gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+    background-size: 200% 100%;
+    animation: gradient-flow 3s ease-in-out infinite;
+  }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
+  /* Hover animations */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:scale-105 hover:-translate-y-2;
+  }
 
-/* Selection styles */
-::selection {
-  @apply bg-primary/20 text-foreground;
-}
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg;
+  }
 
-/* Focus styles */
-:focus-visible {
-  @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
-}
+  /* Parallax container */
+  .parallax {
+    @apply relative overflow-hidden;
+  }
 
-/* Animation classes */
-@layer utilities {
-  .animate-float {
+  .parallax::before {
+    @apply absolute inset-0 opacity-30;
+    content: '';
+    background: var(--gradient-glow);
     animation: float 6s ease-in-out infinite;
   }
-
-  .animate-pulse-slow {
-    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .animate-shimmer {
-    animation: shimmer 2s infinite;
-    background-size: 200% 100%;
-  }
-
-  .animate-gradient {
-    animation: gradient 8s linear infinite;
-  }
-
-  .bg-size-200 {
-    background-size: 200% 200%;
-  }
-
-  .perspective-500 {
-    perspective: 500px;
-  }
-
-  .perspective-1000 {
-    perspective: 1000px;
-  }
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
+@layer utilities {
+  /* Animation keyframes */
+  @keyframes gradient-flow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
-  50% {
-    transform: translateY(-20px);
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(2deg); }
+    66% { transform: translateY(-10px) rotate(-1deg); }
   }
-  100% {
-    transform: translateY(0px);
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.5); }
+    50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.8); }
   }
-}
 
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  50% {
-    opacity: 0.5;
-  }
-}
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Glass effect */
-.glass {
-  @apply bg-background/80 backdrop-blur-sm border border-border/40;
-}
-
-/* Hover effects */
-.hover-scale {
-  @apply transition-transform duration-300 hover:scale-105;
-}
-
-.hover-lift {
-  @apply transition-transform duration-300 hover:-translate-y-1;
-}
-
-/* Button styles */
-.btn-primary {
-  @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-lg hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20;
-}
-
-.btn-secondary {
-  @apply border border-primary/30 px-6 py-3 rounded-lg hover:bg-primary/5 transition-all duration-300;
-}
-
-/* Text gradient */
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
-}
-
-/* Card hover effects */
-.card-hover {
-  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/10;
-}
-
-/* Image hover effects */
-.img-hover {
-  @apply transition-transform duration-500 hover:scale-110;
-}
-
-/* Link hover effects */
-.link-hover {
-  @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all after:duration-300;
-}
-
-/* Animated background gradient */
-.animated-gradient {
-  @apply bg-gradient-to-r from-primary/5 to-secondary/5 animate-gradient bg-size-200;
-}
-
-/* Glow effect */
-.glow {
-  @apply relative after:absolute after:inset-0 after:bg-gradient-to-r after:from-primary/20 after:to-secondary/20 after:blur-xl after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300 after:-z-10;
-}
-
-/* Animated border */
-.animated-border {
-  @apply relative before:absolute before:inset-0 before:p-[2px] before:bg-gradient-to-r before:from-primary before:to-secondary before:rounded-lg before:-z-10 before:animate-gradient before:bg-size-200;
+  /* Animation classes */
+  .animate-gradient { animation: gradient-flow 3s ease-in-out infinite; }
+  .animate-float { animation: float 6s ease-in-out infinite; }
+  .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+  .animate-slide-up { animation: slide-up 0.6s ease-out; }
 }
