@@ -19,7 +19,7 @@ const Projects = () => {
     {
       title: "LinkSphere",
       description: "A link management system for storing and organizing links",
-      image: "/src/assets/linksphere.png",
+      image: "public/linksphere.png",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Axum", "Docker","GitHub"],
       liveUrl: "https://linksphere-98u3.onrender.com/",
       githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
