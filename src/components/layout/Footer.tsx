@@ -75,17 +75,20 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Technologies</h3>
             <ul className="space-y-2">
               <li className="text-muted-foreground">React & Next.js</li>
-              <li className="text-muted-foreground">TypeScript</li>
+              <li className="text-muted-foreground">Spring Boot</li>
               <li className="text-muted-foreground">Tailwind CSS</li>
               <li className="text-muted-foreground">Three.js</li>
-              <li className="text-muted-foreground">AI Integration</li>
+              <li className="text-muted-foreground">Docker</li>
+              <li className="text-muted-foreground">GitHub CI/CD</li>
+              <li className="text-muted-foreground">GitHub</li>
+              <li className="text-muted-foreground">Axum</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-border/20 mt-8 pt-8 text-center">
           <p className="text-muted-foreground">
-            © {new Date().getFullYear()} DevPortfolio. Built with ❤️ using React and modern web technologies.
+            © {new Date().getFullYear()} @Nkwenti @Severian. Built using React and modern web technologies.
           </p>
         </div>
       </div>
