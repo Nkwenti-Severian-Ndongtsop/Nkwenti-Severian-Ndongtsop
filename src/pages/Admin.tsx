@@ -24,26 +24,15 @@ const Admin = () => {
   const [projects, setProjects] = useState<Project[]>([
     {
       id: "1",
-      title: "Modern Dashboard",
-      description: "A comprehensive analytics dashboard with real-time data visualization",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js"],
-      image: "/src/assets/project1.jpg",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      title: "LinkSphere",
+      description: "A link management system for storing and organizing links",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Axum", "Docker","GitHub"],
+      image: "/src/assets/linksphere.png",
+      liveUrl: "https://linksphere-98u3.onrender.com/",
+      githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
       featured: true,
       category: "Web App",
-    },
-    {
-      id: "2",
-      title: "3D Portfolio Site",
-      description: "An immersive 3D portfolio website featuring interactive elements",
-      technologies: ["Three.js", "React", "GLSL", "Framer Motion"],
-      image: "/src/assets/project2.jpg",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-      featured: false,
-      category: "3D/WebGL",
-    },
+    }
   ]);
 
   const [isEditing, setIsEditing] = useState<string | null>(null);
