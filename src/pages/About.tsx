@@ -7,16 +7,17 @@ import ChatWidget from "@/components/ai/ChatWidget";
 
 const About = () => {
   const stats = [
-    { label: "Years Experience", value: "5+", icon: Calendar },
-    { label: "Projects Completed", value: "50+", icon: Code2 },
-    { label: "Happy Clients", value: "30+", icon: Users },
+    { label: "Years Experience", value: "1+", icon: Calendar },
+    { label: "Projects Completed", value: "4+", icon: Code2 },
+    // { label: "Happy Clients", value: "30+", icon: Users },
     { label: "Cups of Coffee", value: "∞", icon: Coffee },
   ];
 
   const skills = [
-    { icon: <Code2 className="h-6 w-6" />, name: "Frontend Development", description: "React, Next.js, TypeScript", proficiency: 95 },
-    { icon: <Users className="h-6 w-6" />, name: "UI/UX Design", description: "Figma, Design Systems", proficiency: 85 },
-    { icon: <Award className="h-6 w-6" />, name: "3D & WebGL", description: "Three.js, Blender, GLSL", proficiency: 90 },
+    { icon: <Code2 className="h-6 w-6" />, name: "Frontend Development", description: "React, Next.js, TypeScript", proficiency: 80 },
+    { icon: <Users className="h-6 w-6" />, name: "Backend Development", description: "Spring Boot, Java, Rust, Axum", proficiency: 90 },
+    { icon: <Award className="h-6 w-6" />, name: "DevOps", description: "Docker, Kubernetes, CI/CD", proficiency: 60 },
+    { icon: <Award className="h-6 w-6" />, name: "AI", description: "OpenAI, Anthropic, Gemini", proficiency: 50 },
   ];
 
   return (
@@ -62,7 +63,7 @@ const About = () => {
                 both the technical possibilities and the human needs they serve.
               </p>
               <p className="mb-6">
-                Over the years, I've had the privilege of working with startups and established companies, 
+                Over the past months, I've had the privilege of working with teams, 
                 helping them transform ideas into powerful digital solutions. My approach combines modern 
                 development practices with creative problem-solving to deliver results that both look 
                 beautiful and perform exceptionally.
