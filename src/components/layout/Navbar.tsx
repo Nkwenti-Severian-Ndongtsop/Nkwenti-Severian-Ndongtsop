@@ -1,119 +1,110 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { Link, useLocation } from "react-router-dom"
-import { motion, AnimatePresence } from "framer-motion"
-import { ThemeToggle } from "../ui/theme-toggle"
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Moon, Sun, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const location = useLocation()
+  const [isDark, setIsDark] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    const isDarkMode = localStorage.getItem("theme") === "dark";
+    setIsDark(isDarkMode);
+    document.documentElement.classList.toggle("dark", isDarkMode);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    localStorage.setItem("theme", newTheme ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", newTheme);
+  };
 
   const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    { path: "/projects", label: "Projects" },
-    { path: "/contact", label: "Contact" },
-  ]
+    { name: "Home", href: "/" },
+    { name: "Projects", href: "/projects" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
+  ];
+
+  const isActive = (href: string) => location.pathname === href;
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, type: "spring", stiffness: 120, damping: 20 }}
-      className={`fixed w-full z-50 transition-all duration-500 ${
-        scrolled ? "bg-background/80 backdrop-blur-md shadow-lg py-2" : "bg-background/50 backdrop-blur-sm py-4"
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="text-xl font-bold relative group">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Portfolio</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300"></span>
+    <nav className="fixed top-0 w-full z-50 glass border-b border-border/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2 group">
+            <div className="w-8 h-8 bg-gradient-primary rounded-lg animate-pulse-glow"></div>
+            <span className="text-xl font-bold gradient-text">DevPortfolio</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
-                key={item.path}
-                to={item.path}
-                className={`relative text-foreground/80 hover:text-foreground transition-colors group ${
-                  location.pathname === item.path ? "text-primary" : ""
+                key={item.name}
+                to={item.href}
+                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 ${
+                  isActive(item.href)
+                    ? "text-primary"
+                    : "text-foreground hover:text-primary"
                 }`}
               >
-                {item.label}
-                <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 ${
-                    location.pathname === item.path ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                ></span>
+                {item.name}
+                {isActive(item.href) && (
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary animate-slide-up" />
+                )}
               </Link>
             ))}
-            <ThemeToggle />
           </div>
 
-          {/* Mobile Navigation Button */}
-          <div className="flex items-center space-x-4 md:hidden">
-            <ThemeToggle />
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-lg hover:bg-accent transition-colors"
-              onClick={() => setIsOpen(!isOpen)}
+          {/* Theme Toggle & Mobile Menu */}
+          <div className="flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleTheme}
+              className="hover-glow"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </motion.button>
+              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </Button>
+
+            {/* Mobile Menu Button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 30 }}
-              className="md:hidden py-4 overflow-hidden"
-            >
-              <div className="flex flex-col space-y-4 bg-background/90 backdrop-blur-md p-4 rounded-lg border border-primary/10">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`block py-2 px-4 rounded-md transition-all duration-300 ${
-                      location.pathname === item.path
-                        ? "bg-gradient-to-r from-primary/20 to-secondary/20 text-primary"
-                        : "hover:bg-accent/50"
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden py-4 animate-slide-up">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={`block px-3 py-2 text-base font-medium transition-colors ${
+                  isActive(item.href)
+                    ? "text-primary"
+                    : "text-foreground hover:text-primary"
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
-    </motion.nav>
-  )
-}
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
