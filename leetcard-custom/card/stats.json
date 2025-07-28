@@ -2,7 +2,7 @@
   "allQuestionsCount": [
     {
       "difficulty": "All",
-      "count": 3626
+      "count": 3631
     },
     {
       "difficulty": "Easy",
@@ -10,18 +10,18 @@
     },
     {
       "difficulty": "Medium",
-      "count": 1885
+      "count": 1889
     },
     {
       "difficulty": "Hard",
-      "count": 855
+      "count": 856
     }
   ],
   "matchedUser": {
     "username": "Nkwenti_Severian_Ndongtsop",
     "profile": {
       "realName": "Nkwenti_Severian",
-      "ranking": 2391803,
+      "ranking": 2393696,
       "userAvatar": "https://assets.leetcode.com/users/Nkwenti_Severian_Ndongtsop/avatar_1733996759.png",
       "countryName": "Cameroon",
       "reputation": 0,
