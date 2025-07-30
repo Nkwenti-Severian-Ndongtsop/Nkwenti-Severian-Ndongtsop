@@ -15,7 +15,7 @@ const ChatWidget = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "👋 Hi! I'm the AI assistant for this portfolio. Ask me about the developer's projects, skills, or experience!",
+      text: "👋 Hi! I'm Nkwenti's AI assistant. Ask me about his projects, skills, or experience!",
       isBot: true,
       timestamp: new Date(),
     },
@@ -32,40 +32,32 @@ const ChatWidget = () => {
     scrollToBottom();
   }, [messages]);
 
-  const simulateTyping = () => {
-    setIsTyping(true);
-    setTimeout(() => {
-      setIsTyping(false);
-    }, 1000 + Math.random() * 2000);
+  const getAIResponse = async (userMessage: string): Promise<string> => {
+    try {
+      // Use your deployed server URL
+      const serverUrl = import.meta.env.VITE_AI_SERVER_URL;
+      
+      const response = await fetch(`${serverUrl}/api/chat`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: userMessage }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
+
+      const data = await response.json();
+      return data.response;
+    } catch (error) {
+      console.error('Error getting AI response:', error);
+      return "I'm having trouble connecting right now. Please try again later or contact Nkwenti directly.";
+    }
   };
 
-  const getAIResponse = (userMessage: string): string => {
-    const message = userMessage.toLowerCase();
-    
-    if (message.includes("project") || message.includes("work")) {
-      return "The developer has worked on several impressive projects including modern web applications with React, AI-integrated tools, and 3D visualizations using Three.js. Each project showcases different technical skills and creative solutions.";
-    }
-    
-    if (message.includes("skill") || message.includes("technology") || message.includes("tech")) {
-      return "The developer specializes in React, Next.js, TypeScript, Tailwind CSS, Three.js, and AI integration. They're also experienced with modern development tools and have a strong eye for UI/UX design.";
-    }
-    
-    if (message.includes("contact") || message.includes("hire") || message.includes("available")) {
-      return "The developer is open to new opportunities! You can reach out through the contact form on this site or connect via the social links in the footer. They're passionate about creating innovative digital solutions.";
-    }
-    
-    if (message.includes("experience") || message.includes("background")) {
-      return "With experience in full-stack development, the developer has built scalable web applications, integrated AI capabilities, and created immersive user experiences. They're always learning and staying current with emerging technologies.";
-    }
-
-    if (message.includes("hello") || message.includes("hi") || message.includes("hey")) {
-      return "Hello! Great to meet you! I'm here to help you learn more about this developer's work and capabilities. What would you like to know?";
-    }
-    
-    return "That's an interesting question! I can tell you about the developer's projects, technical skills, experience, or how to get in touch. What specific area would you like to explore?";
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
@@ -79,19 +71,29 @@ const ChatWidget = () => {
 
     setMessages(prev => [...prev, userMessage]);
     setInputValue("");
-    simulateTyping();
+    setIsTyping(true);
 
-    // Simulate AI response
-    setTimeout(() => {
+    // Get AI response
+    try {
+      const aiResponse = await getAIResponse(inputValue);
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: getAIResponse(inputValue),
+        text: aiResponse,
         isBot: true,
         timestamp: new Date(),
       };
       setMessages(prev => [...prev, botResponse]);
+    } catch (error) {
+      const errorResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        text: "Sorry, I'm having trouble connecting. Please try again later.",
+        isBot: true,
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, errorResponse]);
+    } finally {
       setIsTyping(false);
-    }, 1000 + Math.random() * 2000);
+    }
   };
 
   return (
