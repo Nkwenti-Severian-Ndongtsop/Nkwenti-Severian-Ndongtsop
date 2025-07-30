@@ -15,7 +15,7 @@ const ChatWidget = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "👋 Hi! I'm Nkwenti's AI assistant. Ask me about his projects, skills, or experience!",
+      text: "👋 Hi! I'm Nkwenti's AI bot. Ask me about his projects, skills, experience or life!",
       isBot: true,
       timestamp: new Date(),
     },
@@ -117,7 +117,7 @@ const ChatWidget = () => {
                 <Bot className="h-4 w-4 text-primary-foreground" />
               </div>
               <div>
-                <h3 className="font-semibold text-sm">AI Assistant</h3>
+                <h3 className="font-semibold text-sm">Nkwenti Bot</h3>
                 <p className="text-xs text-muted-foreground">Ask me anything!</p>
               </div>
             </div>
@@ -163,7 +163,7 @@ const ChatWidget = () => {
               <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Ask me about this portfolio..."
+                placeholder="Ask me about nkwenti..."
                 className="flex-1"
               />
               <Button type="submit" size="sm" className="bg-gradient-primary">
