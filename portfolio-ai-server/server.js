@@ -1,16 +1,16 @@
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const Groq = require('groq-sdk');
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import Groq from 'groq-sdk';
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
   credentials: true
 }));
 app.use(express.json());
@@ -34,51 +34,33 @@ app.post('/api/chat', async (req, res) => {
       return res.status(400).json({ error: 'Message is required' });
     }
 
-    const systemPrompt = `You are Nkwenti's AI bot. Here's comprehensive information about Nkwenti:
+    // Get system prompt from environment variable
+    const systemPrompt = process.env.AI_SYSTEM_PROMPT;
 
-PERSONAL BACKGROUND:
-- Name: Nkwenti Severian Ndongtsop
-- Age: 20 years old
-- Location: Banagangte, Cameroon
-- Status: Single
-- Personality: Very funny, loves programming, movies, and collaborating on projects
+    if (!systemPrompt) {
+      console.error('AI_SYSTEM_PROMPT environment variable is not set');
+      return res.status(500).json({ 
+        error: 'Server configuration error' 
+      });
+    }
 
-CURRENT STATUS:
-- Currently undergoing 18 months training at GIS (Global Infrastructure Service) in Bangangte
-- Actively learning and developing skills in GIS technology
-
-EDUCATION & CERTIFICATIONS:
-- A/L Certificate (GCE Advanced Level) from Cameroon
-- O/L Certificate (GCE Ordinary Level) from Cameroon
-- Java Oracle Associate Certified
-- Linux Certified
-
-TECHNICAL SKILLS:
-- Frontend: React, Next.js, TypeScript, Tailwind CSS, Three.js
-- Backend: Spring Boot, Java, Rust, Axum
-- AI/ML: AI integration, machine learning tools
-- DevOps: Docker, CI/CD
-- Databases: Oracle (certified)
-- Operating Systems: Linux (certified)
-
-PROJECTS:
-- Links Management Platform
-
-CONTACT:
-- Email: nkwentiseverian@gmail.com
-- Phone: +237 6 72 39 91 02
-- Available for new projects and collaborations
-
-RESPONSE GUIDELINES:
-- Be helpful, professional, and enthusiastic about Nkwenti's work
-- Keep responses concise but informative
-- Only share personal information when specifically asked
-- Emphasize his current training at GIS and certifications
-- Mention his age and personality traits when relevant
-- Be concise but provide good, relevant information
-- Show enthusiasm for his passion for programming and collaboration
-
-Remember: Nkwenti is a young, certified developer currently expanding his skills through GIS training while maintaining his passion for programming and collaboration.`;
+    // Choose model based on message complexity
+    let model = "llama3.1-70b-8192"; // Default to best model
+    
+    // For simple questions, use faster model
+    if (message.toLowerCase().includes('hello') || 
+        message.toLowerCase().includes('hi') ||
+        message.toLowerCase().includes('how are you')) {
+      model = "llama3.1-8b-8192";
+    }
+    
+    // For technical questions, use the best model
+    if (message.toLowerCase().includes('project') ||
+        message.toLowerCase().includes('skill') ||
+        message.toLowerCase().includes('technology') ||
+        message.toLowerCase().includes('experience')) {
+      model = "llama3.1-70b-8192";
+    }
 
     const completion = await groq.chat.completions.create({
       messages: [
@@ -91,16 +73,16 @@ Remember: Nkwenti is a young, certified developer currently expanding his skills
           content: message
         }
       ],
-      model: "llama3-8b-8192",
+      model: model,
       temperature: 0.7,
-      max_tokens: 250,
+      max_tokens: 300, // Increased for better responses
     });
 
     const response = completion.choices[0]?.message?.content || "I'm sorry, I couldn't generate a response.";
 
     res.json({ 
       response,
-      model: "llama3-8b-8192",
+      model: model,
       timestamp: new Date().toISOString()
     });
 
