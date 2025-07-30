@@ -21,9 +21,14 @@ const Index = () => {
   }, []);
 
   const techStack = [
-    { icon: <Code className="h-6 w-6" />, name: "React & Next.js", description: "Modern frontend frameworks", proficiency: 95 },
-    { icon: <Sparkles className="h-6 w-6" />, name: "TypeScript", description: "Type-safe development", proficiency: 90 },
-    { icon: <Rocket className="h-6 w-6" />, name: "Three.js", description: "3D web experiences", proficiency: 85 },
+    { icon: <Code className="h-6 w-6" />, name: "React & Next.js", description: "Modern frontend frameworks", proficiency: 70 },
+    { icon: <Sparkles className="h-6 w-6" />, name: "TypeScript", description: "Type-safe development", proficiency: 70 },
+    { icon: <Rocket className="h-6 w-6" />, name: "Three.js", description: "3D web experiences", proficiency: 70 },
+    { icon: <Rocket className="h-6 w-6" />, name: "Rust", description: "Backend development", proficiency: 80 },
+    { icon: <Rocket className="h-6 w-6" />, name: "Axum", description: "Backend development", proficiency: 90 },
+    { icon: <Rocket className="h-6 w-6" />, name: "Docker", description: "DevOps", proficiency: 90 },
+    { icon: <Rocket className="h-6 w-6" />, name: "GitHub", description: "DevOps", proficiency: 90 },
+    { icon: <Rocket className="h-6 w-6" />, name: "Spring Boot", description: "Backend development", proficiency: 90 },
   ];
 
   const projects = [
@@ -62,7 +67,7 @@ const Index = () => {
               <h1 className="text-5xl md:text-7xl font-bold mb-6">
                 Building the
                 <span className="gradient-text animate-gradient"> Future </span>
-                of Web
+                of <span className="gradient-text animate-gradient"> Technology </span>
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
@@ -87,7 +92,7 @@ const Index = () => {
                   <div className="w-full h-full rounded-full bg-background flex items-center justify-center text-muted-foreground border-2 border-muted glass overflow-hidden">
                     <img
                       src={myPhoto}
-                      alt="Your Name"
+                      alt="Nkwenti Profile"
                       className="w-full h-full object-cover rounded-full"
                     />
                   </div>
