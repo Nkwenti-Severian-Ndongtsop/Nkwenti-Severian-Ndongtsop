@@ -28,7 +28,7 @@ const Projects = () => {
     }
   ];
 
-  const categories = ["All", "Web App", "3D/WebGL", "AI/ML", "Data Viz", "Mobile"];
+  const categories = ["All", "Web App", , "AI/ML", "Data Viz", "Mobile"];
 
   const filteredProjects = projects.filter((project) => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
