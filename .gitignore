@@ -25,5 +25,4 @@ dist-ssr
 
 venv/
 .venv/
-*-lock.json
 .env
