@@ -11,8 +11,12 @@ interface Message {
 }
 
 const ChatWidget = () => {
-  const serverUrl = import.meta.env.VITE_AI_SERVER_URL;
-  if (!serverUrl) {
+  // Use type assertion to avoid TypeScript error for custom window property
+  const runtimeUrl = (window as any).RUNTIME_VITE_AI_SERVER_URL && (window as any).RUNTIME_VITE_AI_SERVER_URL !== "__VITE_AI_SERVER_URL__"
+    ? (window as any).RUNTIME_VITE_AI_SERVER_URL
+    : import.meta.env.VITE_AI_SERVER_URL;
+
+  if (!runtimeUrl) {
     return (
       <div style={{ color: 'red', padding: '1rem', textAlign: 'center' }}>
         <b>Critical Error:</b> VITE_AI_SERVER_URL environment variable is not set.<br />
@@ -44,7 +48,7 @@ const ChatWidget = () => {
   const getAIResponse = async (userMessage: string): Promise<string> => {
     try {
       // Use your deployed server URL
-      const response = await fetch(`${serverUrl}/api/chat`, {
+      const response = await fetch(`${runtimeUrl}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
