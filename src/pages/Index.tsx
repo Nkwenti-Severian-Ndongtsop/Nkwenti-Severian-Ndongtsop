@@ -54,7 +54,7 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center parallax">
+      <section className="relative min-h-screen flex items-center justify-center parallax pt-24 md:pt-32">
         <div 
           className="absolute inset-0 z-0"
           style={{
