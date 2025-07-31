@@ -9,7 +9,7 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-ENV VITE_AI_SERVER_URL
+ENV VITE_AI_SERVER_URL=
 
 # Production image
 FROM nginx:alpine
