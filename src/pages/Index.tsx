@@ -8,10 +8,6 @@ import ProjectCard from "@/components/ui/ProjectCard";
 import TechStack from "@/components/ui/TechStack";
 import ChatWidget from "@/components/ai/ChatWidget";
 import heroBackground from "@/assets/hero-bg.jpg";
-import project1Image from "@/assets/project1.jpg";
-import project2Image from "@/assets/project2.jpg";
-import project3Image from "@/assets/project3.jpg";
-import myPhoto from "@/assets/my-photo.jpg";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -91,7 +87,7 @@ const Index = () => {
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-primary to-accent p-2 animate-pulse-glow hover-lift transition-all duration-500 group-hover:scale-105">
                   <div className="w-full h-full rounded-full bg-background flex items-center justify-center text-muted-foreground border-2 border-muted glass overflow-hidden">
                     <img
-                      src={myPhoto}
+                      src="/my-photo.jpg"
                       alt="Nkwenti Profile"
                       className="w-full h-full object-cover rounded-full"
                     />
