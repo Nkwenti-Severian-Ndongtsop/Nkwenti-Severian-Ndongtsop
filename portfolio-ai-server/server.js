@@ -35,7 +35,7 @@ app.post('/api/chat', async (req, res) => {
     }
 
     // Get system prompt from environment variable
-    const systemPrompt = process.env.AI_SYSTEM_PROMPT;
+    const systemPrompt = process.env.AI_SYSTEM_PROMPT; 
 
     if (!systemPrompt) {
       console.error('AI_SYSTEM_PROMPT environment variable is not set');
