@@ -10,7 +10,6 @@ import ChatWidget from "@/components/ai/ChatWidget";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const showChatWidget = Boolean(import.meta.env.VITE_AI_SERVER_URL);
 
   useEffect(() => {
     setIsVisible(true);
@@ -171,7 +170,7 @@ const Index = () => {
 
 
       <Footer />
-      {showChatWidget && <ChatWidget />}
+      <ChatWidget />
     </div>
   );
 };
