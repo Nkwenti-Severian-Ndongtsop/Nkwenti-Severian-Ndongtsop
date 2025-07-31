@@ -11,19 +11,9 @@ interface Message {
 }
 
 const ChatWidget = () => {
-  // Use type assertion to avoid TypeScript error for custom window property
-  const runtimeUrl = (window as any).RUNTIME_VITE_AI_SERVER_URL && (window as any).RUNTIME_VITE_AI_SERVER_URL !== "__VITE_AI_SERVER_URL__"
-    ? (window as any).RUNTIME_VITE_AI_SERVER_URL
-    : import.meta.env.VITE_AI_SERVER_URL;
+  
+  const runtimeUrl = "https://backend-ai-x0er.onrender.com";
 
-  if (!runtimeUrl) {
-    return (
-      <div style={{ color: 'red', padding: '1rem', textAlign: 'center' }}>
-        <b>Critical Error:</b> VITE_AI_SERVER_URL environment variable is not set.<br />
-        Please contact the site administrator.
-      </div>
-    );
-  }
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
