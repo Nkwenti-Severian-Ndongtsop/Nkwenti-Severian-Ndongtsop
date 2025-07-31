@@ -7,9 +7,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ProjectCard from "@/components/ui/ProjectCard";
 import ChatWidget from "@/components/ai/ChatWidget";
-import project1Image from "@/assets/project1.jpg";
-import project2Image from "@/assets/project2.jpg";
-import project3Image from "@/assets/project3.jpg";
 
 const Projects = () => {
   const [searchTerm, setSearchTerm] = useState("");
