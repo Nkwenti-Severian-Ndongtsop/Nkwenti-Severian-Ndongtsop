@@ -79,7 +79,7 @@ const Index = () => {
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
-                Full-stack engineer crafting immersive digital experiences with React, Rust, and cutting-edge 3D technologies.
+                Full-stack engineer crafting immersive digital experiences with React, Rust, and cutting-edge technologies.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
