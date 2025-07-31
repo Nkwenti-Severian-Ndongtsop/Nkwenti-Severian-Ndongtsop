@@ -81,11 +81,33 @@ const Index = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                <Button size="lg" className="btn-hero">
+                <Button 
+                  size="lg" 
+                  className="btn-hero"
+                  onClick={() => {
+                    const projectsSection = document.getElementById('projects-section');
+                    if (projectsSection) {
+                      projectsSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
                   <Play className="h-5 w-5 mr-2" />
                   View My Work
                 </Button>
-                <Button size="lg" variant="outline" className="glass hover-glow">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="glass hover-glow"
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact-section');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                      // Fallback to contact page if section not found
+                      window.location.href = '/contact';
+                    }
+                  }}
+                >
                   Let's Connect
                 </Button>
               </div>
@@ -140,7 +162,7 @@ const Index = () => {
       </section>
 
       {/* Featured Projects Section */}
-      <section className="py-20 px-4 bg-muted/20">
+      <section id="projects-section" className="py-20 px-4 bg-muted/20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -160,7 +182,14 @@ const Index = () => {
           </div>
           
           <div className="text-center mt-12">
-            <Button size="lg" variant="outline" className="glass hover-glow">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="glass hover-glow"
+              onClick={() => {
+                window.location.href = '/projects';
+              }}
+            >
               View All Projects
               <ArrowDown className="h-4 w-4 ml-2 rotate-[-90deg]" />
             </Button>
