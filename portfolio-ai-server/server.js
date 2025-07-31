@@ -107,7 +107,5 @@ app.use('*', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`🚀 AI Server running on port ${port}`);
-  console.log(` Health check: http://localhost:${port}/health`);
-  console.log(`💬 Chat endpoint: http://localhost:${port}/api/chat`);
+  console.log('🚀 AI Server running on port');
 });
