@@ -11,6 +11,15 @@ interface Message {
 }
 
 const ChatWidget = () => {
+  const serverUrl = import.meta.env.VITE_AI_SERVER_URL;
+  if (!serverUrl) {
+    return (
+      <div style={{ color: 'red', padding: '1rem', textAlign: 'center' }}>
+        <b>Critical Error:</b> VITE_AI_SERVER_URL environment variable is not set.<br />
+        Please contact the site administrator.
+      </div>
+    );
+  }
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -35,7 +44,6 @@ const ChatWidget = () => {
   const getAIResponse = async (userMessage: string): Promise<string> => {
     try {
       // Use your deployed server URL
-      const serverUrl = import.meta.env.VITE_AI_SERVER_URL;
       const response = await fetch(`${serverUrl}/api/chat`, {
         method: 'POST',
         headers: {
