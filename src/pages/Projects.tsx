@@ -19,7 +19,7 @@ const Projects = () => {
     {
       title: "LinkSphere",
       description: "A link management system for storing and organizing links",
-      image: "public/linksphere.png",
+      image: "/linksphere.png",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Axum", "Docker","GitHub"],
       liveUrl: "https://linksphere-98u3.onrender.com/",
       githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
@@ -29,7 +29,7 @@ const Projects = () => {
     {
       title: "Portfolio AI",
       description: "A portfolio website with AI integration",
-      image: "public/portfolio-ai.png",
+      image: "/portfolio-ai.png",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Docker","GitHub","Groq"],
       liveUrl: "https://portfolio-ai-server.onrender.com/",
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Nkwenti-Severian-Ndongtsop.git",
