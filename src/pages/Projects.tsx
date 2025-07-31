@@ -25,10 +25,21 @@ const Projects = () => {
       githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
       category: "Web App",
       featured: true,
+    },
+    {
+      title: "Portfolio AI",
+      description: "A portfolio website with AI integration",
+      image: "public/portfolio-ai.png",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Docker","GitHub","Groq"],
+      liveUrl: "https://portfolio-ai-server.onrender.com/",
+      githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Nkwenti-Severian-Ndongtsop.git",
+      category: "AI/ML",
+      featured: true,
+      
     }
   ];
 
-  const categories = ["All", "Web App", , "AI/ML", "Data Viz", "Mobile"];
+  const categories = ["All", "Web App", "AI/ML", "Data Viz", "Mobile"];
 
   const filteredProjects = projects.filter((project) => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
