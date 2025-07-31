@@ -8,7 +8,7 @@ import ChatWidget from "@/components/ai/ChatWidget";
 const About = () => {
   const stats = [
     { label: "Years Experience", value: "1+", icon: Calendar },
-    { label: "Projects Completed", value: "4+", icon: Code2 },
+    { label: "Projects Completed", value: "2+", icon: Code2 },
     // { label: "Happy Clients", value: "30+", icon: Users },
     { label: "Cups of Coffee", value: "∞", icon: Coffee },
   ];
