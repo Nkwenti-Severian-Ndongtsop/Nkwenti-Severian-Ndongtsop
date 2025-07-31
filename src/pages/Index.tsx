@@ -7,7 +7,6 @@ import Footer from "@/components/layout/Footer";
 import ProjectCard from "@/components/ui/ProjectCard";
 import TechStack from "@/components/ui/TechStack";
 import ChatWidget from "@/components/ai/ChatWidget";
-import heroBackground from "@/assets/hero-bg.jpg";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -60,7 +59,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `url(${heroBackground})`,
+            backgroundImage: `url(/hero-bg.jpg)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed',
