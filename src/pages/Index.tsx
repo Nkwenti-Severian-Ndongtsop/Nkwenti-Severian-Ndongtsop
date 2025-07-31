@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Code, Sparkles, Rocket, ArrowDown, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -10,20 +11,21 @@ import ChatWidget from "@/components/ai/ChatWidget";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   const techStack = [
-    { icon: <Code className="h-6 w-6" />, name: "React & Next.js", description: "Modern frontend frameworks", proficiency: 70 },
+    { icon: <Code className="h-6 w-6" />, name: "React & Next.js", description: "Modern frontend frameworks", proficiency:60 },
     { icon: <Sparkles className="h-6 w-6" />, name: "TypeScript", description: "Type-safe development", proficiency: 70 },
-    { icon: <Rocket className="h-6 w-6" />, name: "Three.js", description: "3D web experiences", proficiency: 70 },
+    { icon: <Rocket className="h-6 w-6" />, name: "Three.js", description: "3D web experiences", proficiency: 60 },
     { icon: <Rocket className="h-6 w-6" />, name: "Rust", description: "Backend development", proficiency: 80 },
     { icon: <Rocket className="h-6 w-6" />, name: "Axum", description: "Backend development", proficiency: 90 },
     { icon: <Rocket className="h-6 w-6" />, name: "Docker", description: "DevOps", proficiency: 90 },
     { icon: <Rocket className="h-6 w-6" />, name: "GitHub", description: "DevOps", proficiency: 90 },
-    { icon: <Rocket className="h-6 w-6" />, name: "Spring Boot", description: "Backend development", proficiency: 90 },
+    { icon: <Rocket className="h-6 w-6" />, name: "Spring Boot", description: "Backend development", proficiency: 60 },
   ];
 
   const projects = [
@@ -84,12 +86,7 @@ const Index = () => {
                 <Button 
                   size="lg" 
                   className="btn-hero"
-                  onClick={() => {
-                    const projectsSection = document.getElementById('projects-section');
-                    if (projectsSection) {
-                      projectsSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => navigate('/projects')}
                 >
                   <Play className="h-5 w-5 mr-2" />
                   View My Work
@@ -98,15 +95,7 @@ const Index = () => {
                   size="lg" 
                   variant="outline" 
                   className="glass hover-glow"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact-section');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                      // Fallback to contact page if section not found
-                      window.location.href = '/contact';
-                    }
-                  }}
+                  onClick={() => navigate('/contact')}
                 >
                   Let's Connect
                 </Button>
@@ -186,9 +175,7 @@ const Index = () => {
               size="lg" 
               variant="outline" 
               className="glass hover-glow"
-              onClick={() => {
-                window.location.href = '/projects';
-              }}
+              onClick={() => navigate('/projects')}
             >
               View All Projects
               <ArrowDown className="h-4 w-4 ml-2 rotate-[-90deg]" />
