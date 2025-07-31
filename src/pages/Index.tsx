@@ -11,6 +11,7 @@ import heroBackground from "@/assets/hero-bg.jpg";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const showChatWidget = Boolean(import.meta.env.VITE_AI_SERVER_URL);
 
   useEffect(() => {
     setIsVisible(true);
@@ -160,7 +161,7 @@ const Index = () => {
 
 
       <Footer />
-      <ChatWidget />
+      {showChatWidget && <ChatWidget />}
     </div>
   );
 };
