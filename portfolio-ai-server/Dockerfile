@@ -8,6 +8,12 @@ RUN npm ci --omit=dev
 
 COPY . .
 
+# Environment variables (no default values except PORT)
+ENV PORT
+ENV GROQ_API_KEY
+ENV AI_SYSTEM_PROMPT
+ENV FRONTEND_URL
+
 EXPOSE 3001
 
 CMD ["node", "server.js"] 
