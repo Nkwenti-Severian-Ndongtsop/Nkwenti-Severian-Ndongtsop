@@ -35,8 +35,7 @@ const ChatWidget = () => {
   const getAIResponse = async (userMessage: string): Promise<string> => {
     try {
       // Use your deployed server URL
-      const serverUrl = process.env.VITE_AI_SERVER_URL;
-      
+      const serverUrl = import.meta.env.VITE_AI_SERVER_URL;
       const response = await fetch(`${serverUrl}/api/chat`, {
         method: 'POST',
         headers: {
