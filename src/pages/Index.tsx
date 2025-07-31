@@ -37,8 +37,8 @@ const Index = () => {
       featured: true,
     },
     {
-      title: "Portfolio AI",
-      description: "A portfolio website with AI integration",
+      title: "Portfolio with AI-powered Chatbot",
+      description: "An AI-powered portfolio website with a chatbot",
       image: "/portfolio-ai.png",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Docker","GitHub","Groq"],
       liveUrl: "https://portfolio-ai-server.onrender.com/",
