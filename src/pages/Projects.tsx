@@ -28,11 +28,10 @@ const Projects = () => {
       description: "An AI-powered portfolio website with a chatbot",
       image: "/portfolio-ai.png",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Docker","GitHub","Groq"],
-      liveUrl: "https://portfolio-ai-server.onrender.com/",
+      liveUrl: "https://frontend-portfolio-htbj.onrender.com/",
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Nkwenti-Severian-Ndongtsop.git",
       category: "AI/ML",
       featured: true,
-      
     }
   ];
 
