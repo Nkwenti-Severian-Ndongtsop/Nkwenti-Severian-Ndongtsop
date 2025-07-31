@@ -45,7 +45,7 @@ app.post('/api/chat', async (req, res) => {
     }
 
     // Choose model based on message complexity
-    let model = "llama3.1-70b-8192"; // Default to best model
+    let model = "llama3-8b-8192"; // Default to best model
     
     // For simple questions, use faster model
     if (message.toLowerCase().includes('hello') || 
