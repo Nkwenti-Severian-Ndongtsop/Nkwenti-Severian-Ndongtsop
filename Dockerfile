@@ -17,5 +17,8 @@ ENV VITE_AI_SERVER_URL=
 # Production image
 FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
+COPY public/env.js /usr/share/nginx/html/env.js
+COPY set-env.sh /set-env.sh
+RUN chmod +x /set-env.sh
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"] 
+CMD ["/set-env.sh"] 
