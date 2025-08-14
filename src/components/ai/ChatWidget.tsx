@@ -12,7 +12,7 @@ interface Message {
 
 const ChatWidget = () => {
   
-  const runtimeUrl = "https://backend-ai-x0er.onrender.com";
+  const runtimeUrl = import.meta.env.VITE_AI_SERVER_URL;
 
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
