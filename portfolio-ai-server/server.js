@@ -6,11 +6,11 @@ import Groq from 'groq-sdk';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: process.env.FRONTEND_URL,
   credentials: true
 }));
 app.use(express.json());
@@ -45,13 +45,13 @@ app.post('/api/chat', async (req, res) => {
     }
 
     // Choose model based on message complexity
-    let model = "llama3-8b-8192"; // Default to best model
-    
+    let model = "llama-3.3-70b-versatile"; // Default to best model
+
     // For simple questions, use faster model
     if (message.toLowerCase().includes('hello') || 
         message.toLowerCase().includes('hi') ||
         message.toLowerCase().includes('how are you')) {
-      model = "llama3.1-8b-8192";
+      model = "llama-3.3-70b-versatile";
     }
     
     // For technical questions, use the best model
@@ -59,7 +59,7 @@ app.post('/api/chat', async (req, res) => {
         message.toLowerCase().includes('skill') ||
         message.toLowerCase().includes('technology') ||
         message.toLowerCase().includes('experience')) {
-      model = "llama3.1-70b-8192";
+      model = "llama-3.3-70b-versatile";
     }
 
     const completion = await groq.chat.completions.create({
@@ -74,8 +74,8 @@ app.post('/api/chat', async (req, res) => {
         }
       ],
       model: model,
-      temperature: 0.7,
-      max_tokens: 300, // Increased for better responses
+      temperature: 0.6,
+      max_tokens: 300,
     });
 
     const response = completion.choices[0]?.message?.content || "I'm sorry, I couldn't generate a response.";
