@@ -11,14 +11,16 @@ COPY . .
 
 RUN npm run build
 
-ENV VITE_AI_SERVER_URL=
-
-
 # Production image
 FROM nginx:alpine
+
+# Production image
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy the build output
 COPY --from=builder /app/dist /usr/share/nginx/html
-COPY public/env.js /usr/share/nginx/html/env.js
-COPY set-env.sh /set-env.sh
-RUN chmod +x /set-env.sh
+
 EXPOSE 80
-CMD ["/set-env.sh"] 
+
+CMD ["nginx", "-g", "daemon off;"]
