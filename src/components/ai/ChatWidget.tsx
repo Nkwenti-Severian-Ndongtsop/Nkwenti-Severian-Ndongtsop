@@ -12,9 +12,11 @@ interface Message {
 
 const ChatWidget = () => {
 
-  // Ensure this matches your deployed backend URL exactly
-  const runtimeUrl = "https://backend-ai-x0er.onrender.com";
-  const apiEndpoint = `${runtimeUrl}/api/chat`;
+  // Use relative path for API requests - Nginx will proxy these to the backend
+  const apiEndpoint = '/api/chat';
+  
+  // Debug log
+  console.log('Using API endpoint:', apiEndpoint);
 
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
