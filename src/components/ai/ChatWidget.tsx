@@ -12,7 +12,9 @@ interface Message {
 
 const ChatWidget = () => {
 
+  // Ensure this matches your deployed backend URL exactly
   const runtimeUrl = "https://backend-ai-x0er.onrender.com";
+  const apiEndpoint = `${runtimeUrl}/api/chat`;
 
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
@@ -37,24 +39,32 @@ const ChatWidget = () => {
 
   const getAIResponse = async (userMessage: string): Promise<string> => {
     try {
-      // Use your deployed server URL
-      const response = await fetch(`${runtimeUrl}/api/chat`, {
+      console.log('Sending request to:', apiEndpoint);
+      console.log('Request payload:', { message: userMessage });
+      
+      const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ message: userMessage }),
+        credentials: 'include', // Include credentials (cookies)
       });
 
+      console.log('Response status:', response.status);
+      
       if (!response.ok) {
-        throw new Error('Failed to get response');
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        throw new Error(`Server responded with status ${response.status}: ${errorText}`);
       }
 
       const data = await response.json();
-      return data.response;
+      console.log('Response data:', data);
+      return data.response || "I received an empty response from the server.";
     } catch (error) {
-      console.error('Error getting AI response:', error);
-      return "I'm having trouble connecting right now. Please try again later or contact Nkwenti directly.";
+      console.error('Error in getAIResponse:', error);
+      return `I'm having trouble connecting to the AI service right now. Please try again later. (${error instanceof Error ? error.message : 'Unknown error'})`;
     }
   };
 
