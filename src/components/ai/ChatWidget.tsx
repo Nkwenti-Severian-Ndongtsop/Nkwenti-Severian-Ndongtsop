@@ -12,8 +12,8 @@ interface Message {
 
 const ChatWidget = () => {
 
-  // Use relative path for API requests - Nginx will proxy these to the backend
-  const apiEndpoint = '/api/chat';
+  // Use full backend URL for now to bypass Nginx proxy issues
+  const apiEndpoint = 'https://backend-ai-x0er.onrender.com/api/chat';
   
   // Debug log
   console.log('Using API endpoint:', apiEndpoint);
