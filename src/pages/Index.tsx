@@ -24,8 +24,8 @@ const Index = () => {
     { icon: <Rocket className="h-6 w-6" />, name: "Rust", description: "Backend development", proficiency: 80 },
     { icon: <Rocket className="h-6 w-6" />, name: "Axum", description: "Backend development", proficiency: 90 },
     { icon: <Rocket className="h-6 w-6" />, name: "Docker", description: "DevOps", proficiency: 90 },
-    { icon: <Rocket className="h-6 w-6" />, name: "GitHub", description: "DevOps", proficiency: 90 },
-    { icon: <Rocket className="h-6 w-6" />, name: "Spring Boot", description: "Backend development", proficiency: 60 },
+    { icon: <Rocket className="h-6 w-6" />, name: "GitHub", description: "Version Control", proficiency: 90 },
+    { icon: <Rocket className="h-6 w-6" />, name: "Spring Boot", description: "Backend development", proficiency: 80 },
   ];
 
   const projects = [
