@@ -8,14 +8,14 @@ import ChatWidget from "@/components/ai/ChatWidget";
 const About = () => {
   const stats = [
     { label: "Years Experience", value: "1+", icon: Calendar },
-    { label: "Projects Completed", value: "2+", icon: Code2 },
+    { label: "Projects Completed", value: "1+", icon: Code2 },
     // { label: "Happy Clients", value: "30+", icon: Users },
     { label: "Cups of Coffee", value: "∞", icon: Coffee },
   ];
 
   const skills = [
-    { icon: <Code2 className="h-6 w-6" />, name: "Frontend Development", description: "React, Next.js, TypeScript", proficiency: 80 },
-    { icon: <Users className="h-6 w-6" />, name: "Backend Development", description: "Spring Boot, Java, Rust, Axum", proficiency: 90 },
+    { icon: <Code2 className="h-6 w-6" />, name: "Frontend Development", description: "React, Next.js, TypeScript", proficiency: 70 },
+    { icon: <Users className="h-6 w-6" />, name: "Backend Development", description: "Spring Boot, Java, Rust, Axum", proficiency: 80 },
     { icon: <Award className="h-6 w-6" />, name: "DevOps", description: "Docker, Kubernetes, CI/CD", proficiency: 60 },
     { icon: <Award className="h-6 w-6" />, name: "AI", description: "OpenAI, Anthropic, Gemini", proficiency: 50 },
   ];
