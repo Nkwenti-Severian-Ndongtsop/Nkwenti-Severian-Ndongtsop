@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Bot, Trash2 } from "lucide-react";
+import { MessageCircle, X, Send, Bot, Trash2, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -53,6 +53,7 @@ const ChatWidget = () => {
   const [messages, setMessages] = useState<Message[]>(getInitialMessages);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -190,6 +191,30 @@ const ChatWidget = () => {
     }
   };
 
+  const copyToClipboard = async (text: string, messageId: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedMessageId(messageId);
+      // Reset the copied state after 2 seconds
+      setTimeout(() => setCopiedMessageId(null), 2000);
+    } catch (error) {
+      console.error('Failed to copy text:', error);
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        setCopiedMessageId(messageId);
+        setTimeout(() => setCopiedMessageId(null), 2000);
+      } catch (fallbackError) {
+        console.error('Fallback copy failed:', fallbackError);
+      }
+      document.body.removeChild(textArea);
+    }
+  };
+
   const clearChatHistory = () => {
     const defaultMessages = [
       {
@@ -283,7 +308,7 @@ const ChatWidget = () => {
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${message.isBot ? "justify-start" : "justify-end"} min-w-0`}
+                className={`flex flex-col ${message.isBot ? "items-start" : "items-end"} min-w-0 group`}
               >
                 <div
                   className={`max-w-[85%] p-3 rounded-lg text-sm break-words overflow-hidden ${
@@ -300,6 +325,20 @@ const ChatWidget = () => {
                 >
                   {message.text}
                 </div>
+                {/* Copy Button */}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => copyToClipboard(message.text, message.id)}
+                  className="h-6 w-6 p-0 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-muted/50"
+                  title="Copy message"
+                >
+                  {copiedMessageId === message.id ? (
+                    <Check className="h-3 w-3 text-green-600" />
+                  ) : (
+                    <Copy className="h-3 w-3 text-muted-foreground" />
+                  )}
+                </Button>
               </div>
             ))}
             
