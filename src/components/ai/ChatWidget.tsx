@@ -23,7 +23,7 @@ const ChatWidget = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hello! I'm Nkwenti's AI assistant. I can help you know about his professional background, technical expertise, projects, and career journey. What would you like to know?",
+      text: "👋 Hi! I'm Nkwenti's AI assistant. Ask me about his projects, skills, experience, or background!",
       isBot: true,
       timestamp: new Date(),
     },
@@ -131,22 +131,29 @@ const ChatWidget = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter') {
-      if (e.ctrlKey || e.metaKey) {
-        // Ctrl+Enter or Cmd+Enter sends the message
+      if (e.shiftKey) {
+        // Shift+Enter creates a new line (default behavior)
+        return;
+      } else {
+        // Regular Enter sends the message
         e.preventDefault();
         handleSubmit(e as any);
       }
-      // Regular Enter creates a new line (default behavior)
     }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setInputValue(e.target.value);
+    const value = e.target.value;
     
-    // Auto-resize textarea
-    const textarea = e.target;
-    textarea.style.height = 'auto';
-    textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+    // Limit to 120 characters
+    if (value.length <= 120) {
+      setInputValue(value);
+      
+      // Auto-resize textarea
+      const textarea = e.target;
+      textarea.style.height = 'auto';
+      textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+    }
   };
 
   return (
@@ -193,33 +200,39 @@ const ChatWidget = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-96 h-[500px] glass rounded-2xl shadow-elegant border border-border/20 animate-slide-up overflow-hidden">
+        <div className="fixed bottom-20 right-4 z-50 w-80 sm:w-96 max-w-[calc(100vw-2rem)] h-[480px] max-h-[calc(100vh-6rem)] glass rounded-xl shadow-elegant border border-border/50 animate-slide-up overflow-hidden flex flex-col">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-border/10 bg-gradient-to-r from-background/80 to-muted/20">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center shadow-lg">
-                <Bot className="h-5 w-5 text-primary-foreground" />
+          <div className="flex items-center justify-between p-4 border-b border-border/50 bg-background/80 backdrop-blur-sm flex-shrink-0">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center">
+                <Bot className="h-4 w-4 text-primary-foreground" />
               </div>
               <div>
-                <h3 className="font-semibold text-base text-foreground">Nkwenti's AI Assistant</h3>
-                <p className="text-sm text-muted-foreground">Professional Portfolio Consultant</p>
+                <h3 className="font-semibold text-sm">Nkwenti's AI</h3>
+                <p className="text-xs text-muted-foreground">Ask me anything!</p>
               </div>
             </div>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 p-6 overflow-y-auto space-y-4 bg-gradient-to-b from-background/50 to-muted/10" style={{ height: 'calc(500px - 140px)' }}>
+          <div className="flex-1 p-4 overflow-y-auto overflow-x-hidden space-y-3 min-h-0">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${message.isBot ? "justify-start" : "justify-end"}`}
+                className={`flex ${message.isBot ? "justify-start" : "justify-end"} min-w-0`}
               >
                 <div
-                  className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm whitespace-pre-wrap shadow-sm ${
+                  className={`max-w-[85%] p-3 rounded-lg text-sm break-words overflow-hidden ${
                     message.isBot
-                      ? "bg-card border border-border/20 text-foreground"
-                      : "bg-gradient-primary text-primary-foreground shadow-md"
+                      ? "bg-muted text-foreground"
+                      : "bg-gradient-primary text-primary-foreground"
                   }`}
+                  style={{
+                    wordWrap: 'break-word',
+                    overflowWrap: 'break-word',
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word'
+                  }}
                 >
                   {message.text}
                 </div>
@@ -229,9 +242,8 @@ const ChatWidget = () => {
             {/* Typing Indicator */}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-card border border-border/20 text-foreground px-4 py-3 rounded-2xl text-sm shadow-sm">
-                  <div className="flex space-x-1 items-center">
-                    <span className="text-muted-foreground mr-2">AI is thinking</span>
+                <div className="bg-muted text-foreground p-3 rounded-lg text-sm">
+                  <div className="flex space-x-1">
                     <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
                     <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
                     <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
@@ -243,25 +255,43 @@ const ChatWidget = () => {
           </div>
 
           {/* Input */}
-          <form onSubmit={handleSubmit} className="p-6 border-t border-border/10 bg-gradient-to-r from-background/80 to-muted/20">
-            <div className="flex space-x-3 items-end">
-              <div className="flex-1">
+          <form onSubmit={handleSubmit} className="p-4 border-t border-border/50 bg-background/50 backdrop-blur-sm flex-shrink-0">
+            <div className="flex space-x-3 items-start">
+              <div className="flex-1 min-w-0 overflow-hidden">
                 <Textarea
                   value={inputValue}
                   onChange={handleInputChange}
                   onKeyDown={handleKeyDown}
-                  placeholder="Ask about Nkwenti's projects, skills, or experience..."
-                  className="min-h-[44px] max-h-[120px] resize-none border-border/30 bg-background/80 backdrop-blur-sm rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all duration-200"
+                  placeholder="Ask me about Nkwenti..."
+                  className="min-h-[44px] max-h-[100px] resize-none w-full text-sm overflow-hidden whitespace-pre-wrap"
                   rows={1}
+                  wrap="soft"
+                  style={{ 
+                    wordWrap: 'break-word', 
+                    overflowWrap: 'break-word',
+                    whiteSpace: 'pre-wrap',
+                    overflowX: 'hidden'
+                  }}
                 />
-                <div className="text-xs text-muted-foreground mt-2 px-1">
-                  Press <kbd className="px-1.5 py-0.5 bg-muted rounded text-xs">Ctrl</kbd> + <kbd className="px-1.5 py-0.5 bg-muted rounded text-xs">Enter</kbd> to send
+                <div className="flex justify-between items-center mt-2 px-1">
+                  <div className="text-xs text-muted-foreground">
+                    Enter to send • Shift+Enter for new line
+                  </div>
+                  <div className={`text-xs font-medium ${
+                    inputValue.length > 120 
+                      ? 'text-orange-500' 
+                      : inputValue.length === 120 
+                        ? 'text-red-500' 
+                        : 'text-muted-foreground'
+                  }`}>
+                    {inputValue.length}/120
+                  </div>
                 </div>
               </div>
               <Button 
                 type="submit" 
-                size="lg" 
-                className="bg-gradient-primary hover:shadow-lg transition-all duration-200 h-11 px-4 rounded-xl"
+                size="sm" 
+                className="bg-gradient-primary h-11 px-3 flex-shrink-0 mt-0"
                 disabled={!inputValue.trim()}
               >
                 <Send className="h-4 w-4" />
