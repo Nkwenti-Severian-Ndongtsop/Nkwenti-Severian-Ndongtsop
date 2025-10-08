@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 interface Message {
   id: string;
@@ -129,6 +129,26 @@ const ChatWidget = () => {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter') {
+      if (e.ctrlKey || e.metaKey) {
+        // Ctrl+Enter or Cmd+Enter sends the message
+        e.preventDefault();
+        handleSubmit(e as any);
+      }
+      // Regular Enter creates a new line (default behavior)
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInputValue(e.target.value);
+    
+    // Auto-resize textarea
+    const textarea = e.target;
+    textarea.style.height = 'auto';
+    textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+  };
+
   return (
     <>
       {/* Chat Widget Container */}
@@ -195,7 +215,7 @@ const ChatWidget = () => {
                 className={`flex ${message.isBot ? "justify-start" : "justify-end"}`}
               >
                 <div
-                  className={`max-w-[80%] p-3 rounded-lg text-sm ${
+                  className={`max-w-[80%] p-3 rounded-lg text-sm whitespace-pre-wrap ${
                     message.isBot
                       ? "bg-muted text-foreground"
                       : "bg-gradient-primary text-primary-foreground"
@@ -223,14 +243,18 @@ const ChatWidget = () => {
 
           {/* Input */}
           <form onSubmit={handleSubmit} className="p-4 border-t border-border/50">
-            <div className="flex space-x-2">
-              <Input
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Ask me about nkwenti..."
-                className="flex-1"
-              />
-              <Button type="submit" size="sm" className="bg-gradient-primary">
+            <div className="flex space-x-2 items-end">
+              <div className="flex-1">
+                <Textarea
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Ask me about nkwenti... (Ctrl+Enter to send)"
+                  className="min-h-[40px] max-h-[120px] resize-none"
+                  rows={1}
+                />
+              </div>
+              <Button type="submit" size="sm" className="bg-gradient-primary h-10">
                 <Send className="h-4 w-4" />
               </Button>
             </div>
