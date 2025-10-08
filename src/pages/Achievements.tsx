@@ -16,7 +16,7 @@ const Achievements = () => {
       icon: "☕", // Java icon
       color: "bg-red-500",
       skills: ["Java", "Object-Oriented Programming", "Software Development"],
-      certificateUrl: "#", // Add your certificate URL here
+      certificateUrl: "https://drive.google.com/file/d/1xDvt4bkrXN9IwY24ABX-csBngKXcVJFN/view?usp=sharing",
       description: "Validates foundational knowledge of Java programming language and object-oriented programming concepts."
     },
     {
@@ -28,7 +28,7 @@ const Achievements = () => {
       icon: "🐧", // Linux penguin
       color: "bg-yellow-500",
       skills: ["Linux", "System Administration", "Command Line", "Shell Scripting"],
-      certificateUrl: "#", // Add your certificate URL here
+      certificateUrl: "https://drive.google.com/file/d/1iVISRnxeHlUnuXt2CLdxiCLamP20CJLE/view?usp=sharing",
       description: "Demonstrates competency in Linux system administration, including installation, configuration, and maintenance."
     }
   ];
@@ -43,7 +43,7 @@ const Achievements = () => {
     },
     {
       title: "Open Source Contributor",
-      description: "Active member of Stack-Forge-dev organization, contributing to open source projects",
+      description: "Active member on GitHub, contributing to open source projects",
       icon: <Users className="h-6 w-6" />,
       color: "bg-green-500",
       date: "2024"
