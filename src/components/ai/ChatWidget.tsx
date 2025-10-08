@@ -19,6 +19,7 @@ const ChatWidget = () => {
   console.log('Using API endpoint:', apiEndpoint);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [showNotificationDot, setShowNotificationDot] = useState(true);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -38,6 +39,25 @@ const ChatWidget = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Hide notification dot when chat is opened
+  useEffect(() => {
+    if (isOpen) {
+      setShowNotificationDot(false);
+    }
+  }, [isOpen]);
+
+  // Periodically show notification dot to grab attention
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isOpen) {
+        setShowNotificationDot(true);
+        setTimeout(() => setShowNotificationDot(false), 3000); // Hide after 3 seconds
+      }
+    }, 15000); // Show every 15 seconds
+
+    return () => clearInterval(interval);
+  }, [isOpen]);
 
   const getAIResponse = async (userMessage: string): Promise<string> => {
     try {
@@ -111,14 +131,45 @@ const ChatWidget = () => {
 
   return (
     <>
-      {/* Chat Toggle Button */}
-      <Button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-primary hover-glow shadow-elegant"
-        size="sm"
-      >
-        {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
-      </Button>
+      {/* Chat Widget Container */}
+      <div className="fixed bottom-6 right-6 z-50">
+        {/* Horizontal Orbital Text Animation */}
+        {!isOpen && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="animate-orbit-horizontal">
+              <div className="bg-gradient-primary text-primary-foreground px-4 py-2 rounded-full shadow-lg whitespace-nowrap border border-white/20">
+                <span className="text-sm font-semibold animate-text-glow">💬 Let's chat! 👋</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Multiple Pulsing Ring Animations */}
+        {!isOpen && (
+          <>
+            <div className="absolute inset-0 w-14 h-14 rounded-full bg-gradient-primary opacity-20 animate-chat-pulse-ring"></div>
+            <div className="absolute inset-0 w-14 h-14 rounded-full bg-gradient-primary opacity-30 animate-ping" style={{ animationDelay: '0.5s' }}></div>
+          </>
+        )}
+
+        {/* Chat Toggle Button */}
+        <Button
+          onClick={() => setIsOpen(!isOpen)}
+          className={`relative w-14 h-14 rounded-full bg-gradient-primary hover-glow shadow-elegant transition-all duration-300 ${
+            isOpen ? 'rotate-180' : 'hover:scale-110 animate-chat-wiggle'
+          }`}
+          size="sm"
+        >
+          {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
+          
+          {/* Notification Dot */}
+          {showNotificationDot && !isOpen && (
+            <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-bounce border-2 border-white">
+              <div className="w-full h-full bg-red-500 rounded-full animate-ping"></div>
+            </div>
+          )}
+        </Button>
+      </div>
 
       {/* Chat Window */}
       {isOpen && (

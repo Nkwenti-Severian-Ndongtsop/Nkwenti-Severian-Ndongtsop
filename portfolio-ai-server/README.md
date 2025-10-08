@@ -29,8 +29,8 @@ GROQ_API_KEY=your_groq_api_key_here
 # CORS Configuration (REQUIRED)
 FRONTEND_URL=http://localhost:8080
 
-# AI System Prompt (REQUIRED)
-AI_SYSTEM_PROMPT="You are Nkwenti's AI assistant. You help visitors learn about Nkwenti Severian Ndongtsop, a junior software engineer and cybersecurity enthusiast. You can answer questions about his projects, skills, experience, and background. Be helpful, professional, and engaging."
+# AI System Prompt (REQUIRED) - See .env.example for full comprehensive prompt
+AI_SYSTEM_PROMPT="You are Nkwenti's AI assistant with comprehensive information about Nkwenti Severian Ndongtsop - a 20-year-old certified full-stack software engineer and cybersecurity enthusiast from Cameroon, currently training at GIS. Includes his technical skills (React, Spring Boot, Rust, cybersecurity tools), certifications (Java Oracle, LPIC-1), projects (LinkSphere, AI Portfolio), and personal background."
 ```
 
 ### **Required Environment Variables:**
