@@ -241,23 +241,23 @@ const Contact = () => {
             {[
               {
                 q: "What technologies and frameworks do you work with?",
-                a: "I specialize in modern full-stack technologies including React ecosystem (React, Next.js, TypeScript), Spring Boot for enterprise Java applications, Rust & Axum for high-performance services, Docker & DevOps, cybersecurity tools, and AI integration. I focus on building secure, scalable, and maintainable solutions."
+                a: "React/Next.js, TypeScript, Spring Boot, Rust, Docker, and cybersecurity tools. I focus on secure, scalable full-stack solutions."
               },
               {
                 q: "What types of projects do you take on?",
-                a: "I work on full-stack web applications, enterprise software solutions, secure backend services, AI-powered applications, and cybersecurity assessments. Whether it's building from scratch or enhancing existing systems, I focus on delivering robust, security-first solutions."
+                a: "Full-stack web apps, enterprise software, AI integrations, and security assessments. From MVP to enterprise-scale solutions."
               },
               {
                 q: "How do you approach project security?",
-                a: "Security is integrated into every phase of development. I follow secure coding practices, conduct security assessments, implement proper authentication and authorization, and can perform penetration testing to identify vulnerabilities. Every project is built with a security-first mindset."
+                a: "Security-first development with secure coding practices, penetration testing, and comprehensive vulnerability assessments built into every project."
               },
               {
                 q: "Do you work with remote teams and international clients?",
-                a: "Absolutely! I have experience collaborating with distributed teams and clients worldwide. I'm comfortable with remote work, different time zones, and use modern collaboration tools to ensure seamless communication and project delivery."
+                a: "Yes! Experienced with distributed teams across time zones using modern collaboration tools for seamless project delivery."
               },
               {
                 q: "What's your approach to project delivery?",
-                a: "I follow agile development practices with regular communication, milestone-based delivery, and comprehensive documentation. Projects include proper testing, security reviews, deployment automation, and post-launch support to ensure long-term success."
+                a: "Agile methodology with milestone-based delivery, regular communication, comprehensive testing, and post-launch support."
               }
             ].map((faq, index) => (
               <div key={index} className="glass rounded-lg p-6">

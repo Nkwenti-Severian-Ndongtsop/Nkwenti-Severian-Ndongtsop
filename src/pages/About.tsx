@@ -55,7 +55,7 @@ const About = () => {
       <section className="py-20 px-4 bg-muted/20">
         <div className="max-w-4xl mx-auto">
           <div className="glass rounded-2xl p-8 md:p-12">
-            <h2 className="text-3xl font-bold mb-6">Professional Journey</h2>
+            <h2 className="text-3xl font-bold mb-6">My Journey</h2>
             <div className="prose prose-lg max-w-none text-muted-foreground">
               <p className="mb-6">
                 My journey in software engineering began with a deep fascination for building robust, scalable systems. 
