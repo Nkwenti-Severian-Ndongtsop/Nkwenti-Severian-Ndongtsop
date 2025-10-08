@@ -23,7 +23,7 @@ const ChatWidget = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "👋 Hi! I'm Nkwenti's AI bot. Ask me about his projects, skills, experience or life!",
+      text: "Hello! I'm Nkwenti's AI assistant. I can help you know about his professional background, technical expertise, projects, and career journey. What would you like to know?",
       isBot: true,
       timestamp: new Date(),
     },
@@ -193,32 +193,32 @@ const ChatWidget = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-80 h-96 glass rounded-xl shadow-elegant border border-border/50 animate-slide-up">
+        <div className="fixed bottom-24 right-6 z-50 w-96 h-[500px] glass rounded-2xl shadow-elegant border border-border/20 animate-slide-up overflow-hidden">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-border/50">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center">
-                <Bot className="h-4 w-4 text-primary-foreground" />
+          <div className="flex items-center justify-between p-6 border-b border-border/10 bg-gradient-to-r from-background/80 to-muted/20">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center shadow-lg">
+                <Bot className="h-5 w-5 text-primary-foreground" />
               </div>
               <div>
-                <h3 className="font-semibold text-sm">Nkwenti's Bot</h3>
-                <p className="text-xs text-muted-foreground">Ask me anything!</p>
+                <h3 className="font-semibold text-base text-foreground">Nkwenti's AI Assistant</h3>
+                <p className="text-sm text-muted-foreground">Professional Portfolio Consultant</p>
               </div>
             </div>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 p-4 h-64 overflow-y-auto space-y-3">
+          <div className="flex-1 p-6 overflow-y-auto space-y-4 bg-gradient-to-b from-background/50 to-muted/10" style={{ height: 'calc(500px - 140px)' }}>
             {messages.map((message) => (
               <div
                 key={message.id}
                 className={`flex ${message.isBot ? "justify-start" : "justify-end"}`}
               >
                 <div
-                  className={`max-w-[80%] p-3 rounded-lg text-sm whitespace-pre-wrap ${
+                  className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm whitespace-pre-wrap shadow-sm ${
                     message.isBot
-                      ? "bg-muted text-foreground"
-                      : "bg-gradient-primary text-primary-foreground"
+                      ? "bg-card border border-border/20 text-foreground"
+                      : "bg-gradient-primary text-primary-foreground shadow-md"
                   }`}
                 >
                   {message.text}
@@ -229,8 +229,9 @@ const ChatWidget = () => {
             {/* Typing Indicator */}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-muted text-foreground p-3 rounded-lg text-sm">
-                  <div className="flex space-x-1">
+                <div className="bg-card border border-border/20 text-foreground px-4 py-3 rounded-2xl text-sm shadow-sm">
+                  <div className="flex space-x-1 items-center">
+                    <span className="text-muted-foreground mr-2">AI is thinking</span>
                     <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
                     <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
                     <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
@@ -242,19 +243,27 @@ const ChatWidget = () => {
           </div>
 
           {/* Input */}
-          <form onSubmit={handleSubmit} className="p-4 border-t border-border/50">
-            <div className="flex space-x-2 items-end">
+          <form onSubmit={handleSubmit} className="p-6 border-t border-border/10 bg-gradient-to-r from-background/80 to-muted/20">
+            <div className="flex space-x-3 items-end">
               <div className="flex-1">
                 <Textarea
                   value={inputValue}
                   onChange={handleInputChange}
                   onKeyDown={handleKeyDown}
-                  placeholder="Ask me about nkwenti... (Ctrl+Enter to send)"
-                  className="min-h-[40px] max-h-[120px] resize-none"
+                  placeholder="Ask about Nkwenti's projects, skills, or experience..."
+                  className="min-h-[44px] max-h-[120px] resize-none border-border/30 bg-background/80 backdrop-blur-sm rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all duration-200"
                   rows={1}
                 />
+                <div className="text-xs text-muted-foreground mt-2 px-1">
+                  Press <kbd className="px-1.5 py-0.5 bg-muted rounded text-xs">Ctrl</kbd> + <kbd className="px-1.5 py-0.5 bg-muted rounded text-xs">Enter</kbd> to send
+                </div>
               </div>
-              <Button type="submit" size="sm" className="bg-gradient-primary h-10">
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="bg-gradient-primary hover:shadow-lg transition-all duration-200 h-11 px-4 rounded-xl"
+                disabled={!inputValue.trim()}
+              >
                 <Send className="h-4 w-4" />
               </Button>
             </div>
