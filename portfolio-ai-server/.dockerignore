@@ -6,4 +6,5 @@ docker-compose.yml
 .gitignore
 .env
 .env.local
-*.md 
+.env.example
+README.md 
