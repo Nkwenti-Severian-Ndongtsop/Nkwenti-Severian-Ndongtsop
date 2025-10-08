@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 const Footer = () => {
   const socialLinks = [
     { icon: Github, href: "https://github.com/Nkwenti-Severian-Ndongtsop", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/severian-nkwenti-83b345389", label: "LinkedIn" },
     { icon: Mail, href: "mailto:nkwentiseverian@gmail.com", label: "Email" },
   ];
 
@@ -18,8 +19,8 @@ const Footer = () => {
               <span className="text-xl font-bold gradient-text">DevPortfolio</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">
-              Building innovative digital experiences as a Full Stack, Backend & DevOps Engineer with modern technologies.
-              Passionate about React, AI, backend systems, cloud infrastructure, and automating beautiful user interfaces.
+              Full-stack engineer & cybersecurity enthusiast building secure, scalable digital solutions.
+              Passionate about modern web technologies, penetration testing, AI integration, and secure system architecture.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((link) => (
@@ -63,6 +64,11 @@ const Footer = () => {
                 </a>
               </li>
               <li>
+                <a href="/achievements" className="text-muted-foreground hover:text-primary transition-colors">
+                  Achievements
+                </a>
+              </li>
+              <li>
                 <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
                   Contact
                 </a>
@@ -74,14 +80,14 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Technologies</h3>
             <ul className="space-y-2">
-              <li className="text-muted-foreground">React & Next.js</li>
+              <li className="text-muted-foreground">React Ecosystem</li>
               <li className="text-muted-foreground">Spring Boot</li>
-              <li className="text-muted-foreground">Tailwind CSS</li>
-              <li className="text-muted-foreground">Three.js</li>
-              <li className="text-muted-foreground">Docker</li>
-              <li className="text-muted-foreground">GitHub CI/CD</li>
-              <li className="text-muted-foreground">GitHub</li>
-              <li className="text-muted-foreground">Axum</li>
+              <li className="text-muted-foreground">Rust & Axum</li>
+              <li className="text-muted-foreground">Security Technologies</li>
+              <li className="text-muted-foreground">Docker & DevOps</li>
+              <li className="text-muted-foreground">Database Systems</li>
+              <li className="text-muted-foreground">AI Integration</li>
+              <li className="text-muted-foreground">Cloud Platforms</li>
             </ul>
           </div>
         </div>

@@ -15,19 +15,19 @@ const Projects = () => {
   const projects = [
     {
       title: "LinkSphere",
-      description: "A link management system for storing and organizing links",
+      description: "A comprehensive link management platform with analytics dashboard, built with secure Rust backend and modern React frontend",
       image: "/linksphere.png",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Axum", "Docker","GitHub"],
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Axum", "Docker", "GitHub"],
       liveUrl: "https://linksphere-98u3.onrender.com/",
       githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
       category: "Web App",
       featured: true,
     },
     {
-      title: "Portfolio with AI-powered Chatbot",
-      description: "An AI-powered portfolio website with a chatbot",
+      title: "AI-Powered Portfolio Platform",
+      description: "A professional portfolio website featuring an intelligent chatbot powered by Groq's Llama model, with secure backend architecture",
       image: "/portfolio-ai.png",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Docker","GitHub","Groq"],
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Docker", "GitHub", "Groq AI"],
       liveUrl: "https://frontend-portfolio-htbj.onrender.com/",
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Nkwenti-Severian-Ndongtsop.git",
       category: "AI/ML",
@@ -35,7 +35,7 @@ const Projects = () => {
     }
   ];
 
-  const categories = ["All", "Web App", "AI/ML", "Data Viz", "Mobile"];
+  const categories = ["All", "Web App", "AI/ML", "Security", "Data Viz"];
 
   const filteredProjects = projects.filter((project) => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -56,8 +56,8 @@ const Projects = () => {
             My <span className="gradient-text">Projects</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            A collection of innovative digital solutions showcasing expertise in modern web technologies, 
-            backend development, AI integration, and user experience design.
+            A collection of secure, innovative digital solutions showcasing expertise in modern web technologies, 
+            cybersecurity practices, backend development, AI integration, and user-centric design.
           </p>
         </div>
       </section>
@@ -150,9 +150,9 @@ const Projects = () => {
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              "React", "Next.js", "TypeScript", "Three.js", "Node.js", "Python",
-              "AI/ML", "WebGL", "D3.js", "MongoDB", "PostgreSQL", "AWS",
-              "Docker", "GraphQL", "Prisma", "Tailwind CSS"
+              "React Ecosystem", "Spring Boot", "Rust & Axum", "Node.js", "Docker & DevOps",
+              "Cybersecurity Tools", "Penetration Testing", "AI Integration", "PostgreSQL", "MongoDB",
+              "Cloud Platforms", "Tailwind CSS", "Three.js", "Groq AI", "GitHub Actions", "Nginx"
             ].map((tech) => (
               <Badge key={tech} variant="outline" className="text-sm hover-glow">
                 {tech}

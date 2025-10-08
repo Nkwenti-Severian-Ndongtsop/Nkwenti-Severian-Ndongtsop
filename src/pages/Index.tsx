@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Code, Sparkles, Rocket, ArrowDown, Play } from "lucide-react";
+import { Code, Sparkles, Rocket, ArrowDown, Play, Shield, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/layout/Navbar";
@@ -18,36 +18,36 @@ const Index = () => {
   }, []);
 
   const techStack = [
-    { icon: <Code className="h-6 w-6" />, name: "React & Next.js", description: "Modern frontend frameworks", proficiency:60 },
-    { icon: <Sparkles className="h-6 w-6" />, name: "TypeScript", description: "Type-safe development", proficiency: 70 },
-    { icon: <Rocket className="h-6 w-6" />, name: "Three.js", description: "3D web experiences", proficiency: 60 },
-    { icon: <Rocket className="h-6 w-6" />, name: "Rust", description: "Backend development", proficiency: 80 },
-    { icon: <Rocket className="h-6 w-6" />, name: "Axum", description: "Backend development", proficiency: 90 },
-    { icon: <Rocket className="h-6 w-6" />, name: "Docker", description: "DevOps", proficiency: 90 },
-    { icon: <Rocket className="h-6 w-6" />, name: "GitHub", description: "Version Control", proficiency: 90 },
-    { icon: <Rocket className="h-6 w-6" />, name: "Spring Boot", description: "Backend development", proficiency: 80 },
+    { icon: <Code className="h-6 w-6" />, name: "React Ecosystem", description: "React, Next.js, TypeScript", proficiency: 75 },
+    { icon: <Rocket className="h-6 w-6" />, name: "Spring Boot", description: "Enterprise Java applications", proficiency: 80 },
+    { icon: <Rocket className="h-6 w-6" />, name: "Rust & Axum", description: "High-performance web services", proficiency: 85 },
+    { icon: <Shield className="h-6 w-6" />, name: "Cybersecurity", description: "Penetration testing & security audits", proficiency: 65 },
+    { icon: <Lock className="h-6 w-6" />, name: "Security Tools", description: "Nmap, Burp Suite, Metasploit", proficiency: 60 },
+    { icon: <Rocket className="h-6 w-6" />, name: "Docker & DevOps", description: "Containerization & CI/CD pipelines", proficiency: 90 },
+    { icon: <Sparkles className="h-6 w-6" />, name: "AI Integration", description: "LLM APIs & intelligent systems", proficiency: 70 },
+    { icon: <Code className="h-6 w-6" />, name: "Database Systems", description: "PostgreSQL, MongoDB", proficiency: 75 },
+    { icon: <Sparkles className="h-6 w-6" />, name: "Cloud Platforms", description: "AWS, Render, deployment", proficiency: 70 }
   ];
 
   const projects = [
     {
       title: "LinkSphere",
-      description: "A link management system for storing and organizing links",
+      description: "A comprehensive link management platform with analytics dashboard, built with secure Rust backend and modern React frontend",
       image: "/linksphere.png",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Axum", "Docker","GitHub"],
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Axum", "Docker", "GitHub"],
       liveUrl: "https://linksphere-98u3.onrender.com/",
       githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
       featured: true,
     },
     {
-      title: "Portfolio with AI-powered Chatbot",
-      description: "An AI-powered portfolio website with a chatbot",
+      title: "AI-Powered Portfolio Platform",
+      description: "A professional portfolio website featuring an intelligent chatbot powered by Groq's Llama model, with secure backend architecture",
       image: "/portfolio-ai.png",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Docker","GitHub","Groq"],
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Docker", "GitHub", "Groq AI"],
       liveUrl: "https://frontend-portfolio-htbj.onrender.com/",
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Nkwenti-Severian-Ndongtsop.git",
       category: "AI/ML",
       featured: true,
-      
     }
   ];
 
@@ -79,7 +79,7 @@ const Index = () => {
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
-                Full-stack engineer crafting immersive digital experiences with React, Rust, and cutting-edge technologies.
+                Full-stack engineer & cybersecurity enthusiast crafting secure, scalable digital solutions with modern technologies and security-first mindset.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
@@ -136,7 +136,7 @@ const Index = () => {
               Technologies I <span className="gradient-text">Master</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Specialized in modern web technologies that power tomorrow's digital experiences.
+              Specialized in secure, scalable web technologies and cybersecurity practices that power tomorrow's digital experiences.
             </p>
           </div>
           

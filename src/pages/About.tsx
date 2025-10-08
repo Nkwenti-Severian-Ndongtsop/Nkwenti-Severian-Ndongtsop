@@ -1,4 +1,4 @@
-import { Calendar, Award, Code2, Users, Coffee, Heart } from "lucide-react";
+import { Calendar, Award, Code2, Users, Coffee, Heart, Shield } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -8,16 +8,16 @@ import ChatWidget from "@/components/ai/ChatWidget";
 const About = () => {
   const stats = [
     { label: "Years Experience", value: "1+", icon: Calendar },
-    { label: "Projects Completed", value: "1+", icon: Code2 },
+    { label: "Projects Completed", value: "2+", icon: Code2 },
     // { label: "Happy Clients", value: "30+", icon: Users },
     { label: "Cups of Coffee", value: "∞", icon: Coffee },
   ];
 
   const skills = [
-    { icon: <Code2 className="h-6 w-6" />, name: "Frontend Development", description: "React, Next.js, TypeScript", proficiency: 70 },
-    { icon: <Users className="h-6 w-6" />, name: "Backend Development", description: "Spring Boot, Java, Rust, Axum", proficiency: 80 },
-    { icon: <Award className="h-6 w-6" />, name: "DevOps", description: "Docker, Kubernetes, CI/CD", proficiency: 60 },
-    { icon: <Award className="h-6 w-6" />, name: "AI", description: "OpenAI, Anthropic, Gemini", proficiency: 50 },
+    { icon: <Code2 className="h-6 w-6" />, name: "Frontend Technologies", description: "React, Next.js, TypeScript, Tailwind CSS", proficiency: 75 },
+    { icon: <Users className="h-6 w-6" />, name: "Backend Technologies", description: "Spring Boot, Rust & Axum, Node.js", proficiency: 85 },
+    { icon: <Shield className="h-6 w-6" />, name: "Security Technologies", description: "Penetration Testing, Security Audits, OWASP", proficiency: 65 },
+    { icon: <Award className="h-6 w-6" />, name: "DevOps & Cloud", description: "Docker, CI/CD, AWS, Database Systems", proficiency: 75 },
   ];
 
   return (
@@ -31,7 +31,7 @@ const About = () => {
             About <span className="gradient-text">Me</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Passionate software engineer crafting digital experiences that merge creativity with cutting-edge technology
+            Passionate full-stack engineer & cybersecurity enthusiast crafting secure, innovative digital solutions that merge creativity with cutting-edge technology
           </p>
         </div>
       </section>
@@ -55,23 +55,25 @@ const About = () => {
       <section className="py-20 px-4 bg-muted/20">
         <div className="max-w-4xl mx-auto">
           <div className="glass rounded-2xl p-8 md:p-12">
-            <h2 className="text-3xl font-bold mb-6">My Journey</h2>
+            <h2 className="text-3xl font-bold mb-6">Professional Journey</h2>
             <div className="prose prose-lg max-w-none text-muted-foreground">
               <p className="mb-6">
-                My passion for technology began early, but it was the intersection of design and development 
-                that truly captured my imagination. I believe the best digital experiences come from understanding 
-                both the technical possibilities and the human needs they serve.
+                My journey in software engineering began with a deep fascination for building robust, scalable systems. 
+                What started as curiosity about how applications work evolved into a comprehensive understanding of 
+                full-stack development, with a particular focus on security-first architecture and modern web technologies.
               </p>
               <p className="mb-6">
-                Over the past months, I've had the privilege of working with teams, 
-                helping them transform ideas into powerful digital solutions. My approach combines modern 
-                development practices with creative problem-solving to deliver results that both look 
-                beautiful and perform exceptionally.
+                As a dedicated software engineer, I specialize in creating enterprise-grade applications using 
+                cutting-edge technologies like Spring Boot for backend services, React ecosystem for dynamic frontends, 
+                and Rust for high-performance systems. My recent focus on cybersecurity has enhanced my ability to 
+                build applications that are not only functional but also resilient against modern security threats.
               </p>
               <p className="mb-6">
-                I'm particularly excited about the future of web technology - from immersive 3D experiences 
-                powered by WebGL to AI-enhanced user interfaces. I believe we're just scratching the surface 
-                of what's possible when we push the boundaries of what the web can do.
+                I'm passionate about the intersection of innovation and security in software development. Whether it's 
+                implementing secure AI integrations, designing scalable microservices architectures, or conducting 
+                penetration testing, I approach each project with a commitment to excellence and continuous learning. 
+                My goal is to contribute to the development of secure, efficient, and user-centric digital solutions 
+                that make a meaningful impact.
               </p>
             </div>
 
@@ -83,6 +85,10 @@ const About = () => {
               <Badge variant="outline" className="glass">
                 <Code2 className="h-4 w-4 mr-2" />
                 Full-Stack Developer
+              </Badge>
+              <Badge variant="outline" className="glass">
+                <Shield className="h-4 w-4 mr-2" />
+                Security Enthusiast
               </Badge>
               <Badge variant="outline" className="glass">
                 <Users className="h-4 w-4 mr-2" />
@@ -101,7 +107,7 @@ const About = () => {
               Core <span className="gradient-text">Skills</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Expertise across the full spectrum of modern web development
+              Expertise across enterprise-grade technologies, security frameworks, and modern development practices
             </p>
           </div>
           
@@ -142,10 +148,10 @@ const About = () => {
             </div>
             
             <div className="glass rounded-xl p-8 text-center hover-lift">
-              <Award className="h-12 w-12 mx-auto mb-4 text-primary" />
-              <h3 className="text-xl font-semibold mb-3">Innovation</h3>
+              <Shield className="h-12 w-12 mx-auto mb-4 text-primary" />
+              <h3 className="text-xl font-semibold mb-3">Security First</h3>
               <p className="text-muted-foreground">
-                Embracing new technologies and approaches to solve complex problems creatively.
+                Building secure systems from the ground up, with security considerations integrated into every development decision.
               </p>
             </div>
           </div>

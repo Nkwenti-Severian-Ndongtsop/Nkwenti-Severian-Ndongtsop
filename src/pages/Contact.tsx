@@ -35,6 +35,7 @@ const Contact = () => {
 
   const socialLinks = [
     { icon: Github, label: "GitHub", href: "https://github.com/Nkwenti-Severian-Ndongtsop", color: "hover:text-gray-600" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/severian-nkwenti-83b345389", color: "hover:text-blue-600" },
   ]
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -165,8 +166,8 @@ const Contact = () => {
               <div>
                 <h2 className="text-2xl font-bold mb-6">Let's connect</h2>
                 <p className="text-muted-foreground mb-8">
-                  I'm always excited to discuss new opportunities, interesting projects, 
-                  or just chat about the latest in web development. Don't hesitate to reach out!
+                  I'm always excited to discuss new opportunities, innovative projects, 
+                  cybersecurity challenges, or the latest in web development and security. Don't hesitate to reach out!
                 </p>
               </div>
 
@@ -239,20 +240,24 @@ const Contact = () => {
           <div className="space-y-6">
             {[
               {
-                q: "What's your typical project timeline?",
-                a: "Project timelines vary depending on scope and complexity. Small websites typically take 2-4 weeks, while larger applications can take 2-6 months. I'll provide a detailed timeline during our initial consultation."
+                q: "What technologies and frameworks do you work with?",
+                a: "I specialize in modern full-stack technologies including React ecosystem (React, Next.js, TypeScript), Spring Boot for enterprise Java applications, Rust & Axum for high-performance services, Docker & DevOps, cybersecurity tools, and AI integration. I focus on building secure, scalable, and maintainable solutions."
               },
               {
-                q: "Do you work with international clients?",
-                a: "Absolutely! I work with clients worldwide and am comfortable with remote collaboration across different time zones."
+                q: "What types of projects do you take on?",
+                a: "I work on full-stack web applications, enterprise software solutions, secure backend services, AI-powered applications, and cybersecurity assessments. Whether it's building from scratch or enhancing existing systems, I focus on delivering robust, security-first solutions."
               },
               {
-                q: "What technologies do you specialize in?",
-                a: "I specialize in React, Next.js, TypeScript, Three.js for 3D experiences, Spring Boot, Java, Rust, Axum, Docker, and various AI integration tools. I'm always learning new technologies to provide the best solutions."
+                q: "How do you approach project security?",
+                a: "Security is integrated into every phase of development. I follow secure coding practices, conduct security assessments, implement proper authentication and authorization, and can perform penetration testing to identify vulnerabilities. Every project is built with a security-first mindset."
               },
               {
-                q: "Do you provide ongoing maintenance?",
-                a: "Yes, I offer ongoing maintenance and support packages to ensure your project continues to perform optimally after launch."
+                q: "Do you work with remote teams and international clients?",
+                a: "Absolutely! I have experience collaborating with distributed teams and clients worldwide. I'm comfortable with remote work, different time zones, and use modern collaboration tools to ensure seamless communication and project delivery."
+              },
+              {
+                q: "What's your approach to project delivery?",
+                a: "I follow agile development practices with regular communication, milestone-based delivery, and comprehensive documentation. Projects include proper testing, security reviews, deployment automation, and post-launch support to ensure long-term success."
               }
             ].map((faq, index) => (
               <div key={index} className="glass rounded-lg p-6">
