@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Bot } from "lucide-react";
+import { MessageCircle, X, Send, Bot, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -20,14 +20,37 @@ const ChatWidget = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [showNotificationDot, setShowNotificationDot] = useState(true);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "1",
-      text: "👋 Hi! I'm Nkwenti's AI assistant. Ask me about his projects, skills, experience, or background!",
-      isBot: true,
-      timestamp: new Date(),
-    },
-  ]);
+  
+  // Load messages from localStorage or use default
+  const getInitialMessages = (): Message[] => {
+    if (typeof window !== 'undefined') {
+      try {
+        const savedMessages = localStorage.getItem('nkwenti-chat-messages');
+        if (savedMessages) {
+          const parsed = JSON.parse(savedMessages);
+          // Convert timestamp strings back to Date objects
+          return parsed.map((msg: any) => ({
+            ...msg,
+            timestamp: new Date(msg.timestamp)
+          }));
+        }
+      } catch (error) {
+        console.error('Error loading chat history:', error);
+      }
+    }
+    
+    // Default welcome message
+    return [
+      {
+        id: "1",
+        text: "👋 Hi! I'm Nkwenti's AI assistant. Ask me about his projects, skills, experience, or background!",
+        isBot: true,
+        timestamp: new Date(),
+      },
+    ];
+  };
+
+  const [messages, setMessages] = useState<Message[]>(getInitialMessages);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -38,6 +61,17 @@ const ChatWidget = () => {
 
   useEffect(() => {
     scrollToBottom();
+  }, [messages]);
+
+  // Save messages to localStorage whenever messages change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('nkwenti-chat-messages', JSON.stringify(messages));
+      } catch (error) {
+        console.error('Error saving chat history:', error);
+      }
+    }
   }, [messages]);
 
   // Hide notification dot when chat is opened
@@ -156,6 +190,27 @@ const ChatWidget = () => {
     }
   };
 
+  const clearChatHistory = () => {
+    const defaultMessages = [
+      {
+        id: "1",
+        text: "👋 Hi! I'm Nkwenti's AI assistant. Ask me about his projects, skills, experience, or background!",
+        isBot: true,
+        timestamp: new Date(),
+      },
+    ];
+    setMessages(defaultMessages);
+    
+    // Also clear from localStorage
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.removeItem('nkwenti-chat-messages');
+      } catch (error) {
+        console.error('Error clearing chat history:', error);
+      }
+    }
+  };
+
   return (
     <>
       {/* Chat Widget Container */}
@@ -212,6 +267,15 @@ const ChatWidget = () => {
                 <p className="text-xs text-muted-foreground">Ask me anything!</p>
               </div>
             </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={clearChatHistory}
+              className="h-8 w-8 p-0 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950 dark:hover:text-red-400 transition-all duration-200 hover:scale-105 group"
+              title="Clear chat history"
+            >
+              <Trash2 className="h-3 w-3 group-hover:animate-pulse" />
+            </Button>
           </div>
 
           {/* Messages */}
