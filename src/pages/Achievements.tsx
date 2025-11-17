@@ -1,4 +1,4 @@
-import { Calendar, Award, Code2, Users, Coffee, Heart, Shield, ExternalLink, FileText, Trophy, Target, Zap } from "lucide-react";
+import { Calendar, Award, Code2, Users, Coffee, Heart, Shield, ExternalLink, FileText, Trophy, Target, Zap, Cloud } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/layout/Navbar";
@@ -77,7 +77,7 @@ const Achievements = () => {
     {
       title: "Cloud Engineer Expert",
       description: "Proficient in cloud architecture, deployment, and infrastructure management across multiple cloud providers",
-      icon: <Trophy className="h-6 w-6" />,
+      icon: <Cloud className="h-6 w-6" />,
       color: "bg-cyan-500",
       date: "2024"
     }
