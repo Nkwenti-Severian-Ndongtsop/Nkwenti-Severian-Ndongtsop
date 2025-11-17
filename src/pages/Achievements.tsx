@@ -37,7 +37,7 @@ const Achievements = () => {
       issueDate: "Nov 2025",
       credentialId: "HCP00281096",
       category: "Infrastructure as Code",
-      icon: "🏗️", // Building icon
+      icon: "/terraform-logo.png",
       color: "bg-indigo-500",
       skills: ["Terraform", "Infrastructure as Code", "Cloud Provisioning", "Cloud Engineer"],
       certificateUrl: "https://drive.google.com/file/d/11nmttRT9uxdCtvbR3wSiv_5KVB5Ga5Ma/view?usp=sharing",
@@ -138,8 +138,12 @@ const Achievements = () => {
               <div key={cert.credentialId} className="glass rounded-xl p-6 hover-lift animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
                 <div className="flex items-start space-x-4">
                   {/* Certificate Icon */}
-                  <div className={`w-16 h-16 ${cert.color} rounded-lg flex items-center justify-center text-2xl text-white flex-shrink-0`}>
-                    {cert.icon}
+                  <div className={`w-16 h-16 ${cert.color} rounded-lg flex items-center justify-center text-2xl text-white flex-shrink-0 overflow-hidden`}>
+                    {typeof cert.icon === 'string' && cert.icon.startsWith('/') ? (
+                      <img src={cert.icon} alt={cert.title} className="w-full h-full object-cover" />
+                    ) : (
+                      cert.icon
+                    )}
                   </div>
                   
                   {/* Certificate Info */}
