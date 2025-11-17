@@ -38,7 +38,6 @@ app.post('/api/chat', async (req, res) => {
     const systemPrompt = process.env.AI_SYSTEM_PROMPT; 
 
     if (!systemPrompt) {
-      console.error('AI_SYSTEM_PROMPT environment variable is not set');
       return res.status(500).json({ 
         error: 'Server configuration error' 
       });
@@ -87,17 +86,15 @@ app.post('/api/chat', async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Groq API error:', error);
     res.status(500).json({ 
       error: 'Failed to get response',
-      details: error.message
+      details: error instanceof Error ? error.message : 'Unknown error'
     });
   }
 });
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error(err.stack);
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
@@ -107,5 +104,5 @@ app.use('*', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('🚀 AI Server running on port');
+  // Server started silently
 });

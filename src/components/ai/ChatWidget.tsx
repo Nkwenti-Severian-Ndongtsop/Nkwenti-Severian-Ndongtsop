@@ -14,9 +14,7 @@ const ChatWidget = () => {
 
   // Use full backend URL for now to bypass Nginx proxy issues
   const apiEndpoint = 'https://backend-ai-x0er.onrender.com/api/chat';
-  
-  // Debug log
-  console.log('Using API endpoint:', apiEndpoint);
+  const healthEndpoint = 'https://backend-ai-x0er.onrender.com/health';
 
   const [isOpen, setIsOpen] = useState(false);
   const [showNotificationDot, setShowNotificationDot] = useState(true);
@@ -35,7 +33,7 @@ const ChatWidget = () => {
           }));
         }
       } catch (error) {
-        console.error('Error loading chat history:', error);
+        // Silently fail - use default messages
       }
     }
     
@@ -56,6 +54,18 @@ const ChatWidget = () => {
   const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Background health check on mount to warm up the AI server
+  useEffect(() => {
+    const warmUpServer = async () => {
+      try {
+        await fetch(healthEndpoint, { method: 'GET' });
+      } catch (error) {
+        // Silently fail - this is just a background warm-up
+      }
+    };
+    warmUpServer();
+  }, []);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -70,7 +80,7 @@ const ChatWidget = () => {
       try {
         localStorage.setItem('nkwenti-chat-messages', JSON.stringify(messages));
       } catch (error) {
-        console.error('Error saving chat history:', error);
+        // Silently fail - chat history save failed
       }
     }
   }, [messages]);
@@ -96,9 +106,6 @@ const ChatWidget = () => {
 
   const getAIResponse = async (userMessage: string): Promise<string> => {
     try {
-      console.log('Sending request to:', apiEndpoint);
-      console.log('Request payload:', { message: userMessage });
-      
       const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
@@ -107,20 +114,15 @@ const ChatWidget = () => {
         body: JSON.stringify({ message: userMessage }),
         credentials: 'include', // Include credentials (cookies)
       });
-
-      console.log('Response status:', response.status);
       
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('Error response:', errorText);
         throw new Error(`Server responded with status ${response.status}: ${errorText}`);
       }
 
       const data = await response.json();
-      console.log('Response data:', data);
       return data.response || "I received an empty response from the server.";
     } catch (error) {
-      console.error('Error in getAIResponse:', error);
       return `I'm having trouble connecting to the AI service right now. Please try again later. (${error instanceof Error ? error.message : 'Unknown error'})`;
     }
   };
@@ -198,7 +200,6 @@ const ChatWidget = () => {
       // Reset the copied state after 2 seconds
       setTimeout(() => setCopiedMessageId(null), 2000);
     } catch (error) {
-      console.error('Failed to copy text:', error);
       // Fallback for older browsers
       const textArea = document.createElement('textarea');
       textArea.value = text;
@@ -209,7 +210,7 @@ const ChatWidget = () => {
         setCopiedMessageId(messageId);
         setTimeout(() => setCopiedMessageId(null), 2000);
       } catch (fallbackError) {
-        console.error('Fallback copy failed:', fallbackError);
+        // Fallback copy failed
       }
       document.body.removeChild(textArea);
     }
@@ -231,7 +232,7 @@ const ChatWidget = () => {
       try {
         localStorage.removeItem('nkwenti-chat-messages');
       } catch (error) {
-        console.error('Error clearing chat history:', error);
+        // Silently fail - chat history clear failed
       }
     }
   };
