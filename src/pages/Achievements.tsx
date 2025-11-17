@@ -22,7 +22,7 @@ const Achievements = () => {
     {
       title: "Certified Linux Administrator (LPIC-1)",
       issuer: "Linux Professional Institute (LPI)",
-      issueDate: "2024",
+      issueDate: "Dec 2024",
       credentialId: "LPI00637717",
       category: "Linux System Administration",
       icon: "🐧", // Linux penguin
@@ -30,12 +30,24 @@ const Achievements = () => {
       skills: ["Linux", "System Administration", "Command Line", "Shell Scripting"],
       certificateUrl: "https://drive.google.com/file/d/1iVISRnxeHlUnuXt2CLdxiCLamP20CJLE/view?usp=sharing",
       description: "Demonstrates competency in Linux system administration, including installation, configuration, and maintenance."
+    },
+    {
+      title: "Certified Terraform Associate 003",
+      issuer: "HashiCorp",
+      issueDate: "Nov 2025",
+      credentialId: "HCP00281096",
+      category: "Infrastructure as Code",
+      icon: "🏗️", // Building icon
+      color: "bg-indigo-500",
+      skills: ["Terraform", "Infrastructure as Code", "Cloud Provisioning", "Cloud Engineer"],
+      certificateUrl: "https://drive.google.com/file/d/11nmttRT9uxdCtvbR3wSiv_5KVB5Ga5Ma/view?usp=sharing",
+      description: "Validates expertise in using Terraform to provision and manage infrastructure across cloud providers."
     }
   ];
 
   const achievements = [
     {
-      title: "Full-Stack Developer",
+      title: "Full-Stack Software Developer",
       description: "Built and deployed multiple full-stack applications using modern technologies",
       icon: <Code2 className="h-6 w-6" />,
       color: "bg-blue-500",
@@ -49,17 +61,24 @@ const Achievements = () => {
       date: "2024"
     },
     {
-      title: "Security Enthusiast",
+      title: "Security Expert",
       description: "Learning cybersecurity and penetration testing to build more secure applications",
       icon: <Shield className="h-6 w-6" />,
       color: "bg-purple-500",
       date: "2024"
     },
     {
-      title: "AI Integration Expert",
+      title: "AI Integration Enthusiast",
       description: "Successfully integrated AI chatbots and LLM capabilities into web applications",
       icon: <Zap className="h-6 w-6" />,
       color: "bg-orange-500",
+      date: "2024"
+    },
+    {
+      title: "Cloud Engineer Expert",
+      description: "Proficient in cloud architecture, deployment, and infrastructure management across multiple cloud providers",
+      icon: <Trophy className="h-6 w-6" />,
+      color: "bg-cyan-500",
       date: "2024"
     }
   ];

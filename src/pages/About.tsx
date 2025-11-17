@@ -17,7 +17,7 @@ const About = () => {
     { icon: <Code2 className="h-6 w-6" />, name: "Frontend Technologies", description: "React, Next.js, TypeScript, Tailwind CSS", proficiency: 75 },
     { icon: <Users className="h-6 w-6" />, name: "Backend Technologies", description: "Spring Boot, Rust & Axum, Node.js", proficiency: 85 },
     { icon: <Shield className="h-6 w-6" />, name: "Security Technologies", description: "Penetration Testing, Security Audits, OWASP", proficiency: 65 },
-    { icon: <Award className="h-6 w-6" />, name: "DevOps & Cloud", description: "Docker, CI/CD, AWS, Database Systems", proficiency: 75 },
+    { icon: <Award className="h-6 w-6" />, name: "DevOps & Cloud", description: "Docker, Terraform, AWS, Azure, Hashicorp, Database Systems", proficiency: 75 },
   ];
 
   return (

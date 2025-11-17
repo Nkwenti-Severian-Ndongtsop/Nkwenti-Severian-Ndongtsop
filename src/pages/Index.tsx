@@ -26,7 +26,7 @@ const Index = () => {
     { icon: <Rocket className="h-6 w-6" />, name: "Docker & DevOps", description: "Containerization & CI/CD pipelines", proficiency: 90 },
     { icon: <Sparkles className="h-6 w-6" />, name: "AI Integration", description: "LLM APIs & intelligent systems", proficiency: 70 },
     { icon: <Code className="h-6 w-6" />, name: "Database Systems", description: "PostgreSQL, MongoDB", proficiency: 75 },
-    { icon: <Sparkles className="h-6 w-6" />, name: "Cloud Platforms", description: "AWS, Render, deployment", proficiency: 70 }
+    { icon: <Sparkles className="h-6 w-6" />, name: "Cloud Services", description: "AWS, Azure, Hashicorp", proficiency: 80 }
   ];
 
   const projects = [
