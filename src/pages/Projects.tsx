@@ -28,7 +28,7 @@ const Projects = () => {
       description: "A professional portfolio website featuring an intelligent chatbot powered by Groq's Llama model, with secure backend architecture",
       image: "/portfolio-ai.png",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Docker", "GitHub", "Groq AI"],
-      liveUrl: "https://frontend-portfolio-htbj.onrender.com/",
+      liveUrl: "https://nkwenti-severian-ndongtsop.vercel.app/",
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Nkwenti-Severian-Ndongtsop.git",
       category: "AI/ML",
       featured: true,
