@@ -12,9 +12,8 @@ interface Message {
 
 const ChatWidget = () => {
 
-  // Use full backend URL for now to bypass Nginx proxy issues
-  const apiEndpoint = 'https://backend-ai-x0er.onrender.com/api/chat';
-  const healthEndpoint = 'https://backend-ai-x0er.onrender.com/health';
+  // Use local proxy endpoint through Nginx
+  const apiEndpoint = '/api/chat';
 
   const [isOpen, setIsOpen] = useState(false);
   const [showNotificationDot, setShowNotificationDot] = useState(true);
@@ -25,9 +24,9 @@ const ChatWidget = () => {
       try {
         const savedMessages = localStorage.getItem('nkwenti-chat-messages');
         if (savedMessages) {
-          const parsed = JSON.parse(savedMessages);
+          const parsed: Message[] = JSON.parse(savedMessages);
           // Convert timestamp strings back to Date objects
-          return parsed.map((msg: any) => ({
+          return parsed.map((msg: Message) => ({
             ...msg,
             timestamp: new Date(msg.timestamp)
           }));
@@ -54,17 +53,6 @@ const ChatWidget = () => {
   const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Background health check on mount to warm up the AI server
-  useEffect(() => {
-    const warmUpServer = async () => {
-      try {
-        await fetch(healthEndpoint, { method: 'GET' });
-      } catch (error) {
-        // Silently fail - this is just a background warm-up
-      }
-    };
-    warmUpServer();
-  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -174,7 +162,7 @@ const ChatWidget = () => {
       } else {
         // Regular Enter sends the message
         e.preventDefault();
-        handleSubmit(e as any);
+        handleSubmit(e as React.FormEvent);
       }
     }
   };
