@@ -12,8 +12,8 @@ interface Message {
 
 const ChatWidget = () => {
 
-  // Use local proxy endpoint through Nginx
-  const apiEndpoint = '/api/chat';
+  // Direct backend URL for chat requests
+  const apiEndpoint = 'https://backend-ai-x0er.onrender.com/api/chat';
 
   const [isOpen, setIsOpen] = useState(false);
   const [showNotificationDot, setShowNotificationDot] = useState(true);
