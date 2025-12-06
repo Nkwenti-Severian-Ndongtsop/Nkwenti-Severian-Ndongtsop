@@ -4,21 +4,19 @@ import { Moon, Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(
+    () => localStorage.getItem("theme") === "dark"
+  );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const isDarkMode = localStorage.getItem("theme") === "dark";
-    setIsDark(isDarkMode);
-    document.documentElement.classList.toggle("dark", isDarkMode);
-  }, []);
+    document.documentElement.classList.toggle("dark", isDark);
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }, [isDark]);
 
   const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    localStorage.setItem("theme", newTheme ? "dark" : "light");
-    document.documentElement.classList.toggle("dark", newTheme);
+    setIsDark(!isDark);
   };
 
   const navItems = [
