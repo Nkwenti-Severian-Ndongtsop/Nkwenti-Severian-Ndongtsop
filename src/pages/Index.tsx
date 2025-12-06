@@ -10,12 +10,7 @@ import TechStack from "@/components/ui/TechStack";
 import ChatWidget from "@/components/ai/ChatWidget";
 
 const Index = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   const techStack = [
     { icon: <Code className="h-6 w-6" />, name: "React Ecosystem", description: "React, Next.js, TypeScript", proficiency: 75 },
@@ -68,7 +63,7 @@ const Index = () => {
         />
         <div className="absolute inset-0 bg-background/80 z-10" />
         
-        <div className={`relative z-20 max-w-6xl mx-auto px-4 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
+        <div className="relative z-20 max-w-6xl mx-auto px-4 animate-slide-up">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             {/* Left Content */}
             <div className="flex-1 text-center lg:text-left">
