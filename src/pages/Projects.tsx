@@ -14,16 +14,6 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "LinkSphere",
-      description: "A comprehensive link management platform with analytics dashboard, built with secure Rust backend and modern React frontend",
-      image: "/linksphere.png",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Axum", "Docker", "GitHub"],
-      liveUrl: "https://linksphere-98u3.onrender.com/",
-      githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
-      category: "Web App",
-      featured: true,
-    },
-    {
       title: "AI-Powered Portfolio Platform",
       description: "A professional portfolio website featuring an intelligent chatbot powered by Groq's Llama model, with secure backend architecture",
       image: "/portfolio-ai.png",
@@ -32,10 +22,38 @@ const Projects = () => {
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Nkwenti-Severian-Ndongtsop.git",
       category: "AI/ML",
       featured: true,
+    },
+    {
+      title: "Keycloak Config CLI",
+      description: "A command-line interface for managing Keycloak configurations",
+      image: "/keycloak-config-cli.png",
+      technologies: ["Java", "SpringBoot", "Docker", "GitHub"],
+      githubUrl: "https://github.com/adorsys/keycloak-config-cli.git",
+      category: "IAM",
+      featured: true,
+    },
+    {
+      title: "LinkSphere",
+      description: "A comprehensive link management platform with analytics dashboard, built with secure Rust backend and modern React frontend",
+      image: "/linksphere.png",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Docker", "GitHub"],
+      liveUrl: "https://linksphere-98u3.onrender.com/",
+      githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
+      category: "Web App",
+      featured: true,
+    },
+    {
+      title: "Ferriskey Identity and Access Management",
+      description: "A Modern IAM Built for Distributed Systems",
+      image: "/ferriskey.png",
+      technologies: ["Rust", "React", "TypeScript", "Tailwind CSS", "Docker", "GitHub"],
+      githubUrl: "https://github.com/ferriskey/ferriskey",
+      category: "IAM",
+      featured: true,
     }
   ];
 
-  const categories = ["All", "Web App", "AI/ML", "Security", "Data Viz"];
+  const categories = ["All", "Web App", "AI/ML", "IAM", "Security"];
 
   const filteredProjects = projects.filter((project) => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

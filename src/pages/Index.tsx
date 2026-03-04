@@ -26,22 +26,22 @@ const Index = () => {
 
   const projects = [
     {
-      title: "LinkSphere",
-      description: "A comprehensive link management platform with analytics dashboard, built with secure Rust backend and modern React frontend",
-      image: "/linksphere.png",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Axum", "Docker", "GitHub"],
-      liveUrl: "https://linksphere-98u3.onrender.com/",
-      githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
-      featured: true,
-    },
-    {
       title: "AI-Powered Portfolio Platform",
       description: "A professional portfolio website featuring an intelligent chatbot powered by Groq's Llama model, with secure backend architecture",
       image: "/portfolio-ai.png",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Docker", "GitHub", "Groq AI"],
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Groq AI"],
       liveUrl: "https://nkwenti-severian-ndongtsop.vercel.app/",
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Nkwenti-Severian-Ndongtsop.git",
       category: "AI/ML",
+      featured: true,
+    },
+    {
+      title: "Keycloak Config CLI",
+      description: "A command-line interface for managing Keycloak configurations",
+      image: "/keycloak-config-cli.png",
+      technologies: ["Java", "SpringBoot", "CI/CD", "Docker", "GitHub"],
+      githubUrl: "https://github.com/adorsys/keycloak-config-cli.git",
+      category: "IAM",
       featured: true,
     }
   ];

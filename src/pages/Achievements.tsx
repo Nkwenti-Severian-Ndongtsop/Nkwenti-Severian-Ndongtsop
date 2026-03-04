@@ -8,12 +8,24 @@ import ChatWidget from "@/components/ai/ChatWidget";
 const Achievements = () => {
   const certificates = [
     {
+      title: "Microsoft Certified: Azure Fundamentals",
+      issuer: "Microsoft",
+      issueDate: "Feb 2026",
+      credentialId: "B01DBF73849D0981",
+      category: "Cloud Computing",
+      icon: "☁️",
+      color: "bg-blue-500",
+      skills: ["Microsoft Azure", "Cloud Computing", "Cloud Architecture", "Azure Services"],
+      certificateUrl: `https://drive.google.com/file/d/1tlIVs51hG2zQB6YSnwkRTF8Eo1tgWukR/view?usp=sharing`,
+      description: "Validates foundational knowledge of cloud concepts and Microsoft Azure services, including core Azure services, pricing, SLAs, and service lifecycle."
+    },
+    {
       title: "Java Foundations Certified Junior Associate Certification",
       issuer: "Oracle",
       issueDate: "Jun 2025",
       credentialId: "OC6289013",
       category: "Java Software Development",
-      icon: "☕", // Java icon
+      icon: "☕",
       color: "bg-red-500",
       skills: ["Java", "Object-Oriented Programming", "Software Development"],
       certificateUrl: "https://drive.google.com/file/d/1xDvt4bkrXN9IwY24ABX-csBngKXcVJFN/view?usp=sharing",
@@ -25,7 +37,7 @@ const Achievements = () => {
       issueDate: "Dec 2024",
       credentialId: "LPI00637717",
       category: "Linux System Administration",
-      icon: "🐧", // Linux penguin
+      icon: "🐧",
       color: "bg-yellow-500",
       skills: ["Linux", "System Administration", "Command Line", "Shell Scripting"],
       certificateUrl: "https://drive.google.com/file/d/1iVISRnxeHlUnuXt2CLdxiCLamP20CJLE/view?usp=sharing",
@@ -87,7 +99,7 @@ const Achievements = () => {
     { label: "Certifications Earned", value: certificates.length, icon: Award },
     { label: "Tech Domains", value: "4+", icon: Target },
     { label: "Projects Completed", value: "2+", icon: Code2 },
-    { label: "Years Learning", value: "1+", icon: Calendar },
+    { label: "Years Experience", value: "1+", icon: Calendar },
   ];
 
   return (
