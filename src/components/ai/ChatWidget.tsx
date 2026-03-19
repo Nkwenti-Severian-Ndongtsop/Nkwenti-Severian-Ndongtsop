@@ -2,15 +2,18 @@ import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Bot, Trash2, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useAnalyticsTracking } from "@/hooks/useAnalytics";
 
 interface Message {
   id: string;
   text: string;
   isBot: boolean;
   timestamp: Date;
+  suggestions?: string[];
 }
 
 const ChatWidget = () => {
+  const analytics = useAnalyticsTracking();
 
   // Direct backend URL for chat requests
   const apiEndpoint = 'https://backend-ai-x0er.onrender.com/api/chat';
@@ -36,13 +39,19 @@ const ChatWidget = () => {
       }
     }
     
-    // Default welcome message
+    // Default welcome message with suggestions
     return [
       {
         id: "1",
-        text: "👋 Hi! I'm Nkwenti's AI assistant. Ask me about his projects, skills, experience, or background!",
+        text: "👋 Hi! I'm Nkwenti's AI assistant. I can tell you about his work at Adorsys, certifications, projects, and background. What would you like to know?",
         isBot: true,
         timestamp: new Date(),
+        suggestions: [
+          "Tell me about your work at Adorsys",
+          "What certifications do you hold?",
+          "How can I collaborate with you?",
+          "What's your experience with Rust?"
+        ]
       },
     ];
   };
@@ -77,8 +86,9 @@ const ChatWidget = () => {
   useEffect(() => {
     if (isOpen) {
       setShowNotificationDot(false);
+      analytics.trackChatInteraction('open');
     }
-  }, [isOpen]);
+  }, [isOpen, analytics]);
 
   // Periodically show notification dot to grab attention
   useEffect(() => {
@@ -92,14 +102,20 @@ const ChatWidget = () => {
     return () => clearInterval(interval);
   }, [isOpen]);
 
-  const getAIResponse = async (userMessage: string): Promise<string> => {
+  const getAIResponse = async (userMessage: string, conversationHistory: Message[] = []): Promise<{response: string, suggestions?: string[]}> => {
     try {
       const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: userMessage }),
+        body: JSON.stringify({ 
+          message: userMessage,
+          conversationHistory: conversationHistory.slice(-5).map(msg => ({
+            role: msg.isBot ? 'assistant' : 'user',
+            content: msg.text
+          }))
+        }),
         credentials: 'include', // Include credentials (cookies)
       });
       
@@ -109,9 +125,15 @@ const ChatWidget = () => {
       }
 
       const data = await response.json();
-      return data.response || "I received an empty response from the server.";
+      return {
+        response: data.response || "I received an empty response from the server.",
+        suggestions: data.suggestions || []
+      };
     } catch (error) {
-      return `I'm having trouble connecting to the AI service right now. Please try again later. (${error instanceof Error ? error.message : 'Unknown error'})`;
+      return {
+        response: `I'm having trouble connecting to the AI service right now. Please try again later. (${error instanceof Error ? error.message : 'Unknown error'})`,
+        suggestions: []
+      };
     }
   };
 
@@ -128,17 +150,22 @@ const ChatWidget = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputValue;
     setInputValue("");
     setIsTyping(true);
 
-    // Get AI response
+    // Track message sending
+    analytics.trackChatInteraction('message', currentInput.length);
+
+    // Get AI response with conversation history
     try {
-      const aiResponse = await getAIResponse(inputValue);
+      const aiData = await getAIResponse(currentInput, messages);
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: aiResponse,
+        text: aiData.response,
         isBot: true,
         timestamp: new Date(),
+        suggestions: aiData.suggestions
       };
       setMessages(prev => [...prev, botResponse]);
     } catch (error) {
@@ -147,6 +174,7 @@ const ChatWidget = () => {
         text: "Sorry, I'm having trouble connecting. Please try again later.",
         isBot: true,
         timestamp: new Date(),
+        suggestions: []
       };
       setMessages(prev => [...prev, errorResponse]);
     } finally {
@@ -208,9 +236,15 @@ const ChatWidget = () => {
     const defaultMessages = [
       {
         id: "1",
-        text: "👋 Hi! I'm Nkwenti's AI assistant. Ask me about his projects, skills, experience, or background!",
+        text: "👋 Hi! I'm Nkwenti's AI assistant. I can tell you about his work at Adorsys, certifications, projects, and background. What would you like to know?",
         isBot: true,
         timestamp: new Date(),
+        suggestions: [
+          "Tell me about your work at Adorsys",
+          "What certifications do you hold?",
+          "How can I collaborate with you?",
+          "What's your experience with Rust?"
+        ]
       },
     ];
     setMessages(defaultMessages);
@@ -223,6 +257,17 @@ const ChatWidget = () => {
         // Silently fail - chat history clear failed
       }
     }
+  };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setInputValue(suggestion);
+    // Auto-focus the textarea
+    const textarea = document.querySelector('textarea');
+    if (textarea) {
+      textarea.focus();
+    }
+    // Track suggestion click
+    analytics.trackChatInteraction('suggestion_click', suggestion.length);
   };
 
   return (
@@ -314,6 +359,21 @@ const ChatWidget = () => {
                 >
                   {message.text}
                 </div>
+                {/* Suggestions for bot messages */}
+                {message.isBot && message.suggestions && message.suggestions.length > 0 && (
+                  <div className="flex flex-wrap gap-1 mt-2 max-w-[85%]">
+                    {message.suggestions.map((suggestion, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleSuggestionClick(suggestion)}
+                        className="px-2 py-1 text-xs bg-primary/10 hover:bg-primary/20 text-primary rounded-full border border-primary/20 hover:border-primary/30 transition-all duration-200 hover:scale-105 cursor-pointer"
+                        title={`Click to ask: ${suggestion}`}
+                      >
+                        💡 {suggestion}
+                      </button>
+                    ))}
+                  </div>
+                )}
                 {/* Copy Button */}
                 <Button
                   variant="ghost"

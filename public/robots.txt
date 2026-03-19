@@ -1,8 +1,10 @@
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +12,32 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
 User-agent: *
 Allow: /
+Crawl-delay: 2
+
+# Allow all bots to access sitemap
+Sitemap: https://nkwenti-severian-ndongtsop.vercel.app/sitemap.xml
+
+# Disallow access to sensitive directories
+Disallow: /api/
+Disallow: /admin/
+Disallow: /.well-known/
+
+# Allow specific important files
+Allow: /robots.txt
+Allow: /sitemap.xml
+Allow: /favicon.ico
+
+# Crawl budget optimization for large crawlers
+User-agent: Googlebot
+Crawl-delay: 0.5

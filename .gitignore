@@ -28,3 +28,4 @@ venv/
 .env
 Dockerfile.*
 .env.example
+PROJECT*.md

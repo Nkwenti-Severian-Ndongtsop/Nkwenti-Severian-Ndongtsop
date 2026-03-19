@@ -16,11 +16,11 @@
 
 ### 🧑‍💻 About Me
 
-- 💻 I’m a **junior full-stack software engineer** undergoing intensive training, fueled by a strong passion for fullstack web development and cutting-edge technologies.  
+- 💻 I’m an **associate full-stack software engineer** , fueled by a strong passion for fullstack web development and cutting-edge technologies.  
 - 🐧 **Linux** is my daily operating system—I enjoy customizing and optimizing my development environment for efficiency and performance.  
-- 🎨 I have a growing interest in **frontend development**, currently focused on building responsive and modern user interfaces using **HTML, CSS, Tailwind CSS, React, and Next.js**.  
-- 🦀 I'm actively learning and building real-world projects in **Rust**, including web backends with **Axum**, GitHub Actions automation, and system-level tools.  
-- ☕ I also work with **Spring Boot** to develop robust backend systems, integrate databases, and implement scalable APIs.  
+- 🎨 I have a growing interest in **backend development**.  
+- 🦀 I'm actively learning and building real-world projects in **Rust**, including web backends with **SpringBoot**, GitHub Actions automation, and system-level tools.  
+- ☕ I also work with **Axum** to develop robust backend systems, integrate databases, and implement scalable APIs.  
 - 🚀 I’m committed to mastering software architecture, modern DevOps practices, and contributing to open source projects as part of my learning journey.
 
 <br/>

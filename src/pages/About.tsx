@@ -16,7 +16,7 @@ const About = () => {
   const skills = [
     { icon: <Code2 className="h-6 w-6" />, name: "Frontend Technologies", description: "React, Next.js, TypeScript, Tailwind CSS", proficiency: 75 },
     { icon: <Users className="h-6 w-6" />, name: "Backend Technologies", description: "Spring Boot, Rust & Axum, Node.js", proficiency: 85 },
-    { icon: <Shield className="h-6 w-6" />, name: "Security Technologies", description: "Penetration Testing, Security Audits, OWASP", proficiency: 65 },
+    { icon: <Shield className="h-6 w-6" />, name: "Security Technologies", description: "SOC/SIEM (Wazuh), log analysis & alert triage, OWASP, penetration testing (learning)", proficiency: 65 },
     { icon: <Award className="h-6 w-6" />, name: "DevOps & Cloud", description: "Docker, Terraform, AWS, Azure, Hashicorp, Database Systems", proficiency: 75 },
   ];
 
@@ -101,7 +101,7 @@ const About = () => {
 
       {/* Professional Experience */}
       <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Professional <span className="gradient-text">Experience</span>
@@ -113,15 +113,13 @@ const About = () => {
 
           {/* Timeline */}
           <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-transparent" />
+            <div className="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-transparent" />
 
-            {/* Adorsys Entry */}
-            <div className="relative pl-16 animate-slide-up">
-              {/* Timeline dot */}
-              <div className="absolute left-3.5 top-6 w-5 h-5 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/40" />
+            <div className="relative md:grid md:grid-cols-2 md:gap-8 animate-slide-up">
+              <div className="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-6 w-5 h-5 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/40" />
 
-              <div className="glass rounded-2xl p-8 hover-lift">
+              <div className="pl-16 md:pl-0 md:pr-16 md:col-start-1 md:justify-self-end w-full">
+                <div className="glass rounded-2xl p-8 hover-lift w-full md:max-w-xl">
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
                   <div className="flex items-center gap-4">
@@ -136,7 +134,7 @@ const About = () => {
                   <div className="flex flex-col gap-2 sm:items-end text-sm text-muted-foreground flex-shrink-0">
                     <span className="flex items-center gap-1.5">
                       <Calendar className="h-4 w-4" />
-                      Mar 2026 — Present
+                      Mar 1, 2026 — Present
                     </span>
                     <span className="flex items-center gap-1.5">
                       <MapPin className="h-4 w-4" />
@@ -153,11 +151,17 @@ const About = () => {
                 <ul className="space-y-3 mb-6 text-muted-foreground">
                   <li className="flex items-start gap-3">
                     <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                    Maintainer of <span className="text-foreground font-medium mx-1">keycloak-config-cli</span> — an open source tool for declarative Keycloak realm configuration management
+                    <span className="flex-1">
+                      Maintainer of{' '}
+                      <span className="text-foreground font-medium">keycloak-config-cli</span>
+                      {' '}— an open source tool for declarative Keycloak realm configuration management
+                    </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                    Working across multi-version compatibility (Keycloak 23.x to 26.x+) using Maven profiles
+                    <span className="flex-1">
+                      Working across multi-version compatibility (Keycloak 23.x to 26.x+) using Maven profiles
+                    </span>
                   </li>
                 </ul>
 
@@ -168,6 +172,86 @@ const About = () => {
                       {tech}
                     </span>
                   ))}
+                </div>
+                </div>
+              </div>
+
+              <div className="hidden md:block" />
+            </div>
+
+            <div className="relative md:grid md:grid-cols-2 md:gap-8 animate-slide-up mt-10">
+              <div className="absolute left-3.5 md:left-1/2 md:-translate-x-1/2 top-6 w-5 h-5 rounded-full bg-accent border-4 border-background shadow-lg shadow-accent/40" />
+
+              <div className="hidden md:block" />
+
+              <div className="pl-16 md:pl-16 md:col-start-2 md:justify-self-start w-full">
+                <div className="glass rounded-2xl p-8 hover-lift w-full md:max-w-xl">
+                {/* Header */}
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center text-white font-bold text-xl flex-shrink-0 shadow-md">
+                      W
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold">Cybersecurity Team Member (SIEM / SOC)</h3>
+                      <p className="text-primary font-semibold">Adorsys</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2 sm:items-end text-sm text-muted-foreground flex-shrink-0">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar className="h-4 w-4" />
+                      Mar 18, 2026 — Present
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <MapPin className="h-4 w-4" />
+                      Onsite
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-500/10 text-green-500 font-medium text-xs border border-green-500/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                      Full-time · Active
+                    </span>
+                  </div>
+                </div>
+
+                {/* Responsibilities */}
+                <ul className="space-y-3 mb-6 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <span className="flex-1">
+                      Joined the cybersecurity team focusing on SOC operations and SIEM workflows
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <span className="flex-1">
+                      Working with{' '}
+                      <span className="text-foreground font-medium">Wazuh</span>
+                      {' '}for threat detection, alert triage, and security monitoring
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <span className="flex-1">
+                      Training in penetration testing (red teaming) through hands-on learning and practice labs (learning phase — not yet customer engagements)
+                    </span>
+                  </li>
+                </ul>
+
+                {/* Tech tags */}
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Wazuh",
+                    "SIEM",
+                    "SOC",
+                    "Threat Detection",
+                    "Log Analysis",
+                    "Incident Response"
+                  ].map((tech) => (
+                    <span key={tech} className="px-3 py-1 text-xs rounded-full glass border border-border/40 text-muted-foreground font-medium">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
                 </div>
               </div>
             </div>

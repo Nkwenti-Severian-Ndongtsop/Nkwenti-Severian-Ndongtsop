@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import ProjectCard from "@/components/ui/ProjectCard";
 import TechStack from "@/components/ui/TechStack";
 import ChatWidget from "@/components/ai/ChatWidget";
+import LazyImage from "@/components/ui/LazyImage";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -16,8 +17,8 @@ const Index = () => {
     { icon: <Code className="h-6 w-6" />, name: "React Ecosystem", description: "React, Next.js, TypeScript", proficiency: 75 },
     { icon: <Rocket className="h-6 w-6" />, name: "Spring Boot", description: "Enterprise Java applications", proficiency: 80 },
     { icon: <Rocket className="h-6 w-6" />, name: "Rust & Axum", description: "High-performance web services", proficiency: 85 },
-    { icon: <Shield className="h-6 w-6" />, name: "Cybersecurity", description: "Penetration testing & security audits", proficiency: 65 },
-    { icon: <Lock className="h-6 w-6" />, name: "Security Tools", description: "Nmap, Burp Suite, Metasploit", proficiency: 60 },
+    { icon: <Shield className="h-6 w-6" />, name: "SIEM / SOC (Wazuh)", description: "Security monitoring, alert triage, log analysis", proficiency: 60 },
+    { icon: <Shield className="h-6 w-6" />, name: "Offensive Security", description: "Penetration testing (learning) & security fundamentals", proficiency: 65 },
     { icon: <Rocket className="h-6 w-6" />, name: "Docker & DevOps", description: "Containerization & CI/CD pipelines", proficiency: 90 },
     { icon: <Sparkles className="h-6 w-6" />, name: "AI Integration", description: "LLM APIs & intelligent systems", proficiency: 70 },
     { icon: <Code className="h-6 w-6" />, name: "Database Systems", description: "PostgreSQL, MongoDB", proficiency: 75 },
@@ -102,10 +103,10 @@ const Index = () => {
               <div className="relative group">
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-primary to-accent p-2 animate-pulse-glow hover-lift transition-all duration-500 group-hover:scale-105">
                   <div className="w-full h-full rounded-full bg-background flex items-center justify-center text-muted-foreground border-2 border-muted glass overflow-hidden">
-                    <img
-                      src="/my-photo.jpg"
+                    <LazyImage
+                      src="/my-photo.png"
                       alt="Nkwenti Profile"
-                      className="w-full h-full object-cover rounded-full"
+                      className="w-full h-full object-cover rounded-full object-[50%_30%] scale-110"
                     />
                   </div>
                 </div>

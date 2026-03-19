@@ -324,6 +324,11 @@
     }
   }
 
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
   /* Animation classes */
   .animate-gradient { animation: gradient-flow 3s ease-in-out infinite; }
   .animate-float { animation: float 6s ease-in-out infinite; }
@@ -338,4 +343,5 @@
   .animate-orbit-horizontal { animation: orbit-text-horizontal 6s ease-in-out infinite; }
   .animate-orbit-text { animation: orbit-text 4s linear infinite; }
   .animate-orbit-trail { animation: orbit-trail 4s linear infinite; }
+  .animate-shimmer { animation: shimmer 2s ease-in-out infinite; }
 }
