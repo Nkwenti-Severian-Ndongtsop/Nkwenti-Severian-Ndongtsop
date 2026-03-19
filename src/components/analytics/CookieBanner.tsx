@@ -3,23 +3,21 @@ import { X, Cookie, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const CookieBanner = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [hasConsent, setHasConsent] = useState(false);
-
-  useEffect(() => {
-    // Check if user has already given consent
+  // Initialize state from localStorage to avoid setState in effect
+  const getInitialConsent = () => {
+    if (typeof window === 'undefined') return false;
     const consent = localStorage.getItem('analytics-consent');
-    if (consent === 'accepted') {
-      setHasConsent(true);
-      // Load analytics script
-      loadAnalyticsScript();
-    } else if (consent === 'rejected') {
-      setHasConsent(false);
-    } else {
-      // Show banner if no consent found
-      setIsVisible(true);
-    }
-  }, []);
+    return consent === 'accepted';
+  };
+
+  const getInitialVisibility = () => {
+    if (typeof window === 'undefined') return false;
+    const consent = localStorage.getItem('analytics-consent');
+    return !consent; // Show banner if no consent found
+  };
+
+  const [isVisible, setIsVisible] = useState(getInitialVisibility);
+  const [hasConsent, setHasConsent] = useState(getInitialConsent);
 
   const loadAnalyticsScript = () => {
     // Only load in production
@@ -40,6 +38,13 @@ const CookieBanner = () => {
     `;
     document.head.appendChild(initScript);
   };
+
+  useEffect(() => {
+    // Load analytics script when consent is given
+    if (hasConsent) {
+      loadAnalyticsScript();
+    }
+  }, [hasConsent]);
 
   const removeAnalyticsScript = () => {
     // Remove Plausible scripts
@@ -168,16 +173,18 @@ const CookieBanner = () => {
 
 // Cookie Settings Component for managing preferences
 export const CookieSettings = () => {
-  const [analytics, setAnalytics] = useState(false);
+  // Initialize state from localStorage to avoid setState in effect
+  const getInitialAnalytics = () => {
+    if (typeof window === 'undefined') return false;
+    const consent = localStorage.getItem('analytics-consent');
+    return consent === 'accepted';
+  };
+
+  const [analytics, setAnalytics] = useState(getInitialAnalytics);
 
   useEffect(() => {
-    const consent = localStorage.getItem('analytics-consent');
-    setAnalytics(consent === 'accepted');
-  }, []);
-
-  const handleToggleAnalytics = (enabled: boolean) => {
-    setAnalytics(enabled);
-    if (enabled) {
+    // Load/remove analytics script when analytics state changes
+    if (analytics) {
       localStorage.setItem('analytics-consent', 'accepted');
       // Load analytics script
       const script = document.createElement('script');
@@ -192,6 +199,10 @@ export const CookieSettings = () => {
       const scripts = document.head.querySelectorAll('script[data-domain="nkwenti-severian-ndongtsop.vercel.app"]');
       scripts.forEach(script => script.remove());
     }
+  }, [analytics]);
+
+  const handleToggleAnalytics = (enabled: boolean) => {
+    setAnalytics(enabled);
   };
 
   return (

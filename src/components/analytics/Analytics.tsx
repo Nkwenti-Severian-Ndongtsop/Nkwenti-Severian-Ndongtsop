@@ -8,7 +8,7 @@ interface AnalyticsProps {
 
 declare global {
   interface Window {
-    plausible?: (event: string, params?: { props?: Record<string, any>; callback?: () => void }) => void;
+    plausible?: (event: string, params?: { props?: Record<string, unknown>; callback?: () => void }) => void;
   }
 }
 
@@ -82,7 +82,7 @@ const Analytics = ({
 
 // Custom hook for tracking events
 export const useAnalytics = () => {
-  const trackEvent = (eventName: string, properties?: Record<string, any>) => {
+  const trackEvent = (eventName: string, properties?: Record<string, unknown>) => {
     if (process.env.NODE_ENV !== 'production') {
       console.log('Analytics Event:', eventName, properties);
       return;

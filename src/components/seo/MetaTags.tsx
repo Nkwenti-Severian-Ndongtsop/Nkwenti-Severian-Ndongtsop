@@ -27,10 +27,10 @@ const Helmet = ({ children }: HelmetProps) => {
       if (typeof node.type !== 'string') continue;
 
       const tag = node.type.toLowerCase();
-      const props = (node.props ?? {}) as Record<string, any>;
+      const props = node.props as Record<string, unknown>;
 
       if (tag === 'title') {
-        const titleText = Children.toArray(props.children).join('');
+        const titleText = Children.toArray((props.children as ReactNode) || []).join('');
         if (typeof titleText === 'string') {
           document.title = titleText;
         }
@@ -75,7 +75,7 @@ const Helmet = ({ children }: HelmetProps) => {
           script.setAttribute(k, String(v));
         }
 
-        const childText = Children.toArray(props.children).join('');
+        const childText = Children.toArray((props.children as ReactNode) || []).join('');
         if (typeof childText === 'string') {
           script.textContent = childText;
         }

@@ -122,7 +122,7 @@ export const useAnalyticsTracking = () => {
   }, [analytics]);
 
   // Track feature usage
-  const trackFeatureUsage = useCallback((featureName: string, action: string, properties?: Record<string, any>) => {
+  const trackFeatureUsage = useCallback((featureName: string, action: string, properties?: Record<string, unknown>) => {
     analytics.trackEvent('FeatureUsage', {
       feature: featureName,
       action: action,
