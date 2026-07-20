@@ -30,7 +30,7 @@ const Index = () => {
       title: "AI-Powered Portfolio Platform",
       description: "A professional portfolio website featuring an intelligent chatbot powered by Groq's Llama model, with secure backend architecture",
       image: "/portfolio-ai.png",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Groq AI"],
+      technologies: ["Groq AI", "Node.js", "React", "TypeScript"],
       liveUrl: "https://nkwenti-severian-ndongtsop.vercel.app/",
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Nkwenti-Severian-Ndongtsop.git",
       category: "AI/ML",
@@ -40,9 +40,18 @@ const Index = () => {
       title: "Keycloak Config CLI",
       description: "A command-line interface for managing Keycloak configurations",
       image: "/keycloak-config-cli.png",
-      technologies: ["Java", "SpringBoot", "CI/CD", "Docker", "GitHub"],
+      technologies: ["Java", "SpringBoot", "Docker", "GitHub"],
       githubUrl: "https://github.com/adorsys/keycloak-config-cli.git",
       category: "IAM",
+      featured: true,
+    },
+    {
+      title: "Alkelang",
+      description: "A platform for teaching and preserving native African languages — making mother tongue learning accessible through interactive lessons and community-driven content",
+      image: "/alkelang.png",
+      technologies: ["Node.js", "React", "TypeScript", "Tailwind CSS"],
+      liveUrl: "https://alkelang-app-web.vercel.app/",
+      category: "EdTech",
       featured: true,
     }
   ];

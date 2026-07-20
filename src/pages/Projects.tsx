@@ -17,7 +17,7 @@ const Projects = () => {
       title: "AI-Powered Portfolio Platform",
       description: "A professional portfolio website featuring an intelligent chatbot powered by Groq's Llama model, with secure backend architecture",
       image: "/portfolio-ai.png",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Docker", "GitHub", "Groq AI"],
+      technologies: ["Groq AI", "Node.js", "React", "TypeScript"],
       liveUrl: "https://nkwenti-severian-ndongtsop.vercel.app/",
       githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Nkwenti-Severian-Ndongtsop.git",
       category: "AI/ML",
@@ -36,7 +36,7 @@ const Projects = () => {
       title: "LinkSphere",
       description: "A comprehensive link management platform with analytics dashboard, built with secure Rust backend and modern React frontend",
       image: "/linksphere.png",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Rust", "Docker", "GitHub"],
+      technologies: ["Chart.js", "Rust", "React", "TypeScript"],
       liveUrl: "https://linksphere-98u3.onrender.com/",
       githubUrl: "https://github.com/Vitalisn4/LinkSphere.git",
       category: "Web App",
@@ -46,14 +46,23 @@ const Projects = () => {
       title: "Ferriskey Identity and Access Management",
       description: "A Modern IAM Built for Distributed Systems",
       image: "/ferriskey.png",
-      technologies: ["Rust", "React", "TypeScript", "Tailwind CSS", "Docker", "GitHub"],
+      technologies: ["Rust", "React", "TypeScript", "Tailwind CSS"],
       githubUrl: "https://github.com/ferriskey/ferriskey",
       category: "IAM",
+      featured: true,
+    },
+    {
+      title: "Alkelang",
+      description: "A platform for teaching and preserving native African languages — making mother tongue learning accessible through interactive lessons and community-driven content",
+      image: "/alkelang.png",
+      technologies: ["Node.js", "React", "TypeScript", "Tailwind CSS"],
+      liveUrl: "https://alkelang-app-web.vercel.app/",
+      category: "EdTech",
       featured: true,
     }
   ];
 
-  const categories = ["All", "Web App", "AI/ML", "IAM", "Security"];
+  const categories = ["All", "Web App", "AI/ML", "IAM", "Security", "EdTech"];
 
   const filteredProjects = projects.filter((project) => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

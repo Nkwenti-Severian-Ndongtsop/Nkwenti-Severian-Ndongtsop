@@ -27,6 +27,8 @@ const groq = new Groq({
 });
 
 // Load AI context from environment variable only
+// NOTE: When deploying, update the AI_SYSTEM_PROMPT env var to include Alkelang:
+// "Alkelang - a platform for teaching and preserving native African languages through interactive lessons"
 const loadAIContext = () => {
   return process.env.AI_CONTEXT || '';
 };
@@ -71,7 +73,8 @@ const generateFollowUpSuggestions = (message) => {
     "Tell me about your work at Adorsys",
     "What certifications do you hold?",
     "How can I collaborate with you?",
-    "What's your experience with Rust?"
+    "What's your experience with Rust?",
+    "What is Alkelang?"
   ];
 
   const lowerMessage = message.toLowerCase();
@@ -80,7 +83,8 @@ const generateFollowUpSuggestions = (message) => {
     return [
       "Tell me about your AI portfolio project",
       "What's LinkSphere about?",
-      "Can you explain keycloak-config-cli?"
+      "Can you explain keycloak-config-cli?",
+      "What is Alkelang?"
     ];
   }
 
