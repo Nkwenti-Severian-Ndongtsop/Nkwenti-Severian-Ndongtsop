@@ -99,10 +99,10 @@ const generateConversationId = () => {
 // Generate follow-up suggestions based on message content
 const generateFollowUpSuggestions = (message) => {
   const suggestions = [
-    "Tell me about your work at Adorsys",
-    "What certifications do you hold?",
-    "How can I collaborate with you?",
-    "What's your experience with Rust?",
+    "Tell me about his work at Adorsys",
+    "What certifications does he hold?",
+    "How can I collaborate with him?",
+    "What's his experience with Rust?",
     "What is Alkelang?"
   ];
 
@@ -110,7 +110,7 @@ const generateFollowUpSuggestions = (message) => {
   
   if (lowerMessage.includes('project')) {
     return [
-      "Tell me about your AI portfolio project",
+      "Tell me about his AI portfolio project",
       "What's LinkSphere about?",
       "Can you explain keycloak-config-cli?",
       "What is Alkelang?"
@@ -119,25 +119,25 @@ const generateFollowUpSuggestions = (message) => {
 
   if (lowerMessage.includes('skill') || lowerMessage.includes('experience') || lowerMessage.includes('certification')) {
     return [
-      "What's your strongest programming language?",
-      "Tell me about your Azure certification",
-      "How did you get started in tech?"
+      "What's his strongest programming language?",
+      "Tell me about his Azure certification",
+      "How did he get started in tech?"
     ];
   }
 
   if (lowerMessage.includes('contact') || lowerMessage.includes('hire') || lowerMessage.includes('collaborate')) {
     return [
-      "What's your availability?",
-      "How can we work together?",
-      "What's your email address?"
+      "What's his availability?",
+      "How can I work with him?",
+      "What's his email address?"
     ];
   }
 
   if (lowerMessage.includes('background') || lowerMessage.includes('personal') || lowerMessage.includes('story')) {
     return [
-      "Where are you from in Cameroon?",
-      "What are your hobbies?",
-      "What are your career goals?"
+      "Where is he from in Cameroon?",
+      "What are his hobbies?",
+      "What are his career goals?"
     ];
   }
 
