@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
@@ -28,4 +29,10 @@ venv/
 .env
 Dockerfile.*
 .env.example
+!/.env.example
+!portfolio-ai-server/.env.example
 PROJECT*.md
+
+# Private system prompt — set it in AI_SYSTEM_PROMPT instead of committing it
+portfolio-ai-server/system-prompt*.txt
+system-prompt*.txt
