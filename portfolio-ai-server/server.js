@@ -144,6 +144,22 @@ const generateFollowUpSuggestions = (message) => {
   return suggestions.slice(0, 3);
 };
 
+// Root endpoint - basic server info and endpoints directory
+app.get('/', (req, res) => {
+  res.json({
+    status: 'OK',
+    message: 'Nkwenti Portfolio AI Server is running',
+    version: '2.1',
+    model: configuredModel,
+    endpoints: {
+      root: 'GET /',
+      health: 'GET /health',
+      chat: 'POST /api/chat'
+    },
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Enhanced health check endpoint
 app.get('/health', (req, res) => {
   res.json({ 
@@ -308,12 +324,22 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Handle GET requests to /api/chat with helpful guidance
+app.get('/api/chat', (req, res) => {
+  res.status(405).json({
+    error: 'Method Not Allowed',
+    message: 'The /api/chat endpoint only accepts POST requests with a JSON body: { "message": "your question" }',
+    availableEndpoints: ['/', '/health', 'POST /api/chat'],
+    timestamp: new Date().toISOString()
+  });
+});
+
 // 404 handler
 app.use('*', (req, res) => {
   res.status(404).json({ 
     error: 'Endpoint not found',
     timestamp: new Date().toISOString(),
-    availableEndpoints: ['/health', '/api/chat']
+    availableEndpoints: ['/', '/health', 'POST /api/chat']
   });
 });
 
