@@ -135,7 +135,9 @@ const ChatWidget = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+  const MAX_INPUT_LENGTH = 500;
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -144,6 +146,14 @@ const ChatWidget = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Keep textarea height synchronized with content (auto-grow and shrink on submit)
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 120)}px`;
+    }
+  }, [inputValue, isOpen]);
 
   // Save messages to localStorage whenever messages change
   useEffect(() => {
@@ -274,15 +284,8 @@ const ChatWidget = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
-    
-    // Limit to 120 characters
-    if (value.length <= 120) {
+    if (value.length <= MAX_INPUT_LENGTH) {
       setInputValue(value);
-      
-      // Auto-resize textarea
-      const textarea = e.target;
-      textarea.style.height = 'auto';
-      textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
     }
   };
 
@@ -486,34 +489,28 @@ const ChatWidget = () => {
           {/* Input */}
           <form onSubmit={handleSubmit} className="p-4 border-t border-border/50 bg-background/50 backdrop-blur-sm flex-shrink-0">
             <div className="flex space-x-3 items-start">
-              <div className="flex-1 min-w-0 overflow-hidden">
+              <div className="flex-1 min-w-0">
                 <Textarea
+                  ref={textareaRef}
                   value={inputValue}
                   onChange={handleInputChange}
                   onKeyDown={handleKeyDown}
                   placeholder="Ask me about Nkwenti..."
-                  className="min-h-[44px] max-h-[100px] resize-none w-full text-sm overflow-hidden whitespace-pre-wrap"
+                  className="min-h-[44px] max-h-[120px] resize-none w-full text-sm leading-relaxed px-3.5 py-2.5 overflow-y-auto break-words [overflow-wrap:anywhere]"
                   rows={1}
-                  wrap="soft"
-                  style={{ 
-                    wordWrap: 'break-word', 
-                    overflowWrap: 'break-word',
-                    whiteSpace: 'pre-wrap',
-                    overflowX: 'hidden'
-                  }}
                 />
                 <div className="flex justify-between items-center mt-2 px-1">
                   <div className="text-xs text-muted-foreground">
                     Enter to send • Shift+Enter for new line
                   </div>
                   <div className={`text-xs font-medium ${
-                    inputValue.length > 120 
+                    inputValue.length > 450 
                       ? 'text-orange-500' 
-                      : inputValue.length === 120 
+                      : inputValue.length === MAX_INPUT_LENGTH 
                         ? 'text-red-500' 
                         : 'text-muted-foreground'
                   }`}>
-                    {inputValue.length}/120
+                    {inputValue.length}/{MAX_INPUT_LENGTH}
                   </div>
                 </div>
               </div>
