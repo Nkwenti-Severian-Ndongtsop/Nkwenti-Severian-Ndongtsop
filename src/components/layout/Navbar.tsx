@@ -4,15 +4,26 @@ import { Moon, Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(
-    () => localStorage.getItem("theme") === "dark"
-  );
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === "undefined") return true;
+    try {
+      const savedTheme = localStorage.getItem("theme-preference");
+      return savedTheme ? savedTheme === "dark" : true;
+    } catch {
+      return true;
+    }
+  });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark);
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+    try {
+      localStorage.setItem("theme-preference", isDark ? "dark" : "light");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    } catch {
+      // Storage may be unavailable (private mode); the theme still applies.
+    }
   }, [isDark]);
 
   const toggleTheme = () => {
@@ -62,6 +73,7 @@ const Navbar = () => {
               size="sm"
               onClick={toggleTheme}
               className="hover-glow"
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
             >
               {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
