@@ -1,6 +1,6 @@
 # Portfolio AI Server
 
-AI-powered chatbot backend for Nkwenti's portfolio website using Groq's Llama 3.3 70B model.
+AI-powered chatbot backend for Nkwenti's portfolio website using Groq's GPT-OSS 120B model (with automatic fallback to GPT-OSS 20B).
 
 ## Features
 
@@ -12,7 +12,7 @@ AI-powered chatbot backend for Nkwenti's portfolio website using Groq's Llama 3.
 
 ## Prerequisites
 
-- Node.js 18+ or Docker
+- Node.js 20+ or Docker
 - Groq API key
 
 ## Environment Setup
@@ -26,19 +26,35 @@ PORT=3001
 # Groq AI Configuration (REQUIRED)
 GROQ_API_KEY=your_groq_api_key_here
 
+# Groq model (optional, defaults to openai/gpt-oss-120b)
+# openai/gpt-oss-20b is used automatically as a fallback if the primary model is unavailable.
+GROQ_MODEL=openai/gpt-oss-120b
+
 # CORS Configuration (REQUIRED)
 FRONTEND_URL=http://localhost:8080
-
-# AI System Prompt (REQUIRED) - See .env.example for full comprehensive prompt
-AI_SYSTEM_PROMPT="You are Nkwenti's AI assistant with comprehensive information about Nkwenti Severian Ndongtsop - a 20-year-old certified full-stack software engineer and cybersecurity enthusiast from Cameroon, currently training at GIS. Includes his technical skills (React, Spring Boot, Rust, cybersecurity tools), certifications (Java Oracle, LPIC-1), projects (LinkSphere, AI Portfolio), and personal background."
 ```
 
-### **Required Environment Variables:**
+### System prompt
+
+The full prompt is supplied through the **`AI_SYSTEM_PROMPT`** environment variable. It is
+intentionally **not stored in the repository**, so personal details are not exposed on GitHub.
+Set it locally in `.env` and in the Render dashboard for production. `AI_CONTEXT` is optional
+and is appended to the prompt.
+
+If `AI_SYSTEM_PROMPT` is missing, the server falls back to a generic prompt with no personal
+information and logs a startup warning.
+
+### **Environment Variables:**
 
 - **`PORT`** - Server port (Render sets this automatically)
-- **`GROQ_API_KEY`** - Your Groq API key for AI functionality  
+- **`GROQ_API_KEY`** - Your Groq API key for AI functionality
+- **`GROQ_MODEL`** - Groq model ID (optional, defaults to `openai/gpt-oss-120b`)
 - **`FRONTEND_URL`** - Frontend domain for CORS (e.g., https://your-portfolio.com)
-- **`AI_SYSTEM_PROMPT`** - System prompt that defines the AI's behavior and knowledge
+- **`CHAT_RATE_LIMIT`** - Max chat requests per window per IP (optional, default `20`)
+- **`CHAT_RATE_WINDOW_MS`** - Rate-limit window in milliseconds (optional, default `60000`)
+- **`JSON_BODY_LIMIT`** - Max request body size (optional, default `16kb`)
+- **`AI_SYSTEM_PROMPT`** - Full system prompt (required for the real assistant; keep it out of git)
+- **`AI_CONTEXT`** - Optional extra context appended to the active prompt
 
 ## Running with Docker (Local Development)
 
@@ -68,6 +84,9 @@ npm start
 - `GET /health` - Health check endpoint
 - `POST /api/chat` - Chat with AI (requires JSON body with `message` field)
 
+The chat endpoint validates and bounds input, limits requests per IP, and never forwards
+upstream provider errors to the browser.
+
 ## Docker Features
 
 - **Multi-stage build**: Optimized for production
@@ -87,10 +106,13 @@ This project is optimized for Render deployment using Docker:
 5. **Environment Variables**: Set in Render dashboard:
    ```
    GROQ_API_KEY=your_groq_api_key_here
+   GROQ_MODEL=openai/gpt-oss-120b
    FRONTEND_URL=https://your-frontend-domain.com
-   AI_SYSTEM_PROMPT=You are Nkwenti's AI assistant. You help visitors learn about Nkwenti Severian Ndongtsop, a junior software engineer and cybersecurity enthusiast. You can answer questions about his projects, skills, experience, and background. Be helpful, professional, and engaging.
+   AI_SYSTEM_PROMPT=<paste the full prompt here>
    ```
    
+   `AI_SYSTEM_PROMPT` is not committed to the repository, so personal details stay private.
+   Paste the full prompt value into the Render dashboard.
 **Note**: Render automatically sets the `PORT` environment variable, so you don't need to set it manually.
 
 ### Other Platforms
