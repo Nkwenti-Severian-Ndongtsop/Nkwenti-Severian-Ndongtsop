@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
 import { MessageCircle, X, Send, Bot, Trash2, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,6 +15,77 @@ interface Message {
 
 /** Keep localStorage small and avoid replaying an unbounded conversation. */
 const MAX_STORED_MESSAGES = 50;
+
+/** Matches full URLs, www links, and email addresses in plain text. */
+const LINK_PATTERN =
+  /((?:https?:\/\/|www\.)[^\s<>"']+|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})/gi;
+
+/** Punctuation that commonly follows a URL should stay outside the link. */
+const splitTrailingPunctuation = (value: string): [string, string] => {
+  const match = value.match(/[.,!?;:)\]}'"”’]+$/);
+  if (!match) return [value, ""];
+  return [value.slice(0, -match[0].length), match[0]];
+};
+
+const renderMessageText = (text: string, isBot: boolean): ReactNode => {
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+
+  for (const match of text.matchAll(LINK_PATTERN)) {
+    const raw = match[0];
+    const start = match.index ?? 0;
+    const [link, trailing] = splitTrailingPunctuation(raw);
+
+    if (start > lastIndex) {
+      nodes.push(text.slice(lastIndex, start));
+    }
+
+    if (!link) {
+      nodes.push(raw);
+      lastIndex = start + raw.length;
+      continue;
+    }
+
+    const isEmail = !/^https?:\/\//i.test(link) && !/^www\./i.test(link);
+    const href = isEmail
+      ? `mailto:${link}`
+      : /^www\./i.test(link)
+        ? `https://${link}`
+        : link;
+
+    nodes.push(
+      <a
+        key={`${start}-${link}`}
+        href={href}
+        {...(isEmail
+          ? {}
+          : { target: "_blank", rel: "noopener noreferrer" })}
+        className={`break-all font-medium underline underline-offset-2 transition-opacity hover:opacity-80 ${
+          isBot ? "text-primary" : "text-primary-foreground"
+        }`}
+        title={isEmail ? `Email ${link}` : `Open ${link} in a new tab`}
+      >
+        {link}
+      </a>
+    );
+
+    if (trailing) {
+      nodes.push(trailing);
+    }
+
+    lastIndex = start + raw.length;
+  }
+
+  if (lastIndex === 0) {
+    return text;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex));
+  }
+
+  return nodes;
+};
 
 const ChatWidget = () => {
   const analytics = useAnalyticsTracking();
@@ -363,7 +434,7 @@ const ChatWidget = () => {
                     wordBreak: 'break-word'
                   }}
                 >
-                  {message.text}
+                  {renderMessageText(message.text, message.isBot)}
                 </div>
                 {/* Suggestions for bot messages */}
                 {message.isBot && message.suggestions && message.suggestions.length > 0 && (
