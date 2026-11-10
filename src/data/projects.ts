@@ -51,6 +51,7 @@ export const projects: Project[] = [
     description: "A Modern IAM Built for Distributed Systems",
     image: "/ferriskey.png",
     technologies: ["Rust", "React", "TypeScript", "Tailwind CSS"],
+    liveUrl: "https://ferriskey.rs/",
     githubUrl: "https://github.com/ferriskey/ferriskey",
     category: "IAM",
     featured: true,
