@@ -115,6 +115,8 @@ ChatWidget (browser)
 ```
 
 - Chat history is stored in `localStorage` under `nkwenti-chat-messages`.
+- Messages render as plain text; full `http(s)` URLs and email addresses become clickable links.
+  External links open in a new tab with `rel="noopener noreferrer"`.
 - Follow-up suggestions are generated server-side from keywords.
 - `GET /health` returns status, version, and the active model.
 - CORS allows only `FRONTEND_URL` (default `http://localhost:8080`).
