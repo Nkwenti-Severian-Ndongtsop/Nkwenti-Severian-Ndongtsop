@@ -50,10 +50,10 @@ const ChatWidget = () => {
         isBot: true,
         timestamp: new Date(),
         suggestions: [
-          "Tell me about your work at Adorsys",
-          "What certifications do you hold?",
-          "How can I collaborate with you?",
-          "What's your experience with Rust?"
+          "Tell me about his work at Adorsys",
+          "What certifications does he hold?",
+          "How can I collaborate with him?",
+          "What's his experience with Rust?"
         ]
       },
     ];
@@ -246,10 +246,10 @@ const ChatWidget = () => {
         isBot: true,
         timestamp: new Date(),
         suggestions: [
-          "Tell me about your work at Adorsys",
-          "What certifications do you hold?",
-          "How can I collaborate with you?",
-          "What's your experience with Rust?"
+          "Tell me about his work at Adorsys",
+          "What certifications does he hold?",
+          "How can I collaborate with him?",
+          "What's his experience with Rust?"
         ]
       },
     ];
