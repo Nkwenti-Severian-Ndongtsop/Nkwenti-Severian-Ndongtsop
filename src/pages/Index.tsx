@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Code, Sparkles, Rocket, ArrowDown, Play, Shield, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ProjectCard from "@/components/ui/ProjectCard";
 import TechStack from "@/components/ui/TechStack";
 import ChatWidget from "@/components/ai/ChatWidget";
 import LazyImage from "@/components/ui/LazyImage";
+import { homeProjects as projects } from "@/data/projects";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -23,37 +23,6 @@ const Index = () => {
     { icon: <Sparkles className="h-6 w-6" />, name: "AI Integration", description: "LLM APIs & intelligent systems", proficiency: 70 },
     { icon: <Code className="h-6 w-6" />, name: "Database Systems", description: "PostgreSQL, MongoDB", proficiency: 75 },
     { icon: <Sparkles className="h-6 w-6" />, name: "Cloud Services", description: "AWS, Azure, Hashicorp", proficiency: 80 }
-  ];
-
-  const projects = [
-    {
-      title: "AI-Powered Portfolio Platform",
-      description: "A professional portfolio website featuring an intelligent chatbot powered by Groq's Llama model, with secure backend architecture",
-      image: "/portfolio-ai.png",
-      technologies: ["Groq AI", "Node.js", "React", "TypeScript"],
-      liveUrl: "https://nkwenti-severian-ndongtsop.vercel.app/",
-      githubUrl: "https://github.com/Nkwenti-Severian-Ndongtsop/Nkwenti-Severian-Ndongtsop.git",
-      category: "AI/ML",
-      featured: true,
-    },
-    {
-      title: "Keycloak Config CLI",
-      description: "A command-line interface for managing Keycloak configurations",
-      image: "/keycloak-config-cli.png",
-      technologies: ["Java", "SpringBoot", "Docker", "GitHub"],
-      githubUrl: "https://github.com/adorsys/keycloak-config-cli.git",
-      category: "IAM",
-      featured: true,
-    },
-    {
-      title: "Alkelang",
-      description: "A platform for teaching and preserving native African languages — making mother tongue learning accessible through interactive lessons and community-driven content",
-      image: "/alkelang.png",
-      technologies: ["Node.js", "React", "TypeScript", "Tailwind CSS"],
-      liveUrl: "https://alkelang-app-web.vercel.app/",
-      category: "EdTech",
-      featured: true,
-    }
   ];
 
   return (
@@ -113,16 +82,12 @@ const Index = () => {
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-primary to-accent p-2 animate-pulse-glow hover-lift transition-all duration-500 group-hover:scale-105">
                   <div className="w-full h-full rounded-full bg-background flex items-center justify-center text-muted-foreground border-2 border-muted glass overflow-hidden">
                     <LazyImage
-                      src="/my-photo.png"
+                      src="/my-photo-profile.jpg"
                       alt="Nkwenti Profile"
-                      className="w-full h-full object-cover rounded-full object-[50%_30%] scale-110"
+                      className="w-full h-full object-cover rounded-full object-center"
                     />
                   </div>
                 </div>
-                <Badge variant="outline" className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 glass animate-float">
-                  <Sparkles className="h-4 w-4 mr-2" />
-                  Available for Work
-                </Badge>
               </div>
             </div>
           </div>
