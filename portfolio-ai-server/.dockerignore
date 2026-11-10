@@ -7,4 +7,5 @@ docker-compose.yml
 .env
 .env.local
 .env.example
+system-prompt*.txt
 README.md 
