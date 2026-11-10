@@ -1,5 +1,5 @@
 # Use official Node.js runtime as base image
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Set working directory in container
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # Copy application code
 COPY . .
