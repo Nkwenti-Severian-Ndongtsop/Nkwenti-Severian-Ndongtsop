@@ -6,7 +6,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Github, href: "https://github.com/Nkwenti-Severian-Ndongtsop", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/severian-nkwenti-83b345389", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:nkwentiseverian@gmail.com", label: "Email" },
+    { icon: Mail, href: "mailto:severiannkwenti@gmail.com", label: "Email" },
   ];
 
   return (
