@@ -43,10 +43,10 @@ const Projects = () => {
       {/* Filters */}
       <section className="pb-12 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="glass rounded-xl p-6 mb-8">
+          <div className="glass rounded-xl p-4 sm:p-6 mb-8">
             <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
               {/* Search */}
-              <div className="relative flex-1 max-w-md">
+              <div className="relative w-full lg:flex-1 lg:max-w-md">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search projects, technologies..."
@@ -57,16 +57,18 @@ const Projects = () => {
               </div>
 
               {/* Category Filter */}
-              <div className="flex items-center gap-2">
-                <Filter className="h-4 w-4 text-muted-foreground" />
-                <div className="flex flex-wrap gap-2">
+              <div className="flex w-full items-center gap-2 lg:w-auto">
+                <Filter className="h-4 w-4 shrink-0 text-muted-foreground" />
+                <div className="flex min-w-0 flex-1 flex-wrap justify-center gap-2 lg:flex-none lg:justify-start">
                   {categories.map((category) => (
                     <Button
                       key={category}
                       variant={selectedCategory === category ? "default" : "outline"}
                       size="sm"
                       onClick={() => setSelectedCategory(category)}
-                      className={selectedCategory === category ? "bg-gradient-primary" : "hover-glow"}
+                      className={`shrink-0 whitespace-nowrap ${
+                        selectedCategory === category ? "bg-gradient-primary" : "hover-glow"
+                      }`}
                     >
                       {category}
                     </Button>
