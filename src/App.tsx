@@ -8,6 +8,7 @@ import { Loader2 } from "lucide-react";
 import Analytics from "@/components/analytics/Analytics";
 import CookieBanner from "@/components/analytics/CookieBanner";
 import ConversionTracker from "@/components/analytics/Analytics";
+import { AI_HEALTH_ENDPOINT } from "@/lib/config";
 
 // Lazy load all route components for code splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -34,7 +35,7 @@ const App = () => {
   useEffect(() => {
     const warmUpServer = async () => {
       try {
-        await fetch('https://backend-ai-x0er.onrender.com/health', { method: 'GET' });
+        await fetch(AI_HEALTH_ENDPOINT, { method: 'GET' });
       } catch (error) {
         // Silently fail - this is just a background warm-up
       }
