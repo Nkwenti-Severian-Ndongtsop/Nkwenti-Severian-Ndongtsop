@@ -31,11 +31,11 @@ const PageSkeleton = () => (
 const queryClient = new QueryClient();
 
 const App = () => {
-  // Warm up AI server on app load (only once)
+  // Warm up AI server on app load (Render free tier sleeps after inactivity)
   useEffect(() => {
     const warmUpServer = async () => {
       try {
-        await fetch(AI_HEALTH_ENDPOINT, { method: 'GET' });
+        await fetch(AI_HEALTH_ENDPOINT, { method: 'GET', mode: 'no-cors' });
       } catch (error) {
         // Silently fail - this is just a background warm-up
       }
