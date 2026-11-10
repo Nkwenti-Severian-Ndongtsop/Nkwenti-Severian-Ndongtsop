@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="bg-card/50 border-t border-border/20 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
@@ -74,21 +74,6 @@ const Footer = () => {
                   Contact
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* Technologies */}
-          <div>
-            <h3 className="font-semibold mb-4">Technologies</h3>
-            <ul className="space-y-2">
-              <li className="text-muted-foreground">React Ecosystem</li>
-              <li className="text-muted-foreground">Spring Boot</li>
-              <li className="text-muted-foreground">Rust & Axum</li>
-              <li className="text-muted-foreground">Security Technologies</li>
-              <li className="text-muted-foreground">Docker & DevOps</li>
-              <li className="text-muted-foreground">Database Systems</li>
-              <li className="text-muted-foreground">AI Integration</li>
-              <li className="text-muted-foreground">Cloud Platforms</li>
             </ul>
           </div>
         </div>
