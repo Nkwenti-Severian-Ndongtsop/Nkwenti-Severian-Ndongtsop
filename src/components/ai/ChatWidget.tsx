@@ -3,6 +3,7 @@ import { MessageCircle, X, Send, Bot, Trash2, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useAnalyticsTracking } from "@/hooks/useAnalytics";
+import { AI_CHAT_ENDPOINT } from "@/lib/config";
 
 interface Message {
   id: string;
@@ -12,11 +13,13 @@ interface Message {
   suggestions?: string[];
 }
 
+/** Keep localStorage small and avoid replaying an unbounded conversation. */
+const MAX_STORED_MESSAGES = 50;
+
 const ChatWidget = () => {
   const analytics = useAnalyticsTracking();
 
-  // Direct backend URL for chat requests
-  const apiEndpoint = 'https://backend-ai-x0er.onrender.com/api/chat';
+  const apiEndpoint = AI_CHAT_ENDPOINT;
 
   const [isOpen, setIsOpen] = useState(false);
   const [showNotificationDot, setShowNotificationDot] = useState(true);
@@ -29,7 +32,7 @@ const ChatWidget = () => {
         if (savedMessages) {
           const parsed: Message[] = JSON.parse(savedMessages);
           // Convert timestamp strings back to Date objects
-          return parsed.map((msg: Message) => ({
+          return parsed.slice(-MAX_STORED_MESSAGES).map((msg: Message) => ({
             ...msg,
             timestamp: new Date(msg.timestamp)
           }));
@@ -75,7 +78,10 @@ const ChatWidget = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       try {
-        localStorage.setItem('nkwenti-chat-messages', JSON.stringify(messages));
+        localStorage.setItem(
+          'nkwenti-chat-messages',
+          JSON.stringify(messages.slice(-MAX_STORED_MESSAGES))
+        );
       } catch (error) {
         // Silently fail - chat history save failed
       }
